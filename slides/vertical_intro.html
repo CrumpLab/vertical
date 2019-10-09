@@ -15,20 +15,30 @@ class: center, middle, inverse, title-slide
 # Reproducible psychological research and project management in R
 ## A solution stack
 ### Matthew Crump
-### 2018/07/20 (updated: 2019-10-07)
+### 2018/07/20 (updated: 2019-10-09)
 
 ---
 
 
 
 
-class: pink, center, middle, clear
+# link to this website
 
-# Everything in its right place - Radiohead
+Contains these slides and example of using R to share many components of a research project
+
+&lt;https://crumplab.github.io/vertical/&gt;
 
 ---
 
-# Hodge Podge Management
+# Online Resources for R
+
+Lots of great and free online resources. I've been making a list:
+
+&lt;https://crumplab.github.io/blogposts/LearningR/LearningR.html&gt;
+
+---
+
+# Everything everywhere workflow
 
 Using lots of different programs to accomplish different jobs
 
@@ -41,13 +51,7 @@ Outcome: lots of different files everywhere, lots of work by hand, **can be very
 
 ---
 
-# Solution Stack Management
-
-From Wikipedia: In computing, a **solution stack or software stack** is a set of software subsystems or components needed to create a complete platform such that no additional software is needed to support applications. Applications are said to "run on" or "run on top of" the resulting platform.
-
----
-
-# R as a solution stack
+# vertical: R for everything
 
 1. Program Experiments (exprmntr and JsPsych)
 2. Data analysis (e.g., tidyverse)
@@ -60,19 +64,35 @@ From Wikipedia: In computing, a **solution stack or software stack** is a set of
 
 ---
 
-# R as a control center
+# R markdown (.Rmd files)
 
-Having a full solution stack in R doesn't mean you can't use other things.
+A text file for **notes and R scripts** that compiles to different formats (html, pdf, etc.) 
 
-R can often be used as a control center to run other code (e.g., python, C++, etc.)
+&lt;img src="imgs/rmarkdown.png" width="3749" /&gt;
 
 ---
 
-# R markdown (.Rmd files)
+# R Markdown guide
 
-A text file for **notes and R scripts** that compiles to different formats (html, pdf, etc.)
+Definitive guide to R Markdown 
 
-&lt;img src="imgs/rmarkdown.png" width="3749" /&gt;
+&lt;https://bookdown.org/yihui/rmarkdown/&gt;
+
+---
+
+# Experiments in R (jsPsych)
+
+- jsPsych documentation &lt;https://www.jspsych.org&gt;
+- xprmntr R package (in dev) &lt;https://github.com/CrumpLab/xprmntr&gt;
+- examples &lt;https://github.com/CrumpLab/jsPsychRexamples&gt;
+
+---
+
+# Data analysis
+
+- tidyverse &lt;https://www.tidyverse.org&gt; lots of great packages for data analysis
+- dplyr &lt;https://dplyr.tidyverse.org&gt; data-wrangling
+- ggplot2 &lt;https://ggplot2.tidyverse.org&gt; plotting
 
 ---
 
@@ -108,6 +128,15 @@ df &lt;- all_data %&gt;%
   filter(accuracy == 1) %&gt;%
   group_by(congruency) %&gt;%
   summarise(mean_rt = mean(rt))
+df
+```
+
+```
+## # A tibble: 2 x 2
+##   congruency mean_rt
+##   &lt;fct&gt;        &lt;dbl&gt;
+## 1 con           21.5
+## 2 inc           99.9
 ```
 
 ---
@@ -122,6 +151,46 @@ ggplot(df, aes(x=congruency, y=mean_rt))+
 ```
 
 ![](vertical_intro_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
+
+---
+
+# slide decks
+
+This slide deck was written in R markdown the`xaringan` package
+
+&lt;https://github.com/yihui/xaringan&gt;
+
+---
+
+# APA papers
+
+`papaja` is an R package for writing APA papers in R markdown (then compile to .pdf)
+
+&lt;https://crsh.github.io/papaja_man/&gt;
+
+---
+
+# R packages and pkgdown
+
+`pkgdown` is an R package that builds a website for R packages.
+
+&lt;https://pkgdown.r-lib.org&gt;
+
+---
+
+# bookdown
+
+A package for writing books (compile to web-book, .pdf, and epub)
+
+&lt;https://bookdown.org&gt;
+
+---
+
+# R markdown websites
+
+Write in R markdown, and make all kinds of websites
+
+&lt;https://rmarkdown.rstudio.com/lesson-13.html&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

@@ -5,11 +5,11 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Getting Started • vertical</title>
+<title>Using vertical • vertical</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Getting Started">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Using vertical">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -56,7 +56,7 @@
       <a href="../articles/E1_analysis.html">Experiment 1 Analysis</a>
     </li>
     <li>
-      <a href="../articles/get_started.html">Getting Started</a>
+      <a href="../articles/get_started.html">Using vertical</a>
     </li>
   </ul>
 </li>
@@ -108,7 +108,7 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>Getting Started</h1>
+      <h1>Using vertical</h1>
             
       
       
@@ -119,14 +119,70 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(vertical)</span></code></pre></div>
-<p>The purpose of this package is to demonstrate how R package structures, along with various R packaged can be used as a vertical stack for reproducible psychological research. Vertical stack refers to the notion that all of the tasks involved in research, from programming and running and experiment, to analyzing, reporting, writing, and sharing the results, can be accomplished within the same R worfklow, rather than multiple workflows.</p>
-<p>The purpose of this vignette is for note taking purposes, to keep track of the steps I took to create this template.</p>
-<div id="file-management" class="section level2">
-<h2 class="hasAnchor">
-<a href="#file-management" class="anchor"></a>File management</h2>
+<p>The idea behind vertical is to use R as platform for sharing as many components of a research project as possible, in the form of a website and R package. This template shows exmamples of sharing the following:</p>
 <ol style="list-style-type: decimal">
-<li>
-<strong>R Projects</strong>: In general, it is a good idea to work inside an R project (in R-studio). If you are not in an R project, then you should see the word “none” in the top right hand corner of R studio. To create a new project, click the top right hand corner, and choose the new project option. You will see many different options. The basic option (to create a default project), simply creates a new folder (in a location of your choice, with the name of your choice), and it makes a <code>.Rproj</code> file in that folder. For example, all of the files in this template are in folder on my computer called <code>vertical</code>, and there is a <code>vertical.Rproj</code> file in that folder. The <code>.Rproj</code> file is an R-studio project file. If you double click it you, it should automatically open R-studio, and load the project.</li>
+<li>experiment scripts and final web-based experiment (written in jsPsych)</li>
+<li>sample data from the experiment</li>
+</ol>
+<ul>
+<li>shared as raw .csv files</li>
+<li>can also be packaged in native R formats and distributed in package</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>analysis scripts (R markdown)</li>
+<li>Any additional R markdown documents that could be supplemental materials, or other notes, etc.</li>
+<li>APA paper (compiled to pdf), written in R using papaja</li>
+<li>slide decks for a presentation (using xaringan)</li>
+<li>custom functions used in the project, these can be distrubted in an R package</li>
+</ol>
+<p>All of these components of a research project are stored within a slightly modified directory for creating R packages. The benefit of doing this is that the pkgdown package can be used to build a website to display and share all of the components (i.e. this website).</p>
+<div id="brief-overview-of-components" class="section level2">
+<h2 class="hasAnchor">
+<a href="#brief-overview-of-components" class="anchor"></a>Brief overview of components</h2>
+<div id="r-packages-and-pkgdown" class="section level3">
+<h3 class="hasAnchor">
+<a href="#r-packages-and-pkgdown" class="anchor"></a>R packages and pkgdown</h3>
+<p>pkgdown <a href="https://pkgdown.r-lib.org" class="uri">https://pkgdown.r-lib.org</a> is an R package that builds a website for R package documentation.</p>
+<ol style="list-style-type: decimal">
+<li><p>R makes it relatively easy to build an R package for the purpose of sharing functions. Create a new project in R-studio, and choose R package.</p></li>
+<li><p>Then load the pkgdown library, and run build_site, this should produce a basic pkgdown website based off of the R package template.</p></li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(pkgdown)</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="kw"><a href="https://pkgdown.r-lib.org/reference/build_site.html">build_site</a></span>()</span></code></pre></div>
+<p>The file structure of the basic R package template includes the following folders:</p>
+<ul>
+<li>man: this is for function documentation</li>
+<li>R: contains .R scripts which define functions</li>
+<li>vignettes: .Rmd files placed in this folder get compiled, and shown on the website as “vignettes” or articles</li>
+</ul>
+<p>There are several common actions that are performed when making R packages (e.g., steps required to make a new function). The <code>usethis</code> package is very helpful for automating some of these steps. Examples are included in the <code>Package Helper.R</code> file.</p>
+</div>
+<div id="experiments" class="section level3">
+<h3 class="hasAnchor">
+<a href="#experiments" class="anchor"></a>experiments</h3>
+<p>The <code>experiments</code> folder contains an example Stroop experiment written using jsPsych. This example requires functions contained in this package <a href="https://github.com/CrumpLab/xprmntr" class="uri">https://github.com/CrumpLab/xprmntr</a>. This is currently a forked and modified copy of Danielle Navarro’s xprmntr package, and my version is the one that it is required to make the example work.</p>
+<p>The sample experiment is compiled to .html, and it is linked to in the vertical website. In this way both the code and final product can be shared and viewed (e.g., someone visiting your site could run themselves through the experiment to see what it was like to be a participant).</p>
+</div>
+<div id="slides" class="section level3">
+<h3 class="hasAnchor">
+<a href="#slides" class="anchor"></a>slides</h3>
+<p>The <code>slides</code> folder contains an example slide deck using the <code>xaringan</code> package. The slide deck is written in R markdown (.Rmd file), and also uses custom .css to change the style of the presentation from the default style from the <code>xaringan</code> package.</p>
+</div>
+<div id="apa-manuscript" class="section level3">
+<h3 class="hasAnchor">
+<a href="#apa-manuscript" class="anchor"></a>APA manuscript</h3>
+<p>THe <code>manuscript</code> folder contains an example APA paper written using the <code>papaja</code> package. This is written in R markdown and compiled to .pdf. The .pdf is then shared on the website. More information about writing APA papers with <code>papaja</code> can be found on the <code>papaja</code> documentation site <a href="https://crsh.github.io/papaja_man/introduction.html" class="uri">https://crsh.github.io/papaja_man/introduction.html</a></p>
+</div>
+</div>
+<div id="hosting-the-site" class="section level2">
+<h2 class="hasAnchor">
+<a href="#hosting-the-site" class="anchor"></a>Hosting the site</h2>
+<ol style="list-style-type: decimal">
+<li>running <code><a href="https://pkgdown.r-lib.org/reference/build_site.html">build_site()</a></code> will compile almost everything needed for the webpage into the <code>docs</code> folder.</li>
+<li>If all of the files are placed in public Github repository (free), then the Github repository can serve the website using the Github pages feature (turn this on under settings for the repository, and choose serve from docs folder)</li>
+<li>In general, any file that is in the docs folder will be served to web.</li>
+<li>The files in the <code>slides</code>, <code>manuscript</code>, and <code>experiments</code> folders are not automatically compiled into .html by pkgdown. So, for now, to share content from those folders I manually copy each folder into the docs folder.</li>
+<li>The structure and appearance of the website can be modified (e.g., the navbar) by editing the <code>_pkgdown.yml</code> file.</li>
 </ol>
 </div>
   </div>
@@ -136,7 +192,8 @@
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-<li><a href="#file-management">File management</a></li>
+<li><a href="#brief-overview-of-components">Brief overview of components</a></li>
+      <li><a href="#hosting-the-site">Hosting the site</a></li>
       </ul>
 </div>
       </div>
