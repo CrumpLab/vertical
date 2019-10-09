@@ -1,0 +1,121 @@
+---
+title: "Reproducible Report"
+author: "Matt"
+date: "1/31/2019"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    collapsed: false
+    number_sections: false
+    toc_depth: 4
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning=FALSE, message = FALSE)
+```
+
+This is an example of a reproducible report for part I of the PSYC 7709 midterm assignment.
+
+## Introduction
+
+This report re-produces the analysis of Experiment 3 reported in Rosenbaum, Mama, Algom (2017). The citation for the article is:
+
+Rosenbaum, D., Mama, Y., & Algom, D. (2017). Stand by your Stroop: Standing up enhances selective attention and cognitive control. Psychological science, 28(12), 1864-1867.
+
+The data were downloaded from [https://osf.io/b7x8q/](https://osf.io/b7x8q/)
+
+Rosenbaum et al. (2017) had participants perform a Stroop task in one of two posture conditions. Participants either sat and performed the Stroop task, or stood and performed the Stroop task. The question was whether the size of the Stroop effect would change as a function of posture. The Stroop effect is measued as a difference between reaction times on congruent vs. incongruent trials. 
+
+The experiment involved a 2 (Posture: sitting vs standing) x 2 (congruency: congruent vs. incongruent) repeated measures design. 
+
+## Re-analysis
+
+```{r}
+# load libraries and data
+library(data.table)
+library(dplyr)
+library(ggplot2)
+all_data <- fread("data/stroop_stand.csv")
+
+# pre-processing and conversion to long format
+RTs <- c(as.numeric(unlist(all_data[,1])),
+         as.numeric(unlist(all_data[,2])),
+         as.numeric(unlist(all_data[,3])),
+         as.numeric(unlist(all_data[,4]))
+         )
+
+Congruency <- rep(rep(c("Congruent","Incongruent"),each=50),2)
+Posture <- rep(c("Stand","Sit"),each=100)
+Subject <- rep(1:50,4)
+
+stroop_df <- data.frame(Subject,Congruency,Posture,RTs)
+
+```
+
+### table of means for each condition
+
+```{r}
+overall_means <- stroop_df %>%
+                  group_by(Posture,Congruency) %>%
+                  summarise(meanRT = mean(RTs),
+                            SEMRT = (sd(RTs)/sqrt(length(RTs))))
+
+# make a table of overall means
+knitr::kable(overall_means)
+```
+
+### Repoducing the figure
+
+```{r}
+ggplot(overall_means, aes(x=Posture,
+                          y=meanRT, 
+                          group=Congruency,
+                          fill=Congruency))+
+  geom_bar(stat="identity",position="dodge")+
+  theme_classic(base_size=12)+
+  ylab("Mean Reaction Time (ms)")+
+  geom_errorbar(aes(ymin=meanRT-SEMRT,
+                    ymax=meanRT+SEMRT),
+                position=position_dodge(width=0.9),
+                width=.2,
+                color="black")+
+  coord_cartesian(ylim=c(750,1000))
+```
+
+### Repeated measure ANOVA
+
+```{r}
+# Make sure Subject is  a factor
+stroop_df$Subject <-  as.factor(stroop_df$Subject)
+
+aov_out <- aov(RTs~Posture*Congruency + Error(Subject/(Posture*Congruency)), stroop_df)
+
+# prints a nicer ANOVA table
+summary_out <- summary(aov_out)
+library(xtable)
+knitr::kable(xtable(summary_out))
+
+# prints means for each effect
+print(model.tables(aov_out,"means"), format="markdown")
+
+```
+ 
+### Results
+ 
+Mean reaction times for each subject in each condition to a 2 (Congruency: congruecnt vs. incongruent) x 2 (Posture: Standing vs. Sitting) were submitted to a repeated measures ANOVA.
+
+There was a main effect of Congruency, F (1, 49) = 342.45, MSE = 1684.39, p < 0.001. Mean reaction times were slower for incongruent (922 ms) than congruent groups (815 ms).
+
+There main effect of Posture was significant, F (1, 49) = 7.33, MSE = 4407.09, p =.009. Mean reaction times were slower for sitting (881 ms) than standing groups (855 ms).
+
+The two-way interaction between Congruency and Posture was significant, F (1, 49) = 8.96, MSE = 731.82, p < 0.004. The Stroop effect was 23 ms smaller in the standing than sitting conditions.
+
+## Discussion
+
+The re-analysis succesfully reproduced the analysis reported by Rosenbaum, Mama, Algom (2017)
+
+
+
+
+

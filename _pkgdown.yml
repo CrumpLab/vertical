@@ -28,8 +28,12 @@ navbar:
       - text: test presentation
         href: slides/vertical_intro.html
     manuscript:
-      text: manuscript pdf
-      href: manuscript/draft_manuscript.pdf
+      text: pdfs
+      menu:
+      - text: papaja pdf
+        href: manuscript/draft_manuscript.pdf
+      - text: example 2 pdf
+        href: manuscript/example2/APAreport.pdf
     experiments:
       text: Experiments
       menu:
