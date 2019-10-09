@@ -1,0 +1,67 @@
+---
+title: "Reproducible psychological research and project management in R"
+subtitle: "A solution stack"
+author: "Matthew Crump"
+date: "2018/07/20 (updated: `r Sys.Date()`)"
+output:
+  xaringan::moon_reader:
+    css: ["slides_css/defaultb.css", "slides_css/metropolisb.css", "slides_css/metropolis-fontsb.css"]
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE, echo=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(echo = FALSE,message=FALSE,warning=FALSE, cache = TRUE)
+```
+
+class: pink, center, middle, clear
+
+# Everything in its right place - Radiohead
+
+---
+
+# Hodge Podge Management
+
+Using lots of different programs to accomplish different jobs
+
+1. Experiment builders (E-prime, Presentation, PsychoPy, in-house software, etc.)
+2. Data Analysis (Excel, SPSS, R, Python, Matlab, etc.)
+3. Write up (Word, Latex, R markdown)
+4. Presentation (powerpoint, keynote)
+
+Outcome: lots of different files everywhere, lots of work by hand, **can be very difficult to reconstruct or redo specific steps**
+
+---
+
+# Solution Stack Management
+
+From Wikipedia: In computing, a **solution stack or software stack** is a set of software subsystems or components needed to create a complete platform such that no additional software is needed to support applications. Applications are said to "run on" or "run on top of" the resulting platform.
+
+---
+
+# R as a solution stack
+
+1. Program Experiments (exprmntr and JsPsych)
+2. Data analysis (e.g., tidyverse)
+3. Graphing (ggplot2)
+4. Reproducible reports (R markdown)
+5. Slide decks (xaringan)
+6. APA papers (papaja)
+7. Sharing custom functions (R packages)
+8. Sharing everything all in one place (R markdown websites, Github, and pkgdown)
+
+---
+
+# R as a control center
+
+Having a full solution stack in R doesn't mean you can't use other things.
+
+R can often be used as a control center to run other code (e.g., python, C++, etc.)
+
+---
+
+

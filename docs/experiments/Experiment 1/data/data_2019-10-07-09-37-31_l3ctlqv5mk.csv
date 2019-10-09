@@ -1,0 +1,20 @@
+file_id,rt,stimulus,key_press,trial_type,trial_index,time_elapsed,internal_node_id,word,color,response,stim_type,correct
+data_2019-10-07-09-37-31_l3ctlqv5mk,1267,Welcome to the experiment. Press any key to begin.,32,html-keyboard-response,0,1268,0.0-0.0,NA,NA,NA,NA,NA
+data_2019-10-07-09-37-31_l3ctlqv5mk,828,"<p>In this task, you will see word in a color</p><p style='color:red;font-size:60pt;'>BLUE</p><p>Press r, g, b, or y to identify the color, not the word</p><p>E.g., press r for red in this example</p><p>Press any key to begin.</p>",32,html-keyboard-response,1,2097,0.0-1.0,NA,NA,NA,NA,NA
+data_2019-10-07-09-37-31_l3ctlqv5mk,589,<p id = 'stroop_stim' style = 'color: blue; font-size: 60pt;'>blue</p>,66,html-keyboard-response,2,3690,0.0-2.0-0.0,blue,blue,b,congruent,TRUE
+data_2019-10-07-09-37-31_l3ctlqv5mk,765,<p id = 'stroop_stim' style = 'color: red; font-size: 60pt;'>yellow</p>,82,html-keyboard-response,3,5934,0.0-2.0-0.1,yellow,red,r,incongruent,TRUE
+data_2019-10-07-09-37-31_l3ctlqv5mk,687,<p id = 'stroop_stim' style = 'color: yellow; font-size: 60pt;'>red</p>,89,html-keyboard-response,4,8264,0.0-2.0-0.2,red,yellow,y,incongruent,TRUE
+data_2019-10-07-09-37-31_l3ctlqv5mk,771.0000000000018,<p id = 'stroop_stim' style = 'color: green; font-size: 60pt;'>yellow</p>,71,html-keyboard-response,5,9957,0.0-2.0-0.3,yellow,green,g,incongruent,TRUE
+data_2019-10-07-09-37-31_l3ctlqv5mk,1074,<p id = 'stroop_stim' style = 'color: red; font-size: 60pt;'>green</p>,82,html-keyboard-response,6,11668,0.0-2.0-0.4,green,red,r,incongruent,TRUE
+data_2019-10-07-09-37-31_l3ctlqv5mk,521,<p id = 'stroop_stim' style = 'color: red; font-size: 60pt;'>red</p>,82,html-keyboard-response,7,13873,0.0-2.0-0.5,red,red,r,congruent,TRUE
+data_2019-10-07-09-37-31_l3ctlqv5mk,713.0000000000018,<p id = 'stroop_stim' style = 'color: blue; font-size: 60pt;'>yellow</p>,66,html-keyboard-response,8,16005,0.0-2.0-0.6,yellow,blue,b,incongruent,TRUE
+data_2019-10-07-09-37-31_l3ctlqv5mk,868,<p id = 'stroop_stim' style = 'color: red; font-size: 60pt;'>blue</p>,82,html-keyboard-response,9,17631,0.0-2.0-0.7,blue,red,r,incongruent,TRUE
+data_2019-10-07-09-37-31_l3ctlqv5mk,910,<p id = 'stroop_stim' style = 'color: green; font-size: 60pt;'>green</p>,71,html-keyboard-response,10,19239,0.0-2.0-0.8,green,green,g,congruent,TRUE
+data_2019-10-07-09-37-31_l3ctlqv5mk,1074,<p id = 'stroop_stim' style = 'color: yellow; font-size: 60pt;'>green</p>,89,html-keyboard-response,11,21022,0.0-2.0-0.9,green,yellow,y,incongruent,TRUE
+data_2019-10-07-09-37-31_l3ctlqv5mk,659,<p id = 'stroop_stim' style = 'color: green; font-size: 60pt;'>red</p>,71,html-keyboard-response,12,23182,0.0-2.0-0.10,red,green,g,incongruent,TRUE
+data_2019-10-07-09-37-31_l3ctlqv5mk,659,<p id = 'stroop_stim' style = 'color: yellow; font-size: 60pt;'>blue</p>,89,html-keyboard-response,13,24995,0.0-2.0-0.11,blue,yellow,y,incongruent,TRUE
+data_2019-10-07-09-37-31_l3ctlqv5mk,591,<p id = 'stroop_stim' style = 'color: yellow; font-size: 60pt;'>yellow</p>,89,html-keyboard-response,14,26682,0.0-2.0-0.12,yellow,yellow,y,congruent,TRUE
+data_2019-10-07-09-37-31_l3ctlqv5mk,1004,<p id = 'stroop_stim' style = 'color: blue; font-size: 60pt;'>red</p>,66,html-keyboard-response,15,29489,0.0-2.0-0.13,red,blue,b,incongruent,TRUE
+data_2019-10-07-09-37-31_l3ctlqv5mk,974,<p id = 'stroop_stim' style = 'color: blue; font-size: 60pt;'>green</p>,66,html-keyboard-response,16,31293,0.0-2.0-0.14,green,blue,b,incongruent,TRUE
+data_2019-10-07-09-37-31_l3ctlqv5mk,870.0000000000073,<p id = 'stroop_stim' style = 'color: green; font-size: 60pt;'>blue</p>,71,html-keyboard-response,17,33077,0.0-2.0-0.15,blue,green,g,incongruent,TRUE
+data_2019-10-07-09-37-31_l3ctlqv5mk,3693,<p>You responded correctly on <strong>100%</strong> of the trials.</p> <p>Your average response time for congruent trials was <strong>653ms</strong>.</p><p>Your average response time for incongruent trials was <strong>843ms</strong>.</p><p>Press any key to complete the experiment. Thank you!</p>,32,html-keyboard-response,18,38479,0.0-3.0,NA,NA,NA,NA,NA

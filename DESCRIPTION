@@ -1,0 +1,18 @@
+Package: vertical
+Title: Vertical Stack Example For Psych Project Management
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Matt",
+           family = "Crump",
+           role = c("aut", "cre"),
+           email = "mcrump@brooklyn.cuny.edu",
+           comment = c(ORCID = "0000-0002-5612-0090"))
+Description: Demonstrates the use of multiple R packages for reproducible project management environment for psychological research. This includes using xprmntr and jsPsych (a JavaScript library) for designing web and lab-based experiments. papaja for writing APA papers. The tidyverse for and R Markdown for general data-wrangling, analysis, and notetaking. And, pkgdown and R package templates for file management, function and data sharing, and general dissemination via webpages using GitHub.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

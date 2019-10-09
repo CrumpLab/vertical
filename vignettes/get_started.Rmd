@@ -1,0 +1,32 @@
+---
+title: "Getting Started"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting Started}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(vertical)
+```
+
+The purpose of this package is to demonstrate how R package structures, along with various R packaged can be used as a vertical stack for reproducible psychological research. Vertical stack refers to the notion that all of the tasks involved in research, from programming and running and experiment, to analyzing, reporting, writing, and sharing the results, can be accomplished within the same R worfklow, rather than multiple workflows. 
+
+The purpose of this vignette is for note taking purposes, to keep track of the steps I took to create this template.
+
+## File management
+
+1. **R Projects**: In general, it is a good idea to work inside an R project (in R-studio). If you are not in an R project, then you should see the word "none" in the top right hand corner of R studio. To create a new project, click the top right hand corner, and choose the new project option. You will see many different options. The basic option (to create a default project), simply creates a new folder (in a location of your choice, with the name of your choice), and it makes a `.Rproj` file in that folder. For example, all of the files in this template are in folder on my computer called `vertical`, and there is a `vertical.Rproj` file in that folder. The `.Rproj` file is an R-studio project file. If you double click it you, it should automatically open R-studio, and load the project. 
+
+
+
+
+

@@ -1,0 +1,38 @@
+pkgdown:
+  as_is: true
+
+navbar:
+  structure:
+    left:
+    - home
+    - intro
+    - reference
+    - articles
+    - slides
+    - news
+    right: github
+  components:
+    home:
+      icon: fa-home fa-lg
+      href: index.html
+    reference:
+      text: Reference
+      href: reference/index.html
+    articles:
+      text: Articles
+      menu:
+      - text: Getting Started
+        href: articles/get_started.html
+    slides:
+      text: Slides
+      menu:
+      - text: test presentation
+        href: slides/vertical_intro.html
+    manuscript:
+      text: manuscript pdf
+      href: manuscript/draft_manuscript.pdf
+    experiments:
+      text: Experiments
+      menu:
+      - text: Experiment 1
+        href: experiments/Experiment 1/experiment/index.html
