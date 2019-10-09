@@ -9,14 +9,13 @@ navbar:
     - reference
     - articles
     - slides
-    - news
     right: github
   components:
     home:
       icon: fa-home fa-lg
       href: index.html
     reference:
-      text: Reference
+      text: Functions
       href: reference/index.html
     articles:
       text: Articles
@@ -36,3 +35,7 @@ navbar:
       menu:
       - text: Experiment 1
         href: experiments/Experiment 1/experiment/index.html
+    github:
+      text: source code
+      icon: fa-lg fa-github
+      href: https://github.com/CrumpLab/vertical

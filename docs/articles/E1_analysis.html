@@ -43,7 +43,7 @@
   </a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../reference/index.html">Functions</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -88,7 +88,15 @@
   </ul>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+  <a href="https://github.com/CrumpLab/vertical">
+    <span class="fa fa-lg fa-github"></span>
+     
+    source code
+  </a>
+</li>
+      </ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -116,12 +124,12 @@
 <h2 class="hasAnchor">
 <a href="#load-libraries" class="anchor"></a>Load Libraries</h2>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(tidyverse)</span></code></pre></div>
-<pre><code>## ── Attaching packages ────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
+<pre><code>## ── Attaching packages ───────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
 <pre><code>## ✔ ggplot2 3.2.0     ✔ purrr   0.3.2
 ## ✔ tibble  2.1.3     ✔ dplyr   0.8.1
 ## ✔ tidyr   0.8.3     ✔ stringr 1.4.0
 ## ✔ readr   1.3.1     ✔ forcats 0.4.0</code></pre>
-<pre><code>## ── Conflicts ───────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+<pre><code>## ── Conflicts ──────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()</code></pre>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(data.table)</span></code></pre></div>
@@ -146,13 +154,15 @@
 <h2 class="hasAnchor">
 <a href="#checks" class="anchor"></a>Checks</h2>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>check_summary &lt;-<span class="st"> </span>all_data <span class="op">%&gt;%</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(stim_type) <span class="op">==</span><span class="st"> </span><span class="ot">FALSE</span>) <span class="op">%&gt;%</span></span>
-<span id="cb10-3"><a href="#cb10-3"></a><span class="st">  </span><span class="kw">group_by</span>(file_id) <span class="op">%&gt;%</span></span>
-<span id="cb10-4"><a href="#cb10-4"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">trial_count =</span> <span class="kw">n</span>(),</span>
-<span id="cb10-5"><a href="#cb10-5"></a>            <span class="dt">accuracy =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/mean">mean</a></span>(correct),</span>
-<span id="cb10-6"><a href="#cb10-6"></a>            <span class="dt">mean_rt =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/mean">mean</a></span>(rt))</span>
-<span id="cb10-7"><a href="#cb10-7"></a></span>
-<span id="cb10-8"><a href="#cb10-8"></a>knitr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/knitr/topics/kable">kable</a></span>(check_summary)</span></code></pre></div>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(stim_type) <span class="op">==</span><span class="st"> </span><span class="ot">FALSE</span>,</span>
+<span id="cb10-3"><a href="#cb10-3"></a>         rt <span class="op">!=</span><span class="st"> "null"</span>) <span class="op">%&gt;%</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">rt =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/numeric">as.numeric</a></span>(rt)) <span class="op">%&gt;%</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="st">  </span><span class="kw">group_by</span>(file_id) <span class="op">%&gt;%</span></span>
+<span id="cb10-6"><a href="#cb10-6"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">trial_count =</span> <span class="kw">n</span>(),</span>
+<span id="cb10-7"><a href="#cb10-7"></a>            <span class="dt">accuracy =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/mean">mean</a></span>(correct),</span>
+<span id="cb10-8"><a href="#cb10-8"></a>            <span class="dt">mean_rt =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/mean">mean</a></span>(rt))</span>
+<span id="cb10-9"><a href="#cb10-9"></a></span>
+<span id="cb10-10"><a href="#cb10-10"></a>knitr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/knitr/topics/kable">kable</a></span>(check_summary)</span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="left">file_id</th>
@@ -230,27 +240,29 @@
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># get individual subject mean RTs</span></span>
 <span id="cb11-2"><a href="#cb11-2"></a>subject_means &lt;-<span class="st"> </span>all_data <span class="op">%&gt;%</span></span>
 <span id="cb11-3"><a href="#cb11-3"></a><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/filter">filter</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na</a></span>(stim_type) <span class="op">==</span><span class="st"> </span><span class="ot">FALSE</span>,</span>
-<span id="cb11-4"><a href="#cb11-4"></a>         correct <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span>) <span class="op">%&gt;%</span></span>
-<span id="cb11-5"><a href="#cb11-5"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">file_id =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/factor">as.factor</a></span>(file_id),</span>
-<span id="cb11-6"><a href="#cb11-6"></a>         <span class="dt">stim_type =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/factor">as.factor</a></span>(stim_type)) <span class="op">%&gt;%</span></span>
-<span id="cb11-7"><a href="#cb11-7"></a><span class="st">  </span><span class="kw">group_by</span>(file_id,stim_type) <span class="op">%&gt;%</span></span>
-<span id="cb11-8"><a href="#cb11-8"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">subject_mean_rt =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/mean">mean</a></span>(rt))</span>
-<span id="cb11-9"><a href="#cb11-9"></a></span>
-<span id="cb11-10"><a href="#cb11-10"></a><span class="co"># get global average of subject mean RTs and SEMs</span></span>
-<span id="cb11-11"><a href="#cb11-11"></a>plot_means &lt;-<span class="st"> </span>subject_means <span class="op">%&gt;%</span></span>
-<span id="cb11-12"><a href="#cb11-12"></a><span class="st">  </span><span class="kw">group_by</span>(stim_type) <span class="op">%&gt;%</span></span>
-<span id="cb11-13"><a href="#cb11-13"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_rt =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/mean">mean</a></span>(subject_mean_rt),</span>
-<span id="cb11-14"><a href="#cb11-14"></a>            <span class="dt">sem =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/sd">sd</a></span>(subject_mean_rt)<span class="op">/</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/MathFun">sqrt</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(subject_mean_rt)))</span>
-<span id="cb11-15"><a href="#cb11-15"></a></span>
-<span id="cb11-16"><a href="#cb11-16"></a><span class="co"># bar plot</span></span>
-<span id="cb11-17"><a href="#cb11-17"></a><span class="kw">ggplot</span>(plot_means, <span class="kw">aes</span>(<span class="dt">x=</span>stim_type,<span class="dt">y=</span>mean_rt))<span class="op">+</span></span>
-<span id="cb11-18"><a href="#cb11-18"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">"identity"</span>, <span class="dt">position=</span><span class="st">"dodge"</span>)<span class="op">+</span></span>
-<span id="cb11-19"><a href="#cb11-19"></a><span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> mean_rt<span class="op">-</span>sem,</span>
-<span id="cb11-20"><a href="#cb11-20"></a>                    <span class="dt">ymax =</span> mean_rt<span class="op">+</span>sem),</span>
-<span id="cb11-21"><a href="#cb11-21"></a>                <span class="dt">position =</span> <span class="st">"dodge"</span>, <span class="dt">width =</span> <span class="fl">0.25</span>)<span class="op">+</span></span>
-<span id="cb11-22"><a href="#cb11-22"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">"congruency"</span>)<span class="op">+</span></span>
-<span id="cb11-23"><a href="#cb11-23"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">"Mean RT (ms)"</span>)<span class="op">+</span></span>
-<span id="cb11-24"><a href="#cb11-24"></a><span class="st">  </span><span class="kw">theme_classic</span>()</span></code></pre></div>
+<span id="cb11-4"><a href="#cb11-4"></a>         correct <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span>,</span>
+<span id="cb11-5"><a href="#cb11-5"></a>         rt <span class="op">!=</span><span class="st"> "null"</span>) <span class="op">%&gt;%</span></span>
+<span id="cb11-6"><a href="#cb11-6"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">file_id =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/factor">as.factor</a></span>(file_id),</span>
+<span id="cb11-7"><a href="#cb11-7"></a>         <span class="dt">stim_type =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/factor">as.factor</a></span>(stim_type),</span>
+<span id="cb11-8"><a href="#cb11-8"></a>         <span class="dt">rt =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/numeric">as.numeric</a></span>(rt)) <span class="op">%&gt;%</span></span>
+<span id="cb11-9"><a href="#cb11-9"></a><span class="st">  </span><span class="kw">group_by</span>(file_id,stim_type) <span class="op">%&gt;%</span></span>
+<span id="cb11-10"><a href="#cb11-10"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">subject_mean_rt =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/mean">mean</a></span>(rt))</span>
+<span id="cb11-11"><a href="#cb11-11"></a></span>
+<span id="cb11-12"><a href="#cb11-12"></a><span class="co"># get global average of subject mean RTs and SEMs</span></span>
+<span id="cb11-13"><a href="#cb11-13"></a>plot_means &lt;-<span class="st"> </span>subject_means <span class="op">%&gt;%</span></span>
+<span id="cb11-14"><a href="#cb11-14"></a><span class="st">  </span><span class="kw">group_by</span>(stim_type) <span class="op">%&gt;%</span></span>
+<span id="cb11-15"><a href="#cb11-15"></a><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_rt =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/mean">mean</a></span>(subject_mean_rt),</span>
+<span id="cb11-16"><a href="#cb11-16"></a>            <span class="dt">sem =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/sd">sd</a></span>(subject_mean_rt)<span class="op">/</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/MathFun">sqrt</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/length">length</a></span>(subject_mean_rt)))</span>
+<span id="cb11-17"><a href="#cb11-17"></a></span>
+<span id="cb11-18"><a href="#cb11-18"></a><span class="co"># bar plot</span></span>
+<span id="cb11-19"><a href="#cb11-19"></a><span class="kw">ggplot</span>(plot_means, <span class="kw">aes</span>(<span class="dt">x=</span>stim_type,<span class="dt">y=</span>mean_rt))<span class="op">+</span></span>
+<span id="cb11-20"><a href="#cb11-20"></a><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">"identity"</span>, <span class="dt">position=</span><span class="st">"dodge"</span>)<span class="op">+</span></span>
+<span id="cb11-21"><a href="#cb11-21"></a><span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> mean_rt<span class="op">-</span>sem,</span>
+<span id="cb11-22"><a href="#cb11-22"></a>                    <span class="dt">ymax =</span> mean_rt<span class="op">+</span>sem),</span>
+<span id="cb11-23"><a href="#cb11-23"></a>                <span class="dt">position =</span> <span class="st">"dodge"</span>, <span class="dt">width =</span> <span class="fl">0.25</span>)<span class="op">+</span></span>
+<span id="cb11-24"><a href="#cb11-24"></a><span class="st">  </span><span class="kw">xlab</span>(<span class="st">"congruency"</span>)<span class="op">+</span></span>
+<span id="cb11-25"><a href="#cb11-25"></a><span class="st">  </span><span class="kw">ylab</span>(<span class="st">"Mean RT (ms)"</span>)<span class="op">+</span></span>
+<span id="cb11-26"><a href="#cb11-26"></a><span class="st">  </span><span class="kw">theme_classic</span>()</span></code></pre></div>
 <p><img src="E1_analysis_files/figure-html/unnamed-chunk-4-1.png" width="700"></p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># table</span></span>
 <span id="cb12-2"><a href="#cb12-2"></a></span>

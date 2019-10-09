@@ -30,7 +30,9 @@ all_data <- rbindlist(lapply(list.files(path="../experiments/Experiment 1/data",
 
 ```{r}
 check_summary <- all_data %>%
-  filter(is.na(stim_type) == FALSE) %>%
+  filter(is.na(stim_type) == FALSE,
+         rt != "null") %>%
+  mutate(rt = as.numeric(rt)) %>%
   group_by(file_id) %>%
   summarise(trial_count = n(),
             accuracy = mean(correct),
@@ -46,9 +48,11 @@ knitr::kable(check_summary)
 # get individual subject mean RTs
 subject_means <- all_data %>%
   filter(is.na(stim_type) == FALSE,
-         correct == TRUE) %>%
+         correct == TRUE,
+         rt != "null") %>%
   mutate(file_id = as.factor(file_id),
-         stim_type = as.factor(stim_type)) %>%
+         stim_type = as.factor(stim_type),
+         rt = as.numeric(rt)) %>%
   group_by(file_id,stim_type) %>%
   summarise(subject_mean_rt = mean(rt))
 
