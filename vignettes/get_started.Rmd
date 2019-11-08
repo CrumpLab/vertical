@@ -19,6 +19,33 @@ library(vertical)
 ```
 
 
+```{r, echo=FALSE}
+twee <- function(path = getwd(), level = Inf) {
+  
+  fad <-
+    list.files(path = path, recursive = TRUE,no.. = TRUE, include.dirs = TRUE)
+
+  fad_split_up <- strsplit(fad, "/")
+
+  too_deep <- lapply(fad_split_up, length) > level
+  fad_split_up[too_deep] <- NULL
+  
+  jfun <- function(x) {
+    n <- length(x)
+    if(n > 1)
+      x[n - 1] <- "|__"
+    if(n > 2)
+      x[1:(n - 2)] <- "   "
+    x <- if(n == 1) c("-- ", x) else c("   ", x)
+    x
+  }
+  fad_subbed_out <- lapply(fad_split_up, jfun)
+  
+  cat(unlist(lapply(fad_subbed_out, paste, collapse = "")), sep = "\n")
+}
+```
+
+
 The idea behind vertical is to use R as platform for sharing as many components of a research project as possible, in the form of a website and R package. This template shows exmamples of sharing the following:
 
 1. experiment scripts and final web-based experiment (written in jsPsych)
@@ -34,6 +61,35 @@ The idea behind vertical is to use R as platform for sharing as many components 
 All of these components of a research project are stored within a slightly modified directory for creating R packages. The benefit of doing this is that the pkgdown package can be used to build a website to display and share all of the components (i.e. this website). 
 
 ## Brief overview of components
+
+### Vertical file structure
+
+```
+-- _pkgdown.yml - controls for displaying the website
+-- DESCRIPTION - describe your R package if you build one
+-- docs
+   |__Where all the website stuff goes
+-- experiments
+   |__Experiment scripts and demos
+-- man
+   |__Any function documentation
+-- manuscript
+   |__Your manuscript files (e.g., writing paper in papaja)
+   |__draft_manuscript.pdf
+   |__draft_manuscript.Rmd
+   |__draft_manuscript.tex
+   |__r-references.bib
+-- NAMESPACE - for R packages
+-- Package Helper.R - helpful scripts for controlling vertical input/output
+-- R
+   |__Any R functions you want to share
+-- README.md - front page of the website
+-- slides
+   |__Slide decks written in R
+-- vertical.Rproj - the R project
+-- vignettes
+   |__Supplementary materials that get rendered as vignettes
+```
 
 ### R packages and pkgdown
 

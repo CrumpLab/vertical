@@ -152,6 +152,34 @@
 <div id="brief-overview-of-components" class="section level2">
 <h2 class="hasAnchor">
 <a href="#brief-overview-of-components" class="anchor"></a>Brief overview of components</h2>
+<div id="vertical-file-structure" class="section level3">
+<h3 class="hasAnchor">
+<a href="#vertical-file-structure" class="anchor"></a>Vertical file structure</h3>
+<pre><code>-- _pkgdown.yml - controls for displaying the website
+-- DESCRIPTION - describe your R package if you build one
+-- docs
+   |__Where all the website stuff goes
+-- experiments
+   |__Experiment scripts and demos
+-- man
+   |__Any function documentation
+-- manuscript
+   |__Your manuscript files (e.g., writing paper in papaja)
+   |__draft_manuscript.pdf
+   |__draft_manuscript.Rmd
+   |__draft_manuscript.tex
+   |__r-references.bib
+-- NAMESPACE - for R packages
+-- Package Helper.R - helpful scripts for controlling vertical input/output
+-- R
+   |__Any R functions you want to share
+-- README.md - front page of the website
+-- slides
+   |__Slide decks written in R
+-- vertical.Rproj - the R project
+-- vignettes
+   |__Supplementary materials that get rendered as vignettes</code></pre>
+</div>
 <div id="r-packages-and-pkgdown" class="section level3">
 <h3 class="hasAnchor">
 <a href="#r-packages-and-pkgdown" class="anchor"></a>R packages and pkgdown</h3>
@@ -160,8 +188,8 @@
 <li><p>R makes it relatively easy to build an R package for the purpose of sharing functions. Create a new project in R-studio, and choose R package.</p></li>
 <li><p>Then load the pkgdown library, and run build_site, this should produce a basic pkgdown website based off of the R package template.</p></li>
 </ol>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(pkgdown)</span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="kw"><a href="https://pkgdown.r-lib.org/reference/build_site.html">build_site</a></span>()</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(pkgdown)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="kw"><a href="https://pkgdown.r-lib.org/reference/build_site.html">build_site</a></span>()</span></code></pre></div>
 <p>The file structure of the basic R package template includes the following folders:</p>
 <ul>
 <li>man: this is for function documentation</li>

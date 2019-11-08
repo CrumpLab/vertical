@@ -1,17 +1,6 @@
-# vertical
+# Title of your research project
 
-<!-- badges: start -->
-<!-- badges: end -->
+This is the front page of your website, and the readme file that is displayed on your github repository.
 
-Demonstrates the use of multiple R packages for reproducible project management environment for psychological research. This includes using xprmntr and jsPsych (a JavaScript library) for designing web and lab-based experiments. papaja for writing APA papers. The tidyverse for and R Markdown for general data-wrangling, analysis, and notetaking. And, pkgdown and R package templates for file management, function and data sharing, and general dissemination via webpages using GitHub.
-
-**This is a template, and this is the landing page. If you were using vertical to share a research project, you would edit the README.md file to change this content**
-
-## Using vertical
-
-This is a collection of files that can act as a template for using pkgdown to package and share the components of a research project (paper, slides, data, experiment scripts, custom-functions, etc.) in the form of a website. This is the example website. The files necessary to compile this example are located in the github repository for vertical [https://github.com/CrumpLab/vertical](https://github.com/CrumpLab/vertical).
-
-
-
-
+Edit this file to display whatever information you want to show on your front page. This is a markdown document, so use markdown syntax. It is also possible to recreate this file as an .Rmd document if you wish. You can do this with pkgdown.
 

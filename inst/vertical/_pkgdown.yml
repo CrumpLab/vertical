@@ -5,20 +5,23 @@ navbar:
   structure:
     left:
     - home
-    - intro
-    - reference
+    - manuscript
     - articles
     - slides
+    - experiments
+    - reference
     right: github
   components:
     home:
       icon: fa-home fa-lg
       href: index.html
-    reference:
-      text: Functions
-      href: reference/index.html
+    manuscript:
+      text: The paper (pdf)
+      menu:
+      - text: papaja pdf
+        href: manuscript/draft_manuscript.pdf
     articles:
-      text: Articles
+      text: Supplementary
       menu:
       - text: Getting Started
         href: articles/get_started.html
@@ -26,20 +29,28 @@ navbar:
       text: Slides
       menu:
       - text: test presentation
-        href: slides/vertical_intro.html
-    manuscript:
-      text: pdfs
-      menu:
-      - text: papaja pdf
-        href: manuscript/draft_manuscript.pdf
-      - text: example 2 pdf
-        href: manuscript/example2/APAreport.pdf
+        href: slides/slidy_example.html
     experiments:
       text: Experiments
       menu:
       - text: Experiment 1
         href: experiments/Experiment 1/experiment/index.html
+    reference:
+      text: Functions
+      href: reference/index.html
     github:
       text: source code
       icon: fa-lg fa-github
       href: https://github.com/CrumpLab/vertical
+      
+home:
+  strip_header: true
+  links:
+    - text: A link to X
+      href: some link
+    - text: A link to Y
+      href: another link
+  Authors:
+    - text: Author 1
+    - text: Author 2
+
