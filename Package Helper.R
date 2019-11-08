@@ -18,3 +18,5 @@ pkgdown::template_navbar() # generate yml for controlling navbar
 render_folder_to_docs("slides")
 
 use_logo("xtra/logo.png")
+
+usethis::use_news_md()
