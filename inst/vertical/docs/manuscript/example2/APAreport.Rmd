@@ -1,0 +1,259 @@
+---
+title             : "Reproducing the analysis of Rosenbaum, Mama, & Algom (2017)"
+shorttitle        : "Stroop Analysis"
+
+author: 
+  - name          : "Matthew Crump"
+    affiliation   : "1"
+    corresponding : yes    # Define only one corresponding author
+    address       : "2900 Bedford Ave"
+    email         : "mcrump@brooklyn.cuny.edu"
+
+affiliation:
+  - id            : "1"
+    institution   : "Brooklyn College of the City University of New York"
+
+authornote: |
+  Add complete departmental affiliations for each author here. Each new line herein must be indented, like this line.
+  
+abstract: |
+  A reproduction of the analysis for Experiment 3 from Rosenbaum, Mama, and Algom (2017).
+  
+  <!-- https://tinyurl.com/ybremelq -->
+  
+keywords          : "Stroop, Reproducibilty"
+wordcount         : "X"
+
+bibliography      : ["r-references.bib","myreferences.bib"]
+
+floatsintext      : no
+figurelist        : no
+tablelist         : no
+footnotelist      : no
+linenumbers       : no
+mask              : no
+draft             : no
+
+documentclass     : "apa6"
+classoption       : "man"
+output            : papaja::apa6_pdf
+---
+
+```{r setup, include = FALSE}
+library("papaja")
+```
+
+```{r analysis-preferences}
+# Seed for random number generation
+set.seed(42)
+knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
+```
+
+This is an example of creating an APA manuscript using papaja, and also an example for part 2 of the midterm assignment. Another sentence.
+
+This report re-produces the analysis of Experiment 3 reported in @rosenbaum2017stand. The data were downloaded from [https://osf.io/b7x8q/](https://osf.io/b7x8q/)
+
+@rosenbaum2017stand had participants perform a Stroop task in one of two posture conditions. Participants either sat and performed the Stroop task, or stood and performed the Stroop task. The question was whether the size of the Stroop effect would change as a function of posture. The Stroop effect is measured as a difference between reaction times on congruent vs. incongruent trials.The experiment involved a 2 (Posture: sitting vs standing) x 2 (congruency: congruent vs. incongruent) repeated measures design. 
+
+# Methods
+
+## Participants
+
+There were 50 participants
+
+## Material
+
+The details of the Stroop experiment are report in @rosenbaum2017stand
+
+## Procedure
+
+In each posture condition, participants completed 72 Stroop trials, half congruent and half incongruent.
+
+# Results
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+# load libraries and data
+library(data.table)
+library(dplyr)
+library(ggplot2)
+all_data <- fread("data/stroop_stand.csv")
+
+# pre-processing and conversion to long format
+RTs <- c(as.numeric(unlist(all_data[,1])),
+         as.numeric(unlist(all_data[,2])),
+         as.numeric(unlist(all_data[,3])),
+         as.numeric(unlist(all_data[,4]))
+         )
+
+Congruency <- rep(rep(c("Congruent","Incongruent"),each=50),2)
+Posture <- rep(c("Stand","Sit"),each=100)
+Subject <- rep(1:50,4)
+
+stroop_df <- data.frame(Subject,Congruency,Posture,RTs)
+
+##table
+overall_means <- stroop_df %>%
+                  group_by(Posture,Congruency) %>%
+                  summarise(meanRT = round(mean(RTs), digits=0),
+                            SEMRT = round((sd(RTs)/sqrt(length(RTs))), digits=0))
+
+```
+
+Mean reaction times for each subject in each condition to a 2 (Congruency: congruent vs. incongruent) x 2 (Posture: Standing vs. Sitting) were submitted to a repeated measures ANOVA. Mean RTs in each condition are displayed in Table 1, and in Figure 1. The full ANOVA table is reported in Table 2.
+
+
+```{r, warning=FALSE, message=FALSE}
+# Make and print the table
+
+library(kableExtra)
+library(tidyr)
+
+# format from long to wide
+wide_means <- overall_means %>% 
+  gather(variable, value, -(Posture:Congruency)) %>%
+  unite(temp, Congruency, variable) %>%
+  spread(temp, value)
+
+# rename columns
+names(wide_means)[2:5] <- c("RT","SEM","RT","SEM")
+
+# print table
+kable(wide_means, "latex", caption = "Mean Reaction Times and Standard Errors of the Mean for Experiment 3", booktabs = T) %>%
+  kable_styling() %>%
+  add_header_above(c(" " = 1, "Congruent" = 2, "Incongruent" = 2))
+
+```
+
+```{r stroopfig, fig.cap="Mean reaction times wth standard error bars as a function of Posture and Congruency for Experiment 3"}
+# make and print the figure
+
+ggplot(overall_means, aes(x=Posture,
+                          y=meanRT, 
+                          group=Congruency,
+                          fill=Congruency))+
+  geom_bar(stat="identity",position="dodge")+
+  theme_classic(base_size=12)+
+  ylab("Mean Reaction Time (ms)")+
+  geom_errorbar(aes(ymin=meanRT-SEMRT,
+                    ymax=meanRT+SEMRT),
+                position=position_dodge(width=0.9),
+                width=.2,
+                color="black")+
+  coord_cartesian(ylim=c(750,1000))
+```
+
+```{r aovtable, results="asis"}
+## ANOVA
+
+# Make sure Subject is  a factor
+stroop_df$Subject <-  as.factor(stroop_df$Subject)
+
+aov_out <- aov(RTs~Posture*Congruency + Error(Subject/(Posture*Congruency)), stroop_df)
+
+apa_aov <- apa_print(summary(aov_out))
+
+apa_table(
+  apa_aov$table
+  , caption = "ANOVA table for Experiment 3"
+)
+```
+
+Below are examples of writing the results using two methods. The first method is to report all of the values by hand. The second method is to embed the results of R variables into the reporting using papaja. Both results sections appear similar in the .pdf, so look at the .rmd file for this example to see how to use papaja.
+
+## By hand reporting
+
+There was a main effect of Congruency, F (1, 49) = 342.45, MSE = 1684.39, p < 0.001. Mean reaction times were slower for incongruent (922 ms) than congruent groups (815 ms).
+
+There main effect of Posture was significant, F (1, 49) = 7.33, MSE = 4407.09, p =.009. Mean reaction times were slower for sitting (881 ms) than standing groups (855 ms).
+
+The two-way interaction between Congruency and Posture was significant, F (1, 49) = 8.96, MSE = 731.82, p < 0.004. The Stroop effect was 23 ms smaller in the standing than sitting conditions.
+
+## papaja reporting
+
+There was a main effect of Congruency, `r apa_aov$full_result$Congruency`. Mean reaction times were slower for incongruent (922 ms) than congruent groups (815 ms).
+
+There main effect of Posture was significant, `r apa_aov$full_result$Posture`. Mean reaction times were slower for sitting (881 ms) than standing groups (855 ms).
+
+The two-way interaction between Congruency and Posture was significant, `r apa_aov$full_result$Posture_Congruency`. The Stroop effect was 23 ms smaller in the standing than sitting conditions.
+
+# Discussion
+
+The re-analysis successfully reproduced the analysis reported by @rosenbaum2017stand. In the following section, I show an example of completing a simulation based power analysis for this design.
+
+## Simulation-based power analysis
+
+The design was a 2x2 repeated measures design with 50 subjects. This design leads to three different effects, the main effect of congruency, the main effect of posture, and the posture by congruency interaction. A power analysis could be applied to any of these effects. I will show examples for the main effect of congruency first, and then for the interaction.
+
+Several features of the design can go into the power analysis, the major ones being the number of subjects, the effect-size, and assumptions about the distributions underlying the sample data. Power is the probability that the design will reject the null-hypothesis, when the null-hypothesis is false and there is a true difference. Power depends on the size of the true difference. The same design will have greater power to detect a large versus small difference. Commonly, the assumed true difference is defined in terms of Cohen's D, a mean difference in terms of standard deviation units. 
+
+```{r}
+null_distribution <- stroop_df %>%
+                      group_by(Subject) %>%
+                      summarise(meanRT= mean(RTs)) %>%
+                      summarise(overall_meanRT = mean(meanRT),
+                                overall_sd = sd(meanRT))
+```
+
+We will first estimate the overall mean reaction time, and the standard deviation of the mean reaction from the data. The overall mean was `r null_distribution$overall_meanRT`, and the overall standard deviation was `r null_distribution$overall_sd`.
+
+To conduct the simulation we generate data for each subject using the rnorm function. Each subject contributed had two mean RTs in the congruent condition (sitting and standing), and two mean RTs in the incongruent condition (sitting and standing). There were 50 subjects, for the congruent condition we sample 2 scores for each subject from the above normal distribution (100 total scores), and 2 scores for each subject from the above normal distribution for the incongruent condition (100 total scores). To model the Stroop effect, we systemically increase the mean in the incongruent condition by a proportion of the standard deviation. We use effect-sizes of .05, .1, .2, .4, .5, and .8; which range from small to large. For each effect-size, we run 100 simulated experiments, and save p-value for the main effect of congruency for each simulated experiment. Then, for each effect-size, we find the proportion of experiments that resulted in p<.05. The proportion of experiments that reject the null is the power of the design to detect an effect of each size. The simulation below finds that this design had power of .8, to detect an effect of d=.4. It had power of .99 to detect effects of d=.8 or larger. The full power-curve for this design is displayed in Figure 2.
+
+```{r}
+
+s_mean <- null_distribution$overall_meanRT
+s_sd <- null_distribution$overall_sd
+effect_sizes <-c(.05,.1,.2,.4,.5,.8)
+
+save_es <- c()
+save_p <- c()
+for(es in effect_sizes){
+  for(i in 1:100){
+  sim_congruent <- rnorm(50*2,s_mean,s_sd)
+  sim_incongruent <- rnorm(50*2,(s_mean+(es*s_sd)),s_sd)
+  subjects <- as.factor(rep(rep(1:50,each=2),2))
+  congruency <- as.factor(rep(c("C","I"),each=100))
+  
+  sim_df <- data.frame(subjects,
+                       RTs = c(sim_congruent,sim_incongruent),
+                       congruency)
+  
+  sim_aov <- summary(aov(RTs~congruency+Error(subjects/congruency),sim_df))
+  get_pvalue <- sim_aov$`Error: subjects:congruency`[[1]]$`Pr(>F)`[1]
+  save_es <- c(save_es,es)
+  save_p <- c(save_p,get_pvalue)
+   }
+}
+
+power_sim <- data.frame(save_es, save_p)
+
+plot_df <- power_sim %>%
+  group_by(save_es)%>%
+  summarise(power = length(save_p[save_p<.05])/length(save_p))
+```
+
+```{r powerfig, fig.cap="Simulation-based power curve for this design"}
+ggplot(plot_df, aes(x=save_es, y=power))+
+  geom_line()+
+  geom_point()+
+  xlab("Effect-size")
+```
+
+
+
+
+
+
+
+\newpage
+
+# References
+```{r create_r-references}
+r_refs(file = "r-references.bib")
+```
+
+\begingroup
+\setlength{\parindent}{-0.5in}
+\setlength{\leftskip}{0.5in}
+
+<div id = "refs"></div>
+\endgroup

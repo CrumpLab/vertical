@@ -1,0 +1,20 @@
+file_id,rt,stimulus,key_press,trial_type,trial_index,time_elapsed,internal_node_id,word,color,response,stim_type,correct
+data_2019-10-07-09-35-58_8cwp4efoy5,553,Welcome to the experiment. Press any key to begin.,32,html-keyboard-response,0,554,0.0-0.0,NA,NA,NA,NA,NA
+data_2019-10-07-09-35-58_8cwp4efoy5,740,"<p>In this task, you will see word in a color</p><p style='color:red;font-size:60pt;'>BLUE</p><p>Press r, g, b, or y to identify the color, not the word</p><p>E.g., press r for red in this example</p><p>Press any key to begin.</p>",32,html-keyboard-response,1,1294,0.0-1.0,NA,NA,NA,NA,NA
+data_2019-10-07-09-35-58_8cwp4efoy5,704.0000000000005,<p id = 'stroop_stim' style = 'color: red; font-size: 60pt;'>green</p>,82,html-keyboard-response,2,2999,0.0-2.0-0.0,green,red,r,incongruent,TRUE
+data_2019-10-07-09-35-58_8cwp4efoy5,576,<p id = 'stroop_stim' style = 'color: yellow; font-size: 60pt;'>yellow</p>,89,html-keyboard-response,3,4909,0.0-2.0-0.1,yellow,yellow,y,congruent,TRUE
+data_2019-10-07-09-35-58_8cwp4efoy5,661,<p id = 'stroop_stim' style = 'color: yellow; font-size: 60pt;'>blue</p>,89,html-keyboard-response,4,6642,0.0-2.0-0.2,blue,yellow,y,incongruent,TRUE
+data_2019-10-07-09-35-58_8cwp4efoy5,530,<p id = 'stroop_stim' style = 'color: yellow; font-size: 60pt;'>red</p>,89,html-keyboard-response,5,8650,0.0-2.0-0.3,red,yellow,y,incongruent,TRUE
+data_2019-10-07-09-35-58_8cwp4efoy5,721,<p id = 'stroop_stim' style = 'color: blue; font-size: 60pt;'>green</p>,66,html-keyboard-response,6,11046,0.0-2.0-0.4,green,blue,b,incongruent,TRUE
+data_2019-10-07-09-35-58_8cwp4efoy5,815,<p id = 'stroop_stim' style = 'color: green; font-size: 60pt;'>green</p>,82,html-keyboard-response,7,13500,0.0-2.0-0.5,green,green,g,congruent,FALSE
+data_2019-10-07-09-35-58_8cwp4efoy5,1366,<p id = 'stroop_stim' style = 'color: green; font-size: 60pt;'>yellow</p>,71,html-keyboard-response,8,15656,0.0-2.0-0.6,yellow,green,g,incongruent,TRUE
+data_2019-10-07-09-35-58_8cwp4efoy5,1408,<p id = 'stroop_stim' style = 'color: green; font-size: 60pt;'>red</p>,71,html-keyboard-response,9,18591,0.0-2.0-0.7,red,green,g,incongruent,TRUE
+data_2019-10-07-09-35-58_8cwp4efoy5,672,<p id = 'stroop_stim' style = 'color: blue; font-size: 60pt;'>red</p>,66,html-keyboard-response,10,20202,0.0-2.0-0.8,red,blue,b,incongruent,TRUE
+data_2019-10-07-09-35-58_8cwp4efoy5,705.0000000000036,<p id = 'stroop_stim' style = 'color: blue; font-size: 60pt;'>blue</p>,66,html-keyboard-response,11,22759,0.0-2.0-0.9,blue,blue,b,congruent,TRUE
+data_2019-10-07-09-35-58_8cwp4efoy5,826,<p id = 'stroop_stim' style = 'color: red; font-size: 60pt;'>yellow</p>,82,html-keyboard-response,12,25390,0.0-2.0-0.10,yellow,red,r,incongruent,TRUE
+data_2019-10-07-09-35-58_8cwp4efoy5,893.9999999999964,<p id = 'stroop_stim' style = 'color: red; font-size: 60pt;'>blue</p>,82,html-keyboard-response,13,27930,0.0-2.0-0.11,blue,red,r,incongruent,TRUE
+data_2019-10-07-09-35-58_8cwp4efoy5,828.9999999999964,<p id = 'stroop_stim' style = 'color: green; font-size: 60pt;'>blue</p>,71,html-keyboard-response,14,30496,0.0-2.0-0.12,blue,green,g,incongruent,TRUE
+data_2019-10-07-09-35-58_8cwp4efoy5,713.0000000000036,<p id = 'stroop_stim' style = 'color: yellow; font-size: 60pt;'>green</p>,89,html-keyboard-response,15,32812,0.0-2.0-0.13,green,yellow,y,incongruent,TRUE
+data_2019-10-07-09-35-58_8cwp4efoy5,760,<p id = 'stroop_stim' style = 'color: blue; font-size: 60pt;'>yellow</p>,66,html-keyboard-response,16,34814,0.0-2.0-0.14,yellow,blue,b,incongruent,TRUE
+data_2019-10-07-09-35-58_8cwp4efoy5,953,<p id = 'stroop_stim' style = 'color: red; font-size: 60pt;'>red</p>,82,html-keyboard-response,17,36942,0.0-2.0-0.15,red,red,r,congruent,TRUE
+data_2019-10-07-09-35-58_8cwp4efoy5,1129,<p>You responded correctly on <strong>94%</strong> of the trials.</p> <p>Your average response time for congruent trials was <strong>745ms</strong>.</p><p>Your average response time for incongruent trials was <strong>840ms</strong>.</p><p>Press any key to complete the experiment. Thank you!</p>,32,html-keyboard-response,18,39570,0.0-3.0,NA,NA,NA,NA,NA
