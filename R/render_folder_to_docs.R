@@ -1,4 +1,4 @@
-#' Render rmd ina folder to docs
+#' Render rmd in a folder to docs
 #'
 #' @param folder_name string, name of folder , eg "slides"
 #' @param dest_folder string, name of destination folder, default = "docs

@@ -24,7 +24,7 @@ navbar:
       text: Supplementary
       menu:
       - text: Getting Started
-        href: articles/get_started.html
+        href: articles/Supplemental_1.html
     slides:
       text: Slides
       menu:
@@ -41,7 +41,7 @@ navbar:
     github:
       text: source code
       icon: fa-lg fa-github
-      href: https://github.com/CrumpLab/vertical
+      href: https://github.com/CrumpLab/vertical_template
       
 home:
   strip_header: true

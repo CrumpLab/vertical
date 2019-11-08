@@ -3,16 +3,25 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-**work in progress, see issues tab for further discussion**
+**Currently under development**
 
-Demonstrates the use of multiple R packages for reproducible project management environment for psychological research. This includes using xprmntr and jsPsych (a JavaScript library) for designing web and lab-based experiments. papaja for writing APA papers. The tidyverse for and R Markdown for general data-wrangling, analysis, and notetaking. And, pkgdown and R package templates for file management, function and data sharing, and general dissemination via webpages using GitHub.
+## Installation
 
-**This is a template, and this is the landing page. If you were using vertical to share a research project, you would edit the README.md file to change this content**
+The devtools library is required for installation:
 
-## Using vertical
+``` r
+devtools::install_github("CrumpLab/vertical")
+```
 
-This is a collection of files that can act as a template for using pkgdown to package and share the components of a research project (paper, slides, data, experiment scripts, custom-functions, etc.) in the form of a website. This is the example website. The files necessary to compile this example are located in the github repository for vertical [https://github.com/CrumpLab/vertical](https://github.com/CrumpLab/vertical).
+## What is vertical?
 
+`vertical` is an R package and R-studio project template for making it easy to share research assets in the form of a website and/or R package.
+
+For example, wouldn't it be nice if you could do the work you normally do in R, such as run scripts for data-analysis, write your paper (APA papers in papaja), write your slide decks for presenting your work (say in slidy or xaringan), and other things like document your data, and even run behavioral experiments on the web...and then magically have all of that stuff rendered to a website so that you can share everything. This is idea behind vertical. You do the work in R, and get a research project website for free.
+
+Big note: vertical is effectively a wrapper around several existing R packages that combined, make something like vertical easy. So, thanks to all the other R developers for their free and amazing tools.
+
+Learn more about how to use vertical by looking at the getting starteed article.
 
 
 

@@ -21,5 +21,8 @@ usethis::use_description()
 # create a vignette (.Rmd) document that gets compiled and displayed on website under supplementary
 usethis::use_vignette("Supplemental_2", title="Supplemental 2")
 
+# initialize your repository as a git repository
+usethis::use_git("initial")
+
 
 

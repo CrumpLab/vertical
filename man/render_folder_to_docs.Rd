@@ -2,7 +2,7 @@
 % Please edit documentation in R/render_folder_to_docs.R
 \name{render_folder_to_docs}
 \alias{render_folder_to_docs}
-\title{Render rmd ina folder to docs}
+\title{Render rmd in a folder to docs}
 \usage{
 render_folder_to_docs(folder_name, dest_folder = "docs")
 }
@@ -15,5 +15,5 @@ render_folder_to_docs(folder_name, dest_folder = "docs")
 rendered rmd files in destination folder
 }
 \description{
-Render rmd ina folder to docs
+Render rmd in a folder to docs
 }

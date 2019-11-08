@@ -43,9 +43,6 @@
      
   </a>
 </li>
-<li>
-  <a href="reference/index.html">Functions</a>
-</li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     Articles
@@ -54,51 +51,12 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/E1_analysis.html">Experiment 1 Analysis</a>
-    </li>
-    <li>
       <a href="articles/get_started.html">Using vertical</a>
     </li>
   </ul>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Slides
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="slides/vertical_intro.html">test presentation</a>
-    </li>
-  </ul>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    pdfs
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="manuscript/draft_manuscript.pdf">papaja pdf</a>
-    </li>
-    <li>
-      <a href="manuscript/example2/APAreport.pdf">example 2 pdf</a>
-    </li>
-  </ul>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Experiments
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="experiments/Experiment%201/experiment/index.html">Experiment 1</a>
-    </li>
-  </ul>
+  <a href="reference/index.html">Functions</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -126,13 +84,20 @@
 </h1></div>
 <!-- badges: start -->
 <!-- badges: end -->
-<p><strong>work in progress, see issues tab for further discussion</strong></p>
-<p>Demonstrates the use of multiple R packages for reproducible project management environment for psychological research. This includes using xprmntr and jsPsych (a JavaScript library) for designing web and lab-based experiments. papaja for writing APA papers. The tidyverse for and R Markdown for general data-wrangling, analysis, and notetaking. And, pkgdown and R package templates for file management, function and data sharing, and general dissemination via webpages using GitHub.</p>
-<p><strong>This is a template, and this is the landing page. If you were using vertical to share a research project, you would edit the README.md file to change this content</strong></p>
-<div id="using-vertical" class="section level2">
+<p><strong>Currently under development</strong></p>
+<div id="installation" class="section level2">
 <h2 class="hasAnchor">
-<a href="#using-vertical" class="anchor"></a>Using vertical</h2>
-<p>This is a collection of files that can act as a template for using pkgdown to package and share the components of a research project (paper, slides, data, experiment scripts, custom-functions, etc.) in the form of a website. This is the example website. The files necessary to compile this example are located in the github repository for vertical <a href="https://github.com/CrumpLab/vertical">https://github.com/CrumpLab/vertical</a>.</p>
+<a href="#installation" class="anchor"></a>Installation</h2>
+<p>The devtools library is required for installation:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"CrumpLab/vertical"</span>)</span></code></pre></div>
+</div>
+<div id="what-is-vertical" class="section level2">
+<h2 class="hasAnchor">
+<a href="#what-is-vertical" class="anchor"></a>What is vertical?</h2>
+<p><code>vertical</code> is an R package and R-studio project template for making it easy to share research assets in the form of a website and/or R package.</p>
+<p>For example, wouldn’t it be nice if you could do the work you normally do in R, such as run scripts for data-analysis, write your paper (APA papers in papaja), write your slide decks for presenting your work (say in slidy or xaringan), and other things like document your data, and even run behavioral experiments on the web…and then magically have all of that stuff rendered to a website so that you can share everything. This is idea behind vertical. You do the work in R, and get a research project website for free.</p>
+<p>Big note: vertical is effectively a wrapper around several existing R packages that combined, make something like vertical easy. So, thanks to all the other R developers for their free and amazing tools.</p>
+<p>Learn more about how to use vertical by looking at the getting starteed article.</p>
 </div>
 </div>
   </div>
