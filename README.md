@@ -1,4 +1,4 @@
-# vertical
+# vertical <img src='man/figures/logo.png' align="right" height="120.5" />
 
 <!-- badges: start -->
 <!-- badges: end -->
