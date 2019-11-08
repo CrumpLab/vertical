@@ -3,4 +3,7 @@ pkgdown: 1.3.0
 pkgdown_sha: ~
 articles:
   get_started: get_started.html
+urls:
+  reference: https://crumplab.github.io/vertical/reference
+  article: https://crumplab.github.io/vertical/articles
 
