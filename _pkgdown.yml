@@ -3,6 +3,8 @@ url: https://crumplab.github.io/vertical
 template:
   opengraph:
     img: logo.png
+  params:
+    ganalytics: UA-79429674-9
 
 pkgdown:
   as_is: true
