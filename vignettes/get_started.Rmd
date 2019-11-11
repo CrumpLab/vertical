@@ -135,19 +135,24 @@ Note: that the .pdf generated must be copied by hand into the manuscript folder 
 
 ## slides
 
-The `slides` folder contains an example slide deck using the `slidy`. The slide deck is written in R markdown (.Rmd file), and also uses custom .css to change the style of the presentation from the default. To place the generated html for the slide presentation into the docs folder you can run, from the `Vertical Helper.R` script.
+The `slides` folder contains an example slide deck using `slidy`. The slide deck is written in R markdown (.Rmd file), and also uses custom .css to change the style of the presentation from the default. To place the generated html for the slide presentation into the docs folder you can run, from the `Vertical Helper.R` script.
 
 ```{r, eval=FALSE}
 # render slides to docs (for display on website)
 vertical::render_folder_to_docs("slides")
 ```
 
+The `slides` folder can also be considered as a placeholder for any slide deck. Use this folder to write your slide deck using your preferred method. If you use an R markdown approach, and that approach produces an html slide deck, then the generated html needs to be placed in the docs folder to be rendered on the website. Also, the yml needs to be edited to point to the location of slide files in the docs folder. If your method for producing slides involves powerpoint, or say a pdf file, those can be shared on the website as well by placing those files in the docs folder and editing the yml to link to them. As vertical improves, one plan is to provide functions that automate the process of file copying and yml editing.
+
 
 ## experiments
 
-The `experiments` folder contains an example Stroop experiment written using jsPsych. This example requires functions contained in this package <https://github.com/CrumpLab/xprmntr>. This is currently a forked and modified copy of Danielle Navarro's xprmntr package, and my version is the one that it is required to make the example work.
+The experiments folder is a place where you can save and share your experiment scripts. If you have built an experiment that can run in a web-browser, then you can even share a demo of the experiment. 
 
-The sample experiment is compiled to .html, and it is linked to in the vertical website. In this way both the code and final product can be shared and viewed (e.g., someone visiting your site could run themselves through the experiment to see what it was like to be a participant). Currently, to share the experiment on the website, the experiments folder must be copied into the docs folder.
+Currently, this folder contains a zip file of the most recent release of jspsych, a javascript library for running web-based behavioral experiments .
+
+For more information on using jsPysch, check out the jsPsych documentation <https://www.jspsych.org>.
+
 
 ## Hosting the site
 
