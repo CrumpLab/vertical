@@ -1,2 +1,7 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^experiments$
+^LICENSE\.md$
+^docs$
+_pkgdown.yml
+^xtra$

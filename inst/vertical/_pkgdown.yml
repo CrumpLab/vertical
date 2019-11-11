@@ -8,6 +8,7 @@ navbar:
     - manuscript
     - articles
     - slides
+    - posters
     - experiments
     - reference
     right: github
@@ -16,10 +17,10 @@ navbar:
       icon: fa-home fa-lg
       href: index.html
     manuscript:
-      text: The paper (pdf)
+      text: Manuscript
       menu:
-      - text: papaja pdf
-        href: manuscript/draft_manuscript.pdf
+      - text: APA6 PDF
+        href: manuscript/manuscript.pdf
     articles:
       text: Supplementary
       menu:
@@ -28,13 +29,18 @@ navbar:
     slides:
       text: Slides
       menu:
-      - text: test presentation
-        href: slides/slidy_example.html
+      - text: R Markdown slides
+        href: slides/slides.html
+    posters:
+      text: Posters
+      menu:
+      - text: Conference 2019
+        href: posters/poster.html
     experiments:
       text: Experiments
       menu:
       - text: Experiment 1
-        href: experiments/Experiment 1/experiment/index.html
+        href: experiments/experiment-1/index.html
     reference:
       text: Functions
       href: reference/index.html
@@ -42,7 +48,7 @@ navbar:
       text: source code
       icon: fa-lg fa-github
       href: https://github.com/CrumpLab/vertical_template
-      
+
 home:
   strip_header: true
   links:
