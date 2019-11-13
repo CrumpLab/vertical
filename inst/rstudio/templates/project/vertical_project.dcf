@@ -3,3 +3,33 @@ Binding: vertical_project
 Subtitle: Create a vertical research project
 Caption: Create a vertical research project
 OpenFiles: README.md
+
+Parameter: init_ms
+Widget: CheckboxInput
+Label: Initialize manuscript (papaja)
+Default: On
+Position: left
+
+Parameter: init_slides
+Widget: CheckboxInput
+Label: Initialize slides (slidy)
+Default: On
+Position: left
+
+Parameter: init_poster
+Widget: CheckboxInput
+Label: Initialize poster (posterdown)
+Default: On
+Position: left
+
+Parameter: init_som
+Widget: CheckboxInput
+Label: Initialize supplemental materials
+Default: On
+Position: left
+
+Parameter: init_exp
+Widget: CheckboxInput
+Label: Initialize experiments (jspsych)
+Default: On
+Position: left

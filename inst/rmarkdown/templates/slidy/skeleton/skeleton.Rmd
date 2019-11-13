@@ -1,0 +1,46 @@
+---
+title: "Example slide presentation using slidy"
+subtitle: "A place for a subtitle"
+author: "Matthew Crump"
+date: "10/31/2019"
+output:
+  slidy_presentation:
+    self_contained: true
+    theme: yeti
+    incremental: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Example slidy presentation {.middle .center}
+
+Check out the documentation on slidy for more info <https://bookdown.org/yihui/rmarkdown/slidy-presentation.html>
+
+- Note that this slide deck has some custom CSS controlling the styling and look and feel. This can be customized further by editing the style.css file.
+
+## A slide with a header {.bigger}
+
+## A slide with a header {.bigger}
+
+And some text in it.
+
+## A slide with a header and bullet points {.bigger}
+
+- bullet 1
+- bullet 2
+- bullet 3
+
+## Something in the middle{.middle .center}
+
+## Slide with a picture
+
+```{r, echo = FALSE, out.width="50%", fig.align="center"}
+plot(pressure$temperature, pressure$pressure)
+```
+
+## The end {.middle .center}
+
+- don't forget there are other R markdown options for slide decks
+- eg., xaringan, and ioslides, and probably a few others
