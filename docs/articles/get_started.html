@@ -44,7 +44,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vertical</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9100</span>
       </span>
     </div>
 
@@ -195,7 +195,7 @@
 <a href="#slides" class="anchor"></a>slides</h2>
 <p>The <code>slides</code> folder contains an example slide deck using <code>slidy</code>. The slide deck is written in R markdown (.Rmd file), and also uses custom .css to change the style of the presentation from the default. To place the generated html for the slide presentation into the docs folder you can run, from the <code>Vertical Helper.R</code> script.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># render slides to docs (for display on website)</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a>vertical<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/vertical/man/render_folder_to_docs.html">render_folder_to_docs</a></span>(<span class="st">"slides"</span>)</span></code></pre></div>
+<span id="cb4-2"><a href="#cb4-2"></a>vertical<span class="op">::</span><span class="kw">render_folder_to_docs</span>(<span class="st">"slides"</span>)</span></code></pre></div>
 <p>The <code>slides</code> folder can also be considered as a placeholder for any slide deck. Use this folder to write your slide deck using your preferred method. If you use an R markdown approach, and that approach produces an html slide deck, then the generated html needs to be placed in the docs folder to be rendered on the website. Also, the yml needs to be edited to point to the location of slide files in the docs folder. If your method for producing slides involves powerpoint, or say a pdf file, those can be shared on the website as well by placing those files in the docs folder and editing the yml to link to them. As vertical improves, one plan is to provide functions that automate the process of file copying and yml editing.</p>
 </div>
 <div id="experiments" class="section level2">
@@ -242,7 +242,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Matt Crump, Matti Vuorre.</p>
+  <p>Developed by Matt Crump.</p>
 </div>
 
 <div class="pkgdown">

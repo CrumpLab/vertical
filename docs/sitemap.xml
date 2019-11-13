@@ -4,7 +4,10 @@
     <loc>https://crumplab.github.io/vertical/index.html</loc>
   </url>
   <url>
-    <loc>https://crumplab.github.io/vertical/reference/render_folder_to_docs.html</loc>
+    <loc>https://crumplab.github.io/vertical/reference/build_vertical.html</loc>
+  </url>
+  <url>
+    <loc>https://crumplab.github.io/vertical/reference/vertical_project.html</loc>
   </url>
   <url>
     <loc>https://crumplab.github.io/vertical/articles/get_started.html</loc>
