@@ -34,3 +34,9 @@ Widget: CheckboxInput
 Label: Initialize experiments (jspsych)
 Default: On
 Position: left
+
+Parameter: init_git
+Widget: CheckboxInput
+Label: Create a git repository
+Default: On
+Position: left

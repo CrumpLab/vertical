@@ -16,6 +16,11 @@ vertical_project <- function(path, ...) {
   usethis::create_package(path, open = FALSE)
   setwd(paste0(getwd(), "/", path)) # [TODO] improve this hack
 
+  # Git?
+  if (dots$init_git) {
+    usethis::use_git(message = "Initial commit")
+  }
+
   # pkgdown template
   vertical_pkgdown <- system.file("vertical/_pkgdown.yml", package = "vertical")
   base::file.copy(vertical_pkgdown, "_pkgdown.yml")
