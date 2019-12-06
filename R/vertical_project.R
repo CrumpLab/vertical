@@ -69,22 +69,25 @@ vertical_project <- function(path, ...) {
   usethis::use_data_raw()
 
   # Experiments
-  if (dots$init_exp) {
-    usethis::use_directory("experiments", ignore = TRUE)
-    usethis::use_directory("experiments/experiment-1")
-    ver <- httr::GET("https://github.com/jspsych/jsPsych/releases/latest")$url
-    ver <- basename(ver)
-    loc <- paste0("https://github.com/jspsych/jsPsych/releases/download/", ver,
-                  "/jspsych-", sub("v", "", ver), ".zip")
-    utils::download.file(url = loc, file.path("experiments", basename(loc)))
-    utils::unzip(
-      file.path("experiments", basename(loc)),
-      exdir = file.path("experiments", gsub(".zip", "", basename(loc)))
-    )
-    unlink(file.path("experiments", basename(loc)))
-    vertical_jspsych <- system.file("vertical/experiment.html", package = "vertical")
-    base::file.copy(vertical_jspsych, "experiments/experiment-1/index.html")
-  }
+if (dots$init_exp) {
+  usethis::use_directory("experiments", ignore = TRUE)
+  usethis::use_directory("experiments/experiment-1")
+  # Get latest jsPsych version download link
+  ver <- basename(httr::GET("https://github.com/jspsych/jsPsych/releases/latest")$url)
+  loc_from <- paste0(
+    "https://github.com/jspsych/jsPsych/releases/download/", ver,
+    "/jspsych-", sub("v", "", ver), ".zip"
+  )
+  # Download, unzip, and remove .zip
+  loc_to <- file.path("experiments", basename(loc_from))
+  utils::download.file(url = loc_from, loc_to)
+  utils::unzip(loc_to, exdir = sub(".zip", "", loc_to))
+  unlink(loc_to)
+  # Suggest deleting unnecessary large folder
+  message(paste0("Consider removing ", sub(".zip", "", loc_to), "/examples"))
+  vertical_jspsych <- system.file("vertical/experiment.html", package = "vertical")
+  base::file.copy(vertical_jspsych, "experiments/experiment-1/index.html")
+}
 
 }
 
