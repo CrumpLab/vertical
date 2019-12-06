@@ -72,13 +72,16 @@ vertical_project <- function(path, ...) {
   if (dots$init_exp) {
     usethis::use_directory("experiments", ignore = TRUE)
     usethis::use_directory("experiments/experiment-1")
-    response <- devtools:::github_GET("repos/jspsych/jsPsych/releases/latest")  # [TODO] rid triple colon
-    latest_tag_name <- response$assets[[1]]$browser_download_url
-    utils::download.file(url = latest_tag_name, file.path("experiments", basename(latest_tag_name)))
+    ver <- httr::GET("https://github.com/jspsych/jsPsych/releases/latest")$url
+    ver <- basename(ver)
+    loc <- paste0("https://github.com/jspsych/jsPsych/releases/download/", ver,
+                  "/jspsych-", sub("v", "", ver), ".zip")
+    utils::download.file(url = loc, file.path("experiments", basename(loc)))
     utils::unzip(
-      file.path("experiments", basename(latest_tag_name)),
-      exdir = file.path("experiments", gsub(".zip", "", basename(latest_tag_name)))
+      file.path("experiments", basename(loc)),
+      exdir = file.path("experiments", gsub(".zip", "", basename(loc)))
     )
+    unlink(file.path("experiments", basename(loc)))
     vertical_jspsych <- system.file("vertical/experiment.html", package = "vertical")
     base::file.copy(vertical_jspsych, "experiments/experiment-1/index.html")
   }
