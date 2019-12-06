@@ -22,7 +22,10 @@ vertical_project <- function(path, ...) {
 
   # pkgdown template
   vertical_pkgdown <- system.file("vertical/_pkgdown.yml", package = "vertical")
-  base::file.copy(vertical_pkgdown, "_pkgdown.yml")
+  file.copy(vertical_pkgdown, "_pkgdown.yml")
+
+  # Data
+  usethis::use_data_raw()
 
   # papaja manuscript
   if (dots$init_ms) {
@@ -65,9 +68,6 @@ vertical_project <- function(path, ...) {
     )
   }
 
-  # Data
-  usethis::use_data_raw()
-
   # Experiments
 if (dots$init_exp) {
   usethis::use_directory("experiments", ignore = TRUE)
@@ -86,7 +86,7 @@ if (dots$init_exp) {
   # Suggest deleting unnecessary large folder
   message(paste0("Consider removing ", sub(".zip", "", loc_to), "/examples"))
   vertical_jspsych <- system.file("vertical/experiment.html", package = "vertical")
-  base::file.copy(vertical_jspsych, "experiments/experiment-1/index.html")
+  file.copy(vertical_jspsych, "experiments/experiment-1/index.html")
 }
 
 }
