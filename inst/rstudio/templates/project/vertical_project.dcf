@@ -2,6 +2,7 @@ Title: Vertical Research Project
 Binding: vertical_project
 Subtitle: Create a vertical research project
 Caption: Create a vertical research project
+Icon: logo.png
 OpenFiles: README.md
 
 Parameter: init_ms
