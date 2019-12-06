@@ -5,7 +5,6 @@
 #' @param path Where to create the project. This must be a valid R package name.
 #' @param ...  Not used.
 #'
-#' @return
 #' @export
 vertical_project <- function(path, ...) {
 
@@ -90,7 +89,6 @@ vertical_project <- function(path, ...) {
 #'
 #' Build the website associated with a vertical project
 #'
-#' @return
 #' @export
 build_vertical <- function() {
   pkgdown::clean_site()
