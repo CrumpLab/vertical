@@ -7,7 +7,6 @@
 #'
 #' @export
 vertical_project <- function(path, ...) {
-
   dots <- list(...)
   dir.create(path, recursive = TRUE, showWarnings = FALSE)
 
@@ -25,7 +24,7 @@ vertical_project <- function(path, ...) {
   file.copy(vertical_pkgdown, "_pkgdown.yml")
 
   # Data
-  usethis::use_data_raw()
+  usethis::use_data_raw(open = FALSE)
 
   # papaja manuscript
   if (dots$init_ms) {
@@ -41,7 +40,10 @@ vertical_project <- function(path, ...) {
 
   # supplementary analysis file
   if (dots$init_som) {
-    usethis::use_article("Supplemental_1", title = "Supplementary analyses")
+    usethis::use_article(
+      "Supplemental_1",
+      title = "Supplementary analyses"
+    )
   }
 
   # Slides
@@ -69,26 +71,25 @@ vertical_project <- function(path, ...) {
   }
 
   # Experiments
-if (dots$init_exp) {
-  usethis::use_directory("experiments", ignore = TRUE)
-  usethis::use_directory("experiments/experiment-1")
-  # Get latest jsPsych version download link
-  ver <- basename(httr::GET("https://github.com/jspsych/jsPsych/releases/latest")$url)
-  loc_from <- paste0(
-    "https://github.com/jspsych/jsPsych/releases/download/", ver,
-    "/jspsych-", sub("v", "", ver), ".zip"
-  )
-  # Download, unzip, and remove .zip
-  loc_to <- file.path("experiments", basename(loc_from))
-  utils::download.file(url = loc_from, loc_to)
-  utils::unzip(loc_to, exdir = sub(".zip", "", loc_to))
-  unlink(loc_to)
-  # Suggest deleting unnecessary large folder
-  message(paste0("Consider removing ", sub(".zip", "", loc_to), "/examples"))
-  vertical_jspsych <- system.file("vertical/experiment.html", package = "vertical")
-  file.copy(vertical_jspsych, "experiments/experiment-1/index.html")
-}
-
+  if (dots$init_exp) {
+    usethis::use_directory("experiments", ignore = TRUE)
+    usethis::use_directory("experiments/experiment-1")
+    # Get latest jsPsych version download link
+    ver <- basename(httr::GET("https://github.com/jspsych/jsPsych/releases/latest")$url)
+    loc_from <- paste0(
+      "https://github.com/jspsych/jsPsych/releases/download/", ver,
+      "/jspsych-", sub("v", "", ver), ".zip"
+    )
+    # Download, unzip, and remove .zip
+    loc_to <- file.path("experiments", basename(loc_from))
+    utils::download.file(url = loc_from, loc_to)
+    utils::unzip(loc_to, exdir = sub(".zip", "", loc_to))
+    unlink(loc_to)
+    # Suggest deleting unnecessary large folder
+    message(paste0("Consider removing ", sub(".zip", "", loc_to), "/examples"))
+    vertical_jspsych <- system.file("vertical/experiment.html", package = "vertical")
+    file.copy(vertical_jspsych, "experiments/experiment-1/index.html")
+  }
 }
 
 #' Build vertical project
@@ -109,15 +110,17 @@ build_vertical <- function() {
   )
   # [TODO] file paths for references throw errors here
   try(
-    {rmarkdown::render(
-      "manuscript/manuscript.Rmd",
-      output_dir = "docs/manuscript",
-      output_file = "manuscript.pdf"
-    )},
+    {
+      rmarkdown::render(
+        "manuscript/manuscript.Rmd",
+        output_dir = "docs/manuscript",
+        output_file = "manuscript.pdf"
+      )
+    },
     silent = TRUE
   )
   if (dir.exists("experiments")) {
-    dir.create('docs/experiments')
-    file.copy("experiments", "docs", recursive=TRUE)
+    dir.create("docs/experiments")
+    file.copy("experiments", "docs", recursive = TRUE)
   }
 }
