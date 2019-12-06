@@ -117,6 +117,3 @@ build_vertical <- function() {
     file.copy("experiments", "docs", recursive=TRUE)
   }
 }
-
-
-#response$assets[[1]]$browser_download_url
