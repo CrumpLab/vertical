@@ -79,8 +79,6 @@ vertical_project <- function(path, ...) {
     base::file.copy(vertical_jspsych, "experiments/experiment-1/index.html")
   }
 
-  # Build
-  on.exit({build_vertical()})
 }
 
 #' Build vertical project
