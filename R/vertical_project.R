@@ -108,16 +108,11 @@ build_vertical <- function() {
     "slides/slides.Rmd",
     output_dir = "docs/slides", output_file = "slides.html"
   )
-  # [TODO] file paths for references throw errors here
-  try(
-    {
-      rmarkdown::render(
-        "manuscript/manuscript.Rmd",
-        output_dir = "docs/manuscript",
-        output_file = "manuscript.pdf"
-      )
-    },
-    silent = TRUE
+  # Works, but throws error if file not created first
+  file.create("manuscript/r-references.bib")
+  rmarkdown::render(
+    "manuscript/manuscript.Rmd",
+    output_dir = "docs/manuscript"
   )
   if (dir.exists("experiments")) {
     dir.create("docs/experiments")
