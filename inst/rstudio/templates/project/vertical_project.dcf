@@ -32,7 +32,7 @@ Position: left
 Parameter: init_exp
 Widget: CheckboxInput
 Label: Initialize experiments (jspsych)
-Default: On
+Default: Off
 Position: left
 
 Parameter: init_git
