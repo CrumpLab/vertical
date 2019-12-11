@@ -1,5 +1,5 @@
 ---
-title: "Using vertical"
+title: "Get started using vertical"
 bibliography: tutorial.bib
 output: rmarkdown::html_vignette
 vignette: >
@@ -24,8 +24,6 @@ knitr::opts_chunk$set(
 3. R packages can include data from a research project, and a natural way to document the data using the same schemes for documenting R functions.
 4. R packages include various documents through the vignettes folder, which in principle could include various formats for communicating research, such as a manuscript or slide deck written in RMarkdown.
 5. R packages can be automatically rendered into websites through `pkgdown`, providing a compelling format for sharing research assets. 
-
-So,  1) use the R eco-system to create research assets, and 2) easily share everything at the end without too much effort.
 
 ## Install vertical
 
