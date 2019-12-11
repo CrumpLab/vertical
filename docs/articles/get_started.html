@@ -335,10 +335,109 @@ sum_range &lt;- function(min,max){
 <div id="website-customization" class="section level2">
 <h2 class="hasAnchor">
 <a href="#website-customization" class="anchor"></a>Website customization</h2>
+<p><code>vertical</code> is a minor extension to the <code>pkgdown</code> approach for rendering R package websites from an R package file structure. In general, the constraints placed on <code>pkgdown</code> websites in terms of style and content are also imposed on <code>vertical</code> websites. Some examples of current constraints are:</p>
+<ol style="list-style-type: decimal">
+<li><p>R Markdown documents placed in the vignettes folder are rendered in a style dictated by <code>pkgdown</code>. This allows consistent style across R package vignettes, and vertical inherits this style for any .Rmds in the vignettes folder.</p></li>
+<li><p>The website contains a sidebar with information about “developers”, as developers is a good name for authors of R packages. Unfortunately, this descriptor is hard-coded by pkgdown, so the html file would need to be edited by hand to include a different descriptor.</p></li>
+</ol>
+<p>The benefits of adopting the <code>pkgdown</code> framework is that websites can be compiled in one command and are produced with consistent structure. In our view, the additions that vertical makes are reasonable add-ons to that structure. It is worth pointing out that all of the constraints imposed by pkgdown can be escaped by building a custom R markdown website, however <code>vertical</code> does not provide direction for that option.</p>
+<p>Although <code>pkgdown</code> has constraints it is also fairly flexible. By default, <code>pkgdown</code> creates a simple website with a landing page (to describe the package), and articles tab to display vignettes, and a reference tab to display function documentation. For an in-depth guide to customizing a pkgdown websites, see the <a href="https://pkgdown.r-lib.org">pkgdown documentation</a>. <code>vertical</code> extends the basic website by modifying the tabs in the navigation bar, and pointing them to assets in vertical, such as those contained in manuscript, slides, posters, etc.</p>
+<p>Much of the customization occurs by modifying the <code>_pkgdown.yml</code> file. The <code>vertical</code> template creates <code>_pkgdown.yml</code> which defines the appearance and order of navigation tabs and how they link to vertical assets.</p>
+<p>Below is example yml for controlling the navigation tabs. The <code>structure</code> section defines the ordering and placement of tabs in the navbar. For example, home, manuscript, articles, slides, posters, experiments, and reference are all left-aligned, and the source code link to github is right aligned. Switching the order of the component listed under structure will change the order of the tab in the navbar.</p>
+<p>Next is the list of components, which form individual tabs. The name of the component does not need to be the same as the text displayed in the tab. For example the manuscript component specifies its text attribute as “The paper (pdf)”, which is the text shown in the manuscript tab. It is possible to list mutiple items in a tab drop-down menu (see the articles component).</p>
+<pre><code>navbar:
+  structure:
+    left:
+    - home
+    - manuscript
+    - articles
+    - slides
+    - posters
+    - experiments
+    - reference
+    right: github
+  components:
+    home:
+      icon: fa-home fa-lg
+      href: index.html
+    manuscript:
+      text: The paper (pdf)
+      menu:
+      - text: papaja pdf
+        href: manuscript/manuscript.pdf
+    articles:
+      text: Supplementary
+      menu:
+      - text: Getting Started
+        href: articles/Supplemental_1.html
+      - text: ---------
+      - text: model 1
+        href: articles/model/model1.html
+    posters:
+      text: Posters
+      href: posters/poster.html
+    slides:
+      text: Slides
+      menu:
+      - text: test presentation
+        href: slides/slides.html
+    experiments:
+      text: Experiments
+      menu:
+      - text: Experiment 1
+        href: experiments/Experiment 1/experiment/index.html
+    reference:
+      text: Functions
+      href: reference/index.html
+    github:
+      text: source code
+      icon: fa-lg fa-github
+      href: https://github.com/CrumpLab/vertical_template</code></pre>
+<p>A new tab with any name can be added to the website by adding a new component to the yml file. At a minimum, the new component should specify a text attribute, which will be the name of the tab, and an href attribute, which refers to the location of the linked asset.</p>
+<p>For example, consider the posters component. This generates a tab labelled “Posters”, and clicking the tab loads and displays <code>poster.html</code>. Importantly, <code>poster.html</code> resides in the docs folder, inside the posters folder (docs/posters/poster.html). When referring to the location (href) of a file, it is not necessary to specify ‘docs’ in the yml, as that is the assumed parent folder. Any file in the docs folder can be linked to in this manner, even files that were not created by vertical. For example, if a .pdf from another source was created, it could be manually copied into the docs folder, and then linked to in the yml file. Building the website would then create a tab with a link to that file. NOTE: if the docs directory is cleaned, then any file not added by vertical would need to be added again manually.</p>
+<p>Last, the home portion of the yml controls information displayed on the right side bar of the landing page. For example, links could be replaced with links to an OSF repository, or a journal website with a published version of a paper.</p>
+<pre><code>home:
+  strip_header: true
+  links:
+    - text: A link to X
+      href: some link
+    - text: A link to Y
+      href: another link
+  Authors:
+    - text: Author 1
+    - text: Author 2</code></pre>
 </div>
 <div id="sharing-a-vertical-project" class="section level2">
 <h2 class="hasAnchor">
 <a href="#sharing-a-vertical-project" class="anchor"></a>Sharing a vertical project</h2>
+<p><code>vertical</code> was created assuming <a href="https://github.com">Github</a> and <a href="https://osf.io">open science framework</a> (OSF) integration, which are both free ways to share a repository online. The open science framework is commonly used in psychological science to research assets, and it allows Github integration. For example, rather than uploading files to OSF manually, an OSF project can be pointed at a Github repository, which then populates the OSF project. OSF projects also provide digital object identifiers (DOI). So, to share a <code>vertical</code> project the major step is to copy a local <code>vertical</code> project to a repository on Github.com.</p>
+<p>Github is a website for sharing repositories of code in a git format. Git is version control software that has many capabilities beyond the scope of this tutorial. By default, <code>vertical</code> creates a new project as a git repository, which makes it easy to upload (push) to Github. The following steps should be sufficient to share a vertical project on Github.</p>
+<ol style="list-style-type: decimal">
+<li>Sign up for a free account on Github.</li>
+<li>There are lots of tools for using git and Github. For example, you could use RStudio for many of your needs. We suggest <a href="https://desktop.github.com">downloading the Github Desktop application</a> (also free), which provides a simple point-and-click interface.</li>
+<li>When your vertical project is ready for Github (e.g., it has been compiled, and the website loads as you would like it on your local computer), the remaining step is to push your local project to Github. You can do this easily with Github Desktop.</li>
+</ol>
+<ul>
+<li>Open Github Desktop</li>
+<li>Associate Github Desktop with your Github account in preferences</li>
+<li>Choose the option to add a new repository</li>
+<li>Navigate to the folder containing your vertical project, and add it</li>
+<li>Choose the option to publish the repository on Github</li>
+<li>Make sure the repository is not set to Private, otherwise you won’t be able to share it (alternatively, you private repositories are also possible)</li>
+<li>Publish the repository</li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li>To view the repository on Github, you can press the view on Github button from Github Desktop.</li>
+<li>You should now see your new repository on Github.</li>
+<li>To enable the website, go to the settings for the repository. Scroll down and activate the Github Pages option, choosing the “docs” option. Wait a few seconds, and navigate to the url which should be displayed above the Github Pages section.</li>
+<li>If everything worked properly, you should be viewing your vertical project website live on the web.</li>
+</ol>
+<p>Once your Github repository is uploaded, you can head over to OSF to associate your repository with an OSF project.</p>
+<p>If your vertical project contains an R package, then it can now be installed from Github. You might suggest the following on the landing page or readme file to give instruction on installing the package:</p>
+<pre><code><a href="https://rdrr.io/r/utils/install.packages.html"># Install the package by
+install.packages("devtools")
+devtools::install_github("githubuser/reponame")</a></code></pre>
+<p>In the above, your would replace “githubuser” with your Github username, and “reponame” with the name of your Github repository containing the R package.</p>
 <!--
 
 
