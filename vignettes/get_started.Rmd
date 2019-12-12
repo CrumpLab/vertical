@@ -317,7 +317,7 @@ It is very often the case that raw data must be pre-processed or wrangled from i
 
 For example, the `data-raw` folder contains `DATASET.R`, a mostly blank .R script. This script can be populated with the code necessary to import the raw data and transform it as needed to a desired form for further analysis. In other words, `DATASET.R` is a script that declares pre-processing steps. The script can also include usethis commands and sinew commands to output desired R objects to the data folder, and to write documentation for these objects. One benefit to this strategy is that transformed data (ready-for-analysis), can later be accessed by loading the package as a library. For example, R Markdown assets for writing a manuscript, poster, or slide deck that include data-analysis, can quickly load the data by calling the library.
 
-## APA papers with papaja
+## `manuscript`: APA papers with papaja
 
 APA-style manuscripts can be written in R Markdown using the fantastic [papaja](https://crsh.github.io/papaja_man/) package [@papaja]. The linked to documentation explains how to use `papaja`, and rather than repeat that information here, we briefly extol some virtures of `papaja`.
 
@@ -325,11 +325,11 @@ APA-style manuscripts can be written in R Markdown using the fantastic [papaja](
 
 There are several benefits to using `papaja`. First, it is possible to create an entirely reproducible research manuscript. For example, all of the text and R code for data-analysis, modeling, and figure generation, can be included in the .Rmd file. Second, `papaja` includes many helpful functions (such as `apa_print()`) for automating the writing of results from an R object (e.g., the results of an ANOVA, t-test, or regression) to the manuscript. Third, `papaja` uses latex style citations which automatically create bibliographies. Finally, it is possible to export to latex and word documents (which may need some formatting by hand at the end). Finally, papaja also has convenient templates for responding to action letters during the review process.
 
-## Posters and slide decks
+## `posters and slides`: posterdown and slidy
 
 R Markdown is a powerful document creation platform and can also be used to produce posters and slide decks that are common formats for communicating findings at conferences or seminars. `vertical` allows posters and slides to be included as part of the vertical project website. Furthermore, if `vertical` suggests templates for creating these assets in  R Markdown. For example, the posters folder includes a [posterdown](https://github.com/brentthorne/posterdown) template [@posterdown], and the slides folder includes a [slidy](https://bookdown.org/yihui/rmarkdown/slidy-presentation.html) template. Both produce browser-displayable content that can be included in the vertical website. The respective links point to documentation for making posters with posterdown and making slide decks with slidy. Additionally, the posters and slides folders can be populated with other templates (by the user) if other packages are preferred for making posters and slides in R markdown.
 
-## Supplementary materials, model code, and arbitary R Markdown
+## `vignettes`: Supplementary materials, model code, and arbitary R Markdown
 
 R Markdown documents of almost any sort can be included in a `vertical` project. For example, supplementary materials and model code can be additional assets from a research project that can be included and shared. 
 
@@ -337,7 +337,7 @@ R Markdown documents of almost any sort can be included in a `vertical` project.
 
 `vertical` also includes a `model` folder as a location to place code from a computational model. This folder is populated with a default R Markdown template. The content in that document should be edited and replaced the content necessary to describe the model, and perhaps conduct sample simulations. However, `pkgdown::build_site()` does not scrape folders beyond vignettes when knitting R Markdown documents. Instead, `vertical::build_vertical()` is used to as a wrapper to pkgdown, which also knits content in non-vignette folders, such as manuscript, slides, posters, and model. We discuss further options for customization in the [Website customization] section.
 
-## Experiments with jspsych and jspsychr
+## `experiments`: jspsych and jspsychr
 
 Depending on the needs of the research project, it is also possible to create browser-ready behavioral experiments in RStudio. For example, `vertical` creates an `experiments` folder that contains a template for building experiments using the [jspsych](https://www.jspsych.org) javascript library [@de2015jspsych]. Currently, `vertical` makes two suggestions. First, when a `vertical` project is created, it downloads the newest version of the jspsych library to the experiments folder. `vertical` also suggests a [jspsychr](https://crumplab.github.io/jspsychr/) template. `jspsychr` is an R package that provides templates and examples for writing `jspsych` experiments in RStudio, using a combination of R Markdown and javascript. The `vertical` template example includes a basic Stroop task. For example, knitting the `index.Rmd` file produces the `index.html` file which can be run in a browser. In this case, because the experiment file is also an HTML file, it is possible to include a demonstration of running the experiment in the `vertical` website.
 
