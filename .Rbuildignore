@@ -3,5 +3,6 @@
 ^experiments$
 ^LICENSE\.md$
 ^docs$
-_pkgdown.yml
 ^xtra$
+^_pkgdown\.yml$
+^pkgdown$

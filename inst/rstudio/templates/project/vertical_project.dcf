@@ -2,6 +2,7 @@ Title: Vertical Research Project
 Binding: vertical_project
 Subtitle: Create a vertical research project
 Caption: Create a vertical research project
+Icon: logo.png
 OpenFiles: README.md
 
 Parameter: init_ms
@@ -31,5 +32,11 @@ Position: left
 Parameter: init_exp
 Widget: CheckboxInput
 Label: Initialize experiments (jspsych)
+Default: Off
+Position: left
+
+Parameter: init_git
+Widget: CheckboxInput
+Label: Create a git repository
 Default: On
 Position: left

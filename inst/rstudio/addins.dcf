@@ -1,0 +1,4 @@
+Name: Build vertical
+Description: Build your project into docs/
+Binding: build_vertical
+Interactive: true
