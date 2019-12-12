@@ -331,33 +331,57 @@ The `posters` folder and `slides` folder are for writing posters and slide decks
 
 ## `vignettes`: Supplementary materials, model code, and arbitary R Markdown
 
-R Markdown documents of almost any sort can be included in a `vertical` project. For example, supplementary materials and model code can be additional assets from a research project that can be included and shared. 
+Research assets can take many forms beyond a manuscript, poster, or slide deck, and may include stimulus materials, supplementary data analyses, and model simulations. `vertical` does not suggest folders each of these additional assets, however it does such a strategy for organizing and creating these kinds of assets it the `vignettes` folder. The strategy is to add R Markdown documents to the `vignettes` folder and/or add subfolders for different classes of documents to the `vignettes` folder, and populate those with R Markdown documents as needed.
 
-`vertical` relies on pkgdown to generate its website, and pkgdown automatically knits .Rmd files located in the `vignettes` folder, and displays them under an articles tab. `vertical` renames the articles tab to "supplementary materials", but the logic is the same. Arbitrary R Markdown documents for any purpose can be placed in the vignettes folder, and they will automatically be added to the supplementary materials tab on the `vertical` website. 
+The `vignettes` folder is part of the R package structure, and typically used to include tutorial documentation inside an R package. For example, clicking an R package in the RStudio packages tab will show a link to vignettes if they exist in the package, and they can be read directly in the help window from R studio. 
 
-`vertical` also includes a `model` folder as a location to place code from a computational model. This folder is populated with a default R Markdown template. The content in that document should be edited and replaced the content necessary to describe the model, and perhaps conduct sample simulations. However, `pkgdown::build_site()` does not scrape folders beyond vignettes when knitting R Markdown documents. Instead, `vertical::build_vertical()` is used to as a wrapper to pkgdown, which also knits content in non-vignette folders, such as manuscript, slides, posters, and model. We discuss further options for customization in the [Website customization] section.
+```{r, out.width="100%", echo=FALSE}
+knitr::include_graphics("imgs/vignettes.png")
+```
+
+Vignettes are written as R Markdown documents so they can include text and R code chunks and are suitable for communicating a wide variety of supplementary materials, such as additional analyses and model simulations, in a reproducible and transparent manner. By default, `pkgdown` also knits all of the .Rmd files in the `vignettes` folder and any sub-folders, and includes them in the `pkgdown` website under the default "articles" tab. `vertical` inherits this functionality, but renames the "articles" tab as a "Supplementary" tab. As a result, any .Rmd files in the `vignettes` folder of a `vertical` project will be compiled (on `vertical::build_vertical()`), and added to the `vertical` website. This is a convenient method for automating the addition of content to the website.
+
+One caveat to using vignettes through pkgdown is that they are all compiled with a consistent look-and-feel imposed by pkgdown, which sets an aim to standardize documentation for R packages (the primary use case for pkgdown). Standard vignette style should be suitable for most users, and we note that it is certainly possible to use custom styles; however, a tutorial on full customization is beyond our scope (but see, further options for customization in the [Website customization] section.)
 
 ## `experiments`: jspsych and jspsychr
 
 Depending on the needs of the research project, it is also possible to create browser-ready behavioral experiments in RStudio. For example, `vertical` creates an `experiments` folder that contains a template for building experiments using the [jspsych](https://www.jspsych.org) javascript library [@de2015jspsych]. Currently, `vertical` makes two suggestions. First, when a `vertical` project is created, it downloads the newest version of the jspsych library to the experiments folder. `vertical` also suggests a [jspsychr](https://crumplab.github.io/jspsychr/) template. `jspsychr` is an R package that provides templates and examples for writing `jspsych` experiments in RStudio, using a combination of R Markdown and javascript. The `vertical` template example includes a basic Stroop task. For example, knitting the `index.Rmd` file produces the `index.html` file which can be run in a browser. In this case, because the experiment file is also an HTML file, it is possible to include a demonstration of running the experiment in the `vertical` website.
 
-## Website customization
+## Website customization overview
 
-`vertical` is a minor extension to the `pkgdown` approach for rendering R package websites from an R package file structure. In general, the constraints placed on `pkgdown` websites in terms of style and content are also imposed on `vertical` websites. Some examples of current constraints are:
+`vertical` is a minor extension to the `pkgdown` approach for rendering R package websites from an R package file structure. `pkgdown` places contraints on the websites it generates (around the style of content presentation), and these constraints are inherited in `vertical` websites. Some examples of current constraints are:
 
 1. R Markdown documents placed in the vignettes folder are rendered in a style dictated by `pkgdown`. This allows consistent style across R package vignettes, and vertical inherits this style for any .Rmds in the vignettes folder.
 
 2. The website contains a sidebar with information about "developers", as developers is a good name for authors of R packages. Unfortunately, this descriptor is hard-coded by pkgdown, so the html file would need to be edited by hand to include a different descriptor.
 
-The benefits of adopting the `pkgdown` framework is that websites can be compiled in one command and are produced with consistent structure. In our view, the additions that vertical makes are reasonable add-ons to that structure. It is worth pointing out that all of the constraints imposed by pkgdown can be escaped by building a custom R markdown website, however `vertical` does not provide direction for that option.
+The benefits of adopting the `pkgdown` framework are that websites can be compiled in one command and are produced with consistent structure. In our view, the additions that vertical makes are reasonable add-ons to that structure. It is worth pointing out that all of the constraints imposed by pkgdown can be escaped by building a custom R markdown website, however `vertical` does not provide direction for that option.
 
-Although `pkgdown` has constraints it is also fairly flexible. By default, `pkgdown` creates a simple website with a landing page (to describe the package), and articles tab to display vignettes, and a reference tab to display function documentation. For an in-depth guide to customizing a pkgdown websites, see the [pkgdown documentation](https://pkgdown.r-lib.org). `vertical` extends the basic website by modifying the tabs in the navigation bar, and pointing them to assets in vertical, such as those contained in manuscript, slides, posters, etc.
+Although `pkgdown` has constraints it is also fairly flexible. By default, `pkgdown` creates a simple website with a landing page (to describe the package), an articles tab to display vignettes, and a reference tab to display function documentation. For an in-depth guide to customizing pkgdown websites, see the [pkgdown documentation](https://pkgdown.r-lib.org). `vertical` extends the basic website by modifying the tabs in the navigation bar, and pointing them to assets in vertical, such as those contained in manuscript, slides, posters, etc.
 
-Much of the customization occurs by modifying the `_pkgdown.yml` file. The `vertical` template creates `_pkgdown.yml` which defines the appearance and order of navigation tabs and how they link to vertical assets.
+Before describing some examples of customizing a `vertical` website, it may be helpful to provide an overview of the website building process. An advtange of the `pkgdown`/`vertical` approach is that users can produce a website for their project without expertise in coding for the web. The disadvantage is that general knowledge about web coding is useful for customizing the website directly, and customizing through pkgdown options.
 
-Below is example yml for controlling the navigation tabs. The `structure` section defines the ordering and placement of tabs in the navbar. For example, home, manuscript, articles, slides, posters, experiments, and reference are all left-aligned, and the source code link to github is right aligned. Switching the order of the component listed under structure will change the order of the tab in the navbar.
+Under the hood, `pkgdown` renders R Package assets in the form of HTML documents and exports them to the `docs` folder. The `docs` folder is included both as a location to store the web files, and with Github pages integration in mind. As we describe in the next section, Github repositories containing a `docs` folder can serve any content in `docs` folder to the web at large. We note here that the website files in the `docs` could be copied to any web server for hosting the website.
 
-Next is the list of components, which form individual tabs. The name of the component does not need to be the same as the text displayed in the tab. For example the manuscript component specifies its text attribute as "The paper (pdf)", which is the text shown in the manuscript tab. It is possible to list mutiple items in a tab drop-down menu (see the articles component).
+A `pkgdown` website is simply the collection of files in the `docs` folder. For example, `pkgdown` creates an `index.html` file containing the HTML necessary to show the landing page on the website. When a browser arrives at a url location on the web (e.g., such as <https://crumplab.github.io/vertical>) it automatically attempts to load the 'index.html' file (e.g., the browser interprets <https://crumplab.github.io/vertical> as <https://crumplab.github.io/vertical/index.html>). An inspection of the `docs` folder will show several other files and folders, typically these are .html files for individual pages on the website. However, even files that are not .html files can be included for download from the website. For example, `manuscript/manuscript.pdf` is a pdf in the manuscript folder that can be downloaded from the website. 
+
+It is worth realizing that any file in `docs` could be accessed and downloaded by a browser, even if the website does not provide a link to it. In the template, `vertical` assumes that users would want to share `manuscript.pdf`, so a tab in the website navigation bar is created such that clicking the tab initiates a download of the file. The `manuscript` folder also contains `manuscript.tex`, which is a latex version of the manuscript; however, `vertical` does not by default create a link on the website to this file. Nevertheless, if someone accessed the appropriate urlspecifying the path to the file on the server (e.g., `https://site.com/projectname/manuscript/manuscript.tex`), then file would be downloaded. We mention these features of the `docs` folder to foster general intuitions about customizing the website, these are:
+
+1. Anything in the `docs` folder can be served to the web
+2. Some link should be added somewhere to a `vertical` website to connect to the content.
+3. Any manual edits to the .html files in a `docs` folder will change the resulting website. Manual edits may need to be redone if the site rebuilt (resulting in overwriting the previous HTML) at a future point in time.
+
+One final point about `pkgdown` is how it handles `vignettes`. Vignettes are simple R Markdown documents in the `vignettes` folder. A vignette can be knitted in R Studio, and the result is an .html file rendered to the `vignettes` folder. This .html file is not served to the web because it is not in the `docs` folder. Moreover, this .html file displays the vignette as a basic, standalone webpage, that is not embedded into the pkgdown website. For example, the navigation bar for the website is not included. This process is different from using `pkgdown::build_site()`, which renders the .Rmd files in `vignettes` to the `docs` folder, and in the process adds the overarching website html to each vignette so that they include website features such as the navigation bar.
+
+We mention the above issues to expose the process of including additional content to the website. `vertical` takes care of some of the additions automatically through `vertical::build_vertical()`. For example, that function compiles .Rmd files in the manuscript, posters, and slides folders, exports the assets to the `docs` folder, and adds links to the content in the navbar. Presently, there is limited functionality in `vertical` for automating the inclusion of arbitrary content in arbitrary folders. For example, if a user created a `blog` folder containing an R markdown that rendered to HTML in a particular style, it would not be included by default. Importantly, such arbitrary content can be included manually, with the caveat that aspects of the vertical website may not be included. For example, the blog page could be linked to from the navigation bar, but clicking the link would display the single page as is, and without the vertical website structure (e.g., the navigation bar would be missing).
+
+## Website customization
+
+The `_pkgdown.yml` file is used to customize many aspects of the website. The `vertical` template creates `_pkgdown.yml` which defines the appearance and order of navigation tabs and how they link to vertical assets.
+
+Below is example yml for controlling the navigation tabs. The `structure` section defines the ordering and placement of tabs in the navbar. For example, home, manuscript, articles, slides, posters, experiments, and reference tabs are all left-aligned, and the source code link to github is right aligned. Switching the order of the component listed under structure will change the order of the tab in the navbar.
+
+Next is the list of components, which form individual tabs. The name of the component does not need to be the same as the text displayed in the tab. For example the manuscript component specifies its text attribute as "APA6 PDF", which is the text shown in the manuscript tab.
 
 ```
 navbar:
@@ -376,31 +400,30 @@ navbar:
       icon: fa-home fa-lg
       href: index.html
     manuscript:
-      text: The paper (pdf)
+      text: Manuscript
       menu:
-      - text: papaja pdf
+      - text: APA6 PDF
         href: manuscript/manuscript.pdf
     articles:
       text: Supplementary
       menu:
       - text: Getting Started
         href: articles/Supplemental_1.html
-      - text: ---------
-      - text: model 1
-        href: articles/model/model1.html
-    posters:
-      text: Posters
-      href: posters/poster.html
     slides:
       text: Slides
       menu:
-      - text: test presentation
+      - text: R Markdown slides
         href: slides/slides.html
+    posters:
+      text: Posters
+      menu:
+      - text: Conference 2019
+        href: posters/poster.html
     experiments:
       text: Experiments
       menu:
       - text: Experiment 1
-        href: experiments/Experiment 1/experiment/index.html
+        href: experiments/experiment-1/index.html
     reference:
       text: Functions
       href: reference/index.html
@@ -410,9 +433,25 @@ navbar:
       href: https://github.com/CrumpLab/vertical_template
 ```
 
-A new tab with any name can be added to the website by adding a new component to the yml file. At a minimum, the new component should specify a text attribute, which will be the name of the tab, and an href attribute, which refers to the location of the linked asset.
+Of special note is the articles component, which appears as a tab named "Supplementary". Any .Rmds in the `vignettes` folder are linked under this tab. The order and appearance of the links in the tab can be edited for clarity. For example, imagine `vignettes` folder had two subfolders, `analyses`, and `model`, that included .Rmds for different analyses and model simulations. The above yml could be modified to structure the ordering and sectioning of items in the tab like so:
 
-For example, consider the posters component. This generates a tab labelled "Posters", and clicking the tab loads and displays `poster.html`. Importantly, `poster.html` resides in the docs folder, inside the posters folder (docs/posters/poster.html). When referring to the location (href) of a file, it is not necessary to specify 'docs' in the yml, as that is the assumed parent folder. Any file in the docs folder can be linked to in this manner, even files that were not created by vertical. For example, if a .pdf from another source was created, it could be manually copied into the docs folder, and then linked to in the yml file. Building the website would then create a tab with a link to that file. NOTE: if the docs directory is cleaned, then any file not added by vertical would need to be added again manually. 
+```
+    articles:
+      text: Supplementary
+      menu:
+      - text: Additional Analyses
+      - text: Experiment 1
+        href: articles/analyses/data_1.html
+      - text: Experiment 2
+        href: articles/analyses/data_2.html
+      - text: Model simulations
+      - text: Simulation 1
+        href: articles/model/sim_1.html
+      - text: Simulation 2
+        href: articles/model/sim_2.html
+```
+
+A new tab with any name can be added to the website by adding a new component to the yml file. At a minimum, the new component should specify a text attribute, which will be the name of the tab, and an href attribute, which refers to the location of the linked asset. 
 
 Last, the home portion of the yml controls information displayed on the right side bar of the landing page. For example, links could be replaced with links to an OSF repository, or a journal website with a published version of a paper.
 
