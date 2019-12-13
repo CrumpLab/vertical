@@ -1,8 +1,9 @@
 Package: vertical
-Title: Vertical Stack Example For Psych Project Management
+Title: Reproducible worfklow for psychological science research asset creation and communication
 Version: 0.0.0.9100
+Date: 2019-12-13
 Authors@R: c(
-    person(given = "Matt",
+    person(given = "Matthew J. C.",
            family = "Crump",
            role = c("aut", "cre"),
            email = "mcrump@brooklyn.cuny.edu",
