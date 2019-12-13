@@ -1,4 +1,4 @@
-#' Initialize a **vertical** project
+#' Initialize a **vertical** project as RStudio project template
 #'
 #' This function is called when a **vertical** R project is created.
 #'
@@ -31,6 +31,48 @@ vertical_project <- function(path, ...) {
   if (dots$init_slides) init_slides()
   if (dots$init_poster) init_poster()
   if (dots$init_exp) init_jspsych()
+}
+
+#' Initialize a vertical project inside an existing R project
+#'
+#' @param init_git logical, enables git, init_git=TRUE by default
+#' @param init_ms logical, enables manuscript with papaja, init_ms=TRUE by default
+#' @param init_som logical, enables supplementary with vignettes, init_som=TRUE by default
+#' @param init_slides logical, enables slides with slidy, init_slides=TRUE by default
+#' @param init_poster logical, enables posters with posterdown, init_poster=TRUE by default
+#' @param init_exp logical, enables experiments with jspsych, init_exp=TRUE by default
+#'
+#' @return files, a vertical project template inside an existing R project
+#' @description If you are working inside an existing R project, typically an empty one, or perhaps a project in RStudio cloud, use this function to initialize a vertical project inside the existing project. The name of the existing project (e.g., the parent folder name) must be a valid R package name (numbers, letters, and periods, but no periods at the end, and no spaces, dashes, or underscores).
+#' @export
+#'
+init_vertical_project <- function(init_git = TRUE,
+                                  init_ms = TRUE,
+                                  init_som = TRUE,
+                                  init_slides = TRUE,
+                                  init_poster = TRUE,
+                                  init_exp = TRUE) {
+  path <- getwd()
+  # This is a package
+  usethis::create_package(path, open = FALSE)
+  # setwd(paste0(getwd(), "/", path)) # [TODO] improve this hack
+
+  # Git?
+  if (init_git) {
+    git2r::init(usethis::proj_get())
+    usethis::use_git_ignore(c(".Rhistory", ".RData", ".Rproj.user"))
+  }
+
+  # pkgdown template
+  vertical_pkgdown <- system.file("vertical/_pkgdown.yml", package = "vertical")
+  file.copy(vertical_pkgdown, "_pkgdown.yml")
+
+  usethis::use_data_raw(open = FALSE)
+  if (init_ms) init_papaja()
+  if (init_som) init_supplemental()
+  if (init_slides) init_slides()
+  if (init_poster) init_poster()
+  if (init_exp) init_jspsych()
 }
 
 #' Initialize manuscript

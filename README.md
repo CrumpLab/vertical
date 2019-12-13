@@ -22,7 +22,7 @@ devtools::install_github("CrumpLab/vertical")
 2. Create a new project
    - from the menu File > New Project...
    - or click the R cube in top-right hand corner, and select New Project...
-3. Select the Vertical Project Template, give your vertical project a name
+3. Select the Vertical Project Template, give your vertical project a name (no spaces, only letters and numbers)
 4. Create the project, then build the website by:
 
 ```

@@ -2,7 +2,7 @@
 % Please edit documentation in R/vertical_project.R
 \name{vertical_project}
 \alias{vertical_project}
-\title{Initialize a **vertical** project}
+\title{Initialize a **vertical** project as RStudio project template}
 \usage{
 vertical_project(path, ...)
 }

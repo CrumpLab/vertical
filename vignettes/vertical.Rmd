@@ -99,7 +99,7 @@ The following tutorial on `vertical` describes the creation of a vertical projec
 
 ## Creating a vertical project
 
-[Install vertical](#install-vertical), restart RStudio, then follow these steps to initialize a new `vertical` project.
+[Install vertical](#install-vertical), restart RStudio, then follow these steps to initialize a new `vertical` project. **IMPORTANT**: when you choose a name it must be [a valid R package name](http://r-pkgs.had.co.nz/package.html#naming). For example, the name must contain letters, numbers, or periods (e.g., my.name), but no periods at the end. This means no spaces, dashes or underscores.  
 
 ```{r, out.width="50%", echo=FALSE}
 knitr::include_graphics("imgs/vertical-new.png")
