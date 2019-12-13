@@ -24,9 +24,10 @@ Imports:
     pkgdown,
     httr,
     papaja,
-    yaml
+    yaml,
+    posterdown,
+    rmarkdown
 Remotes: github::crsh/papaja
 Suggests:
-    knitr,
-    rmarkdown
+    knitr
 VignetteBuilder: knitr
