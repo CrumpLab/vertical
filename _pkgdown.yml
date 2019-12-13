@@ -20,11 +20,6 @@ navbar:
     home:
       icon: fa-home fa-lg
       href: index.html
-    articles:
-      text: Articles
-      menu:
-      - text: Getting Started
-        href: articles/get_started.html
     reference:
       text: Functions
       href: reference/index.html

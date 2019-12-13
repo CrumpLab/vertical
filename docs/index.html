@@ -56,20 +56,11 @@
      
   </a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="articles/get_started.html">Getting Started</a>
-    </li>
-  </ul>
-</li>
 <li>
   <a href="reference/index.html">Functions</a>
+</li>
+<li>
+  <a href="articles/vertical.html">Get started</a>
 </li>
 <li>
   <a href="news/index.html">Changelog</a>
@@ -107,7 +98,25 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>The devtools library is required for installation:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>devtools<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/devtools/man/reexports.html">install_github</a></span>(<span class="st">"CrumpLab/vertical"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">#install.packages("devtools")</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>devtools<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span>(<span class="st">"CrumpLab/vertical"</span>)</span></code></pre></div>
+</div>
+<div id="quick-start" class="section level2">
+<h2 class="hasAnchor">
+<a href="#quick-start" class="anchor"></a>Quick start</h2>
+<ol>
+<li>Install vertical (above), then restart RStudio</li>
+<li>Create a new project
+<ul>
+<li>from the menu File &gt; New Project…</li>
+<li>or click the R cube in top-right hand corner, and select New Project…</li>
+</ul>
+</li>
+<li>Select the Vertical Project Template, give your vertical project a name</li>
+<li>Create the project, then build the website by:</li>
+</ol>
+<pre><code><a href="reference/build_vertical.html">vertical::build_vertical()</a></code></pre>
+<p>Read the <a href="https://crumplab.github.io/vertical/articles/vertical.html">getting started</a> tutorial to learn more about using <code>vertical</code>.</p>
 </div>
 <div id="what-is-vertical" class="section level2">
 <h2 class="hasAnchor">
@@ -122,7 +131,6 @@
 <h3 class="hasAnchor">
 <a href="#vertical-website" class="anchor"></a>vertical website</h3>
 <p><img src="reference/figures/vertical-website.png"></p>
-<p>Read the <a href="https://crumplab.github.io/vertical/articles/get_started.html">getting started</a> tutorial learn more about using <code>vertical</code>.</p>
 </div>
 </div>
 </div>

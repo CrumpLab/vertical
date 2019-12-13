@@ -2,7 +2,7 @@ pandoc: 2.7.3
 pkgdown: 1.4.1
 pkgdown_sha: ~
 articles:
-  get_started: get_started.html
+  vertical: vertical.html
 urls:
   reference: https://crumplab.github.io/vertical/reference
   article: https://crumplab.github.io/vertical/articles

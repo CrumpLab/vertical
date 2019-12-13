@@ -12,8 +12,24 @@
 The devtools library is required for installation:
 
 ``` r
+#install.packages("devtools")
 devtools::install_github("CrumpLab/vertical")
 ```
+
+## Quick start
+
+1. Install vertical (above), then restart RStudio
+2. Create a new project
+   - from the menu File > New Project...
+   - or click the R cube in top-right hand corner, and select New Project...
+3. Select the Vertical Project Template, give your vertical project a name
+4. Create the project, then build the website by:
+
+```
+vertical::build_vertical()
+```
+
+Read the [getting started](https://crumplab.github.io/vertical/articles/vertical.html) tutorial to learn more about using `vertical`.
 
 ## What is vertical?
 
@@ -27,7 +43,6 @@ devtools::install_github("CrumpLab/vertical")
 
 <img src='man/figures/vertical-website.png'/>
 
-Read the [getting started](https://crumplab.github.io/vertical/articles/get_started.html) tutorial learn more about using `vertical`.
 
 
 
