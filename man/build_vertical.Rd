@@ -4,7 +4,14 @@
 \alias{build_vertical}
 \title{Build vertical project}
 \usage{
-build_vertical()
+build_vertical(clean = TRUE, update_yml = TRUE, ...)
+}
+\arguments{
+\item{clean}{logical, when clean=TRUE (the default), the `docs` folder is cleaned (e.g., completely wiped) using `pkgdown::clean_site()`, otherwise when clean=FALSE `clean_site()` will not be run.}
+
+\item{update_yml}{logical, update_yml=TRUE is the default, updates yml components in `_pkgdown.yml` to list all .Rmds in folders and subfolders of vertical components (manuscript, posters, slides, vignettes) in associated navigation bar tabs on the website.}
+
+\item{...}{params, pass additional parameters to `pkgdown::build_site(...)`}
 }
 \description{
 Build the website associated with a vertical project

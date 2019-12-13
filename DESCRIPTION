@@ -23,7 +23,8 @@ Imports:
     usethis,
     pkgdown,
     httr,
-    papaja
+    papaja,
+    yaml
 Remotes: github::crsh/papaja
 Suggests:
     knitr,

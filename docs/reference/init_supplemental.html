@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Changelog • vertical</title>
+<title>Initialize supplemental materials — init_supplemental • vertical</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -39,7 +39,9 @@
 
 
 
-<meta property="og:title" content="Changelog" />
+<meta property="og:title" content="Initialize supplemental materials — init_supplemental" />
+
+<meta property="og:description" content="Initialize Rmarkdown SOM in the appropriate location of a vertical project" />
 
 <meta property="og:image" content="https://crumplab.github.io/vertical/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -70,7 +72,7 @@
   </head>
 
   <body>
-    <div class="container template-news">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -136,60 +138,27 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Changelog <small></small></h1>
-      
+    <h1>Initialize supplemental materials</h1>
+    
+    <div class="hidden name"><code>init_supplemental.Rd</code></div>
     </div>
 
-    <div id="vertical-0009200" class="section level1">
-<h1 class="page-header">
-<a href="#vertical-0009200" class="anchor"></a>vertical 0.0.0.9200</h1>
-<ul>
-<li>added init functions to add individual vertical components to a vertical project from the console</li>
-<li>added <code><a href="../reference/update_yml.html">update_yml()</a></code> to scrape vertical component folders and update <code>_pkgdown.yml</code> to include .Rmds in each folder and subfolder in respective component tabs on the website</li>
-<li>extended functionality of <code><a href="../reference/build_vertical.html">build_vertical()</a></code> to update <code>_pkgdown.yml</code> on build with <code><a href="../reference/update_yml.html">update_yml()</a></code>. Also, <code><a href="../reference/build_vertical.html">build_vertical()</a></code> now renders all .Rmds in any main folder of a vertical component. Currently, sub folders are also rendered in vignettes, but not other component folders.</li>
-<li>Updated getting started tutorial and readme</li>
-</ul>
-</div>
-    <div id="vertical-0009100" class="section level1">
-<h1 class="page-header">
-<a href="#vertical-0009100" class="anchor"></a>vertical 0.0.0.9100</h1>
-<p>This version is a rethinking of vertical’s back-end functionality with the goal of making vertical more lightweight and portable.</p>
-<ul>
-<li>Initialize project components from source
-<ul>
-<li>When a vertical project is created, all subcomponents are pulled from their source, instead of being hard-coded to vertical, making the package more portable, easier to maintain, and lightweight</li>
-</ul>
-</li>
-<li>Select components
-<ul>
-<li>When a vertical project is created, users can choose which components to initialize.</li>
-</ul>
-</li>
-<li>Now includes a poster template</li>
-<li>New contributor: Matti Vuorre</li>
-</ul>
-</div>
-    <div id="vertical-0009000" class="section level1">
-<h1 class="page-header">
-<a href="#vertical-0009000" class="anchor"></a>vertical 0.0.0.9000</h1>
-<ul>
-<li>added vertical project template</li>
-<li>Added a <code>NEWS.md</code> file to track changes to the package.</li>
-</ul>
-</div>
-  </div>
+    <div class="ref-description">
+    
+    <p>Initialize Rmarkdown SOM in the appropriate location of a vertical project</p>
+    
+    </div>
 
+    <pre class="usage"><span class='fu'>init_supplemental</span>()</pre>
+        
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <div id="tocnav">
-      <h2>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-        <li><a href="#vertical-0009200">0.0.0.9200</a></li>
-        <li><a href="#vertical-0009100">0.0.0.9100</a></li>
-        <li><a href="#vertical-0009000">0.0.0.9000</a></li>
-      </ul>
-    </div>
-  </div>
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+                </ul>
 
+  </div>
 </div>
 
 
