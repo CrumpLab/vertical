@@ -31,4 +31,3 @@ Imports:
 Remotes: github::crsh/papaja
 Suggests:
     knitr
-VignetteBuilder: knitr

@@ -6,3 +6,4 @@
 ^xtra$
 ^_pkgdown\.yml$
 ^pkgdown$
+^vignettes$

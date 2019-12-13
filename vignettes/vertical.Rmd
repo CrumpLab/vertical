@@ -1,11 +1,6 @@
 ---
 title: "Get started using vertical"
 bibliography: tutorial.bib
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Getting Started}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r, include = FALSE}
