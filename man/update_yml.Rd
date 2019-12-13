@@ -4,10 +4,12 @@
 \alias{update_yml}
 \title{Update _pkgdown.yml for Rmds in Folders}
 \usage{
-update_yml(folder, yml_component, tab_title)
+update_yml(vertical_folder, docs_folder, yml_component, tab_title)
 }
 \arguments{
-\item{folder}{character, name of a vertical folder, e.g., "vignettes"}
+\item{vertical_folder}{character, name of a vertical folder, e.g., "vignettes"}
+
+\item{docs_folder}{character, name of folder in docs, e.g., "articles"}
 
 \item{yml_component}{character, name of the corresponding yml component, e.g., "articles"}
 

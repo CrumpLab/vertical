@@ -120,7 +120,8 @@ init_jspsych <- function() {
 
 #' Update _pkgdown.yml for Rmds in Folders
 #'
-#' @param folder character, name of a vertical folder, e.g., "vignettes"
+#' @param vertical_folder character, name of a vertical folder, e.g., "vignettes"
+#' @param docs_folder character, name of folder in docs, e.g., "articles"
 #' @param yml_component character, name of the corresponding yml component, e.g., "articles"
 #' @param tab_title character, the title of the component tab written to the website, e.g., "Supplementary"
 #'
@@ -131,15 +132,23 @@ init_jspsych <- function() {
 #' @export
 #'
 
-update_yml <- function(folder,yml_component,tab_title){
+update_yml <- function(vertical_folder,
+                       docs_folder,
+                       yml_component,
+                       tab_title){
 
-  if (dir.exists(folder)){
+  if (dir.exists(vertical_folder)){
     # get rmds in folder
-    top_rmds <- list.files(folder, pattern = "\\.Rmd$", full.names = TRUE)
+    top_rmds <- list.files(vertical_folder, pattern = "\\.Rmd$", full.names = TRUE)
     top_rmds_yml <- lapply(top_rmds,rmarkdown::yaml_front_matter)
     top_rmds_title <- unlist(sapply(top_rmds_yml,"[","title"))
-    top_rmds_html <- list.files(folder, pattern = "\\.Rmd$")
+    top_rmds_html <- list.files(vertical_folder, pattern = "\\.Rmd$")
     top_rmds_html <- gsub(".Rmd",".html",top_rmds_html)
+
+    if (vertical_folder == "manuscript"){
+      top_rmds_html <- list.files(vertical_folder, pattern = "\\.Rmd$")
+      top_rmds_html <- gsub(".Rmd",".pdf",top_rmds_html)
+    }
 
     # create temporary articles list
     new_articles <- list()
@@ -150,15 +159,15 @@ update_yml <- function(folder,yml_component,tab_title){
     if(length(top_rmds) > 0) {
       for(i in 1:length(top_rmds_title)){
         new_articles$menu[[i]] <- list(text = top_rmds_title[i],
-                                       href = paste(folder,top_rmds_html[i],sep="/"))
+                                       href = paste(docs_folder,top_rmds_html[i],sep="/"))
       }
     }
 
     # add subfolder vignettes
-    sub_folders <- list.dirs(folder, full.names=FALSE, recursive=FALSE)
+    sub_folders <- list.dirs(vertical_folder, full.names=FALSE, recursive=FALSE)
     for(i in sub_folders){
       # get rmds in sub folder
-      sub_rmds <- list.files(paste(folder,i,sep="/"),
+      sub_rmds <- list.files(paste(vertical_folder,i,sep="/"),
                              pattern = "\\.Rmd$", full.names = TRUE)
       if(length(sub_rmds) > 0){
         # add folder name as text separator
@@ -166,14 +175,14 @@ update_yml <- function(folder,yml_component,tab_title){
 
         sub_rmds_yml <- lapply(sub_rmds,rmarkdown::yaml_front_matter)
         sub_rmds_title <- unlist(sapply(sub_rmds_yml,"[","title"))
-        sub_rmds_html <- list.files(paste(folder,i,sep="/"), pattern = "\\.Rmd$")
+        sub_rmds_html <- list.files(paste(vertical_folder,i,sep="/"), pattern = "\\.Rmd$")
         sub_rmds_html <- gsub(".Rmd",".html",sub_rmds_html)
 
         # add sub folder vignettes to list
         if(length(sub_rmds) > 0) {
           for(j in 1:length(sub_rmds_title)){
             new_articles$menu[[length(new_articles$menu)+1]] <- list(text = sub_rmds_title[j],
-                                                                     href = paste(folder,i,sub_rmds_html[j],sep="/"))
+                                                                     href = paste(docs_folder,i,sub_rmds_html[j],sep="/"))
           }
         }
       }
@@ -198,10 +207,10 @@ update_yml <- function(folder,yml_component,tab_title){
 #' @export
 build_vertical <- function(clean=TRUE,update_yml=TRUE,...) {
   if(update_yml == TRUE) {
-    update_yml("vignettes","articles","Supplementary")
-    update_yml("manuscript","manuscript","PDF")
-    update_yml("posters","posters","Poster")
-    update_yml("slides","slides","Slides")
+    update_yml("vignettes","articles","articles","Supplementary")
+    update_yml("manuscript","manuscript","manuscript","PDF")
+    update_yml("posters","posters","posters","Poster")
+    update_yml("slides","slides","slides","Slides")
   }
   if(clean == TRUE) pkgdown::clean_site()
   pkgdown::build_site(...)
