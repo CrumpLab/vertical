@@ -33,7 +33,7 @@ Read the [getting started](https://crumplab.github.io/vertical/articles/vertical
 
 ## What is vertical?
 
-`vertical` is a workflow for creating, curating, and communicating research assets in psychological sciene in the form of a website and/or R package. `vertical` installs an RStudio project template with the `vertical` workflow structure, and compiles content in a `vertical` project to an R package and pkgdown website for sharing the assets.
+`vertical` is a workflow for creating, curating, and communicating research assets in psychological science in the form of a website and/or R package. `vertical` installs an RStudio project template with the `vertical` workflow structure, and compiles content in a `vertical` project to an R package and pkgdown website for sharing the assets.
 
 ### vertical workflow
 
