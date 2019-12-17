@@ -232,9 +232,23 @@ knitr::include_graphics("imgs/pkgdown-build.png")
 
 ## Adding Data
 
-Arbitrary data can be included in an R Package by placing R data files into a `data` folder. Importantly, data can be documented just like a function, which allows for clear and descriptive meta-data for the data object.
+Arbitrary data can be included in an R Package by placing R data files into a `data` folder. Importantly, data can be documented just like a function, which allows for clear and descriptive meta-data for the data object. `vertical` does not create a `data` folder as a part of its template. This is to encourage useful strategies for data inclusion that automate the creation of the data folder when it is required.
 
-`vertical` does not create a `data` folder as a part of its template. This is to encourage useful strategies for data inclusion, which also automate the creation of the data folder when it is required. We begin with an example of including data from the R environment, and then discuss strategies for including data as a part of a reproducible research project.
+`vertical` includes  [document_data()](https://crumplab.github.io/vertical/reference/document_data.html) quickly to add an existing dataframe to an R package. For example, if `mydf` was an existing dataframe, then the following:  
+
+```{r, eval=FALSE}
+document_data(mydf)
+```
+
+would accomplish:
+
+1. create a `data` folder (if it didn't already exist)
+2. save mydf as an .rda file to the `data` folder
+3. create a mydf.R file for documentation, save it to the R file
+4. add a roxygen skeleton for documentation to mydf.R
+5. open mydf.R for editing
+
+The next example shows individual steps for including data from the R environment. We then discuss strategies for including data as a part of a reproducible research project.
 
 R objects in the environment can be included as data in an R package. For example, the following generates a simple data frame in the R environment:
 
@@ -304,7 +318,7 @@ library(verticaltemplate)
 mydf #loaded into environment from package
 ```
 
-Finally, documentation for multiple data objects can be added to the `data.R` file. Insert a new line after the documentation for the first data object, then insert the roxygen comments for the next one.
+Finally, documentation for multiple data objects can be added to a `data.R` file. Insert a new line after the documentation for the first data object, then insert the roxygen comments for the next one. Or, individual data sets could be documented with individually named `.R` files.
 
 We have discussed the operations for adding data to an R package. In the context of including data from a research project we have a few additional suggestions. `vertical` does create a `data-raw` folder as part of the template. This is a location to place raw data in any given format that can be imported to R, such as a .csv file, excel file, JSON file, SPSS file, or other file type.
 

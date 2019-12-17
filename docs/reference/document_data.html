@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Build vertical project — build_vertical • vertical</title>
+<title>Add R dataframe and document — document_data • vertical</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -39,9 +39,9 @@
 
 
 
-<meta property="og:title" content="Build vertical project — build_vertical" />
+<meta property="og:title" content="Add R dataframe and document — document_data" />
 
-<meta property="og:description" content="Build the website associated with a vertical project" />
+<meta property="og:description" content="A wrapper to usethis::use_data(), usethis::use_r(), and sinew::makeOxygen()" />
 
 <meta property="og:image" content="https://crumplab.github.io/vertical/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -129,35 +129,35 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Build vertical project</h1>
+    <h1>Add R dataframe and document</h1>
     <small class="dont-index">Source: <a href='https://github.com/CrumpLab/vertical/blob/master/R/vertical_project.R'><code>R/vertical_project.R</code></a></small>
-    <div class="hidden name"><code>build_vertical.Rd</code></div>
+    <div class="hidden name"><code>document_data.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Build the website associated with a vertical project</p>
+    <p>A wrapper to usethis::use_data(), usethis::use_r(), and sinew::makeOxygen()</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>build_vertical</span>(<span class='kw'>clean</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>update_yml</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>document_data</span>(<span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>clean</th>
-      <td><p>logical, when clean=TRUE (the default), the `docs` folder is cleaned (e.g., completely wiped) using `pkgdown::clean_site()`, otherwise when clean=FALSE `clean_site()` will not be run.</p></td>
-    </tr>
-    <tr>
-      <th>update_yml</th>
-      <td><p>logical, update_yml=TRUE is the default, updates yml components in `_pkgdown.yml` to list all .Rmds in folders and subfolders of vertical components (manuscript, posters, slides, vignettes) in associated navigation bar tabs on the website.</p></td>
-    </tr>
-    <tr>
       <th>...</th>
-      <td><p>params, pass additional parameters to `pkgdown::build_site(...)`</p></td>
+      <td><p>the name of a single dataframe in the global environment</p></td>
     </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>files, adds dataframe as .rda to data folder, adds .R to R for documentation</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>document_data() is a helper function for quickly adding an existing dataframe to an R package. For example, if mydf was an existing data frame, document_data(mydf) would create the data folder (if it doesn't exist), add mydf.rda to the data folder, add mydf.R to the R folder with a roxygen skeleton for documenting the data, and open mydf.R for editing.</p>
     
 
   </div>
@@ -165,7 +165,11 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
+          </ul>
 
   </div>
 </div>

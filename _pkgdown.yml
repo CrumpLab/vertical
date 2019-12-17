@@ -6,6 +6,9 @@ template:
   params:
     ganalytics: UA-79429674-9
 
+development:
+  mode: auto
+
 pkgdown:
   as_is: true
 

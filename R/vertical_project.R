@@ -287,3 +287,27 @@ build_vertical <- function(clean=TRUE,update_yml=TRUE,...) {
     file.copy("experiments", "docs", recursive = TRUE)
   }
 }
+
+
+
+#' Add R dataframe and document
+#'
+#' document_data() is a helper function for quickly adding an existing dataframe to an R package. For example, if mydf was an existing data frame, document_data(mydf) would create the data folder (if it doesn't exist), add mydf.rda to the data folder, add mydf.R to the R folder with a roxygen skeleton for documenting the data, and open mydf.R for editing.
+#'
+#' @param ... the name of a single dataframe in the global environment
+#'
+#' @return files, adds dataframe as .rda to data folder, adds .R to R for documentation
+#'
+#' @description A wrapper to usethis::use_data(), usethis::use_r(), and sinew::makeOxygen()
+#'
+#' @export
+#'
+#' @examples
+document_data <- function(...){
+  usethis::use_data(...)
+  data_name <- deparse(substitute(...))
+  usethis::use_r(data_name)
+  switch(menu(c("Yes, add new Roxygen skeleton", "No, show me the file"), title="Overwrite existing .R file?"),
+         cat(sinew::makeOxygen(...),file="R/mydf.R",sep="\n"),2
+  )
+}

@@ -29,6 +29,7 @@ Imports:
     yaml,
     posterdown,
     rmarkdown,
+    sinew,
     git2r
 Remotes: github::crsh/papaja
 Suggests:
