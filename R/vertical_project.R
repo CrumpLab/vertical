@@ -10,7 +10,7 @@ vertical_project <- function(path, ...) {
 
   dots <- list(...)
   #dir.create(path, recursive = TRUE, showWarnings = FALSE)
-  prjct_name <- path
+  p_name <- path
   path <- file.path(getwd(), path)
 
   # This is a package
@@ -33,7 +33,7 @@ vertical_project <- function(path, ...) {
 
   usethis::use_data_raw(open = FALSE)
   if (dots$init_ms) init_papaja()
-  if (dots$init_som) init_supplemental()
+  if (dots$init_som) init_supplemental(prjct_name = p_name)
   if (dots$init_slides) init_slides()
   if (dots$init_poster) init_poster()
   if (dots$init_exp) init_jspsych()
@@ -105,7 +105,8 @@ init_papaja <- function() {
 init_supplemental <- function(prjct_name=NULL) {
 
   if(is.null(prjct_name) == FALSE){
-    usethis::use_template(template = "vignette.Rmd",
+    usethis::use_directory("vignettes")
+    usethis::use_template(template = "article.Rmd",
                           save_as = "vignettes/Supplementary_1.Rmd",
                           data = list(vignette_title="Supplementary analyses",
                                       Package = prjct_name),
