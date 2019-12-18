@@ -1,0 +1,62 @@
+pkgdown:
+  as_is: true
+
+navbar:
+  structure:
+    left:
+    - home
+    - manuscript
+    - articles
+    - slides
+    - posters
+    - experiments
+    - reference
+    right: github
+  components:
+    home:
+      icon: fa-home fa-lg
+      href: index.html
+    manuscript:
+      text: Manuscript
+      menu:
+      - text: APA6 PDF
+        href: manuscript/manuscript.pdf
+    articles:
+      text: Supplementary
+      menu:
+      - text: Getting Started
+        href: articles/Supplemental_1.html
+    slides:
+      text: Slides
+      menu:
+      - text: R Markdown slides
+        href: slides/slides.html
+    posters:
+      text: Posters
+      menu:
+      - text: Conference 2019
+        href: posters/poster.html
+    experiments:
+      text: Experiments
+      menu:
+      - text: Experiment 1
+        href: experiments/experiment-1/index.html
+    reference:
+      text: Functions
+      href: reference/index.html
+    github:
+      text: source code
+      icon: fa-lg fa-github
+      href: https://github.com/CrumpLab/vertical_template
+
+home:
+  strip_header: true
+  links:
+    - text: A link to X
+      href: some link
+    - text: A link to Y
+      href: another link
+  Authors:
+    - text: Author 1
+    - text: Author 2
+

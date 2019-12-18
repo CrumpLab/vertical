@@ -9,11 +9,15 @@
 vertical_project <- function(path, ...) {
 
   dots <- list(...)
-  dir.create(path, recursive = TRUE, showWarnings = FALSE)
+  #dir.create(path, recursive = TRUE, showWarnings = FALSE)
+  prjct_name <- path
+  path <- file.path(getwd(), path)
 
   # This is a package
   usethis::create_package(path, open = FALSE)
-  setwd(paste0(getwd(), "/", path)) # [TODO] improve this hack
+  usethis::proj_set(path)
+  #setwd(paste0(getwd(), "/", path)) # [TODO] improve this hack
+  setwd(path)
 
   # Git?
   if (dots$init_git) {
@@ -22,8 +26,10 @@ vertical_project <- function(path, ...) {
   }
 
   # pkgdown template
-  vertical_pkgdown <- system.file("vertical/_pkgdown.yml", package = "vertical")
-  file.copy(vertical_pkgdown, "_pkgdown.yml")
+  #vertical_pkgdown <- system.file("vertical/_pkgdown.yml", package = "vertical")
+  #file.copy(vertical_pkgdown, "_pkgdown.yml")
+  usethis::use_template(template = "_pkgdown.yml",
+                        package = "vertical")
 
   usethis::use_data_raw(open = FALSE)
   if (dots$init_ms) init_papaja()
@@ -96,11 +102,20 @@ init_papaja <- function() {
 #' Initialize Rmarkdown SOM in the appropriate location of a vertical project
 #'
 #' @export
-init_supplemental <- function() {
-  usethis::use_article(
-    "Supplemental_1",
-    title = "Supplementary analyses"
-  )
+init_supplemental <- function(prjct_name=NULL) {
+
+  if(is.null(prjct_name) == FALSE){
+    usethis::use_template(template = "vignette.Rmd",
+                          save_as = "vignettes/Supplementary_1.Rmd",
+                          data = list(vignette_title="Supplementary analyses",
+                                      Package = prjct_name),
+                          package = "usethis")
+  } else{
+    usethis::use_article(
+      "Supplemental_1",
+      title = "Supplementary analyses"
+    )
+  }
 }
 
 #' Initialize slides
