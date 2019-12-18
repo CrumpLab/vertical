@@ -2,7 +2,7 @@
 % Please edit documentation in R/vertical_project.R
 \name{update_yml}
 \alias{update_yml}
-\title{Update _pkgdown.yml for Rmds in Folders}
+\title{Update _pkgdown.yml for Rmds in vertical folders}
 \usage{
 update_yml(vertical_folder, docs_folder, yml_component, tab_title)
 }
@@ -19,5 +19,5 @@ update_yml(vertical_folder, docs_folder, yml_component, tab_title)
 file, an updated _pkgdown.yml file
 }
 \description{
-This function scrapes a folder and all sub-folders for R markdown documents, and then updates the a designated yml component in _pkgdown.yml with a new list of items. The list of items in shown in the component's tab on the website, and the title of the tab is set to `tab_title`. In the tab, the titles of each .rmd in the main folder are added; then, for each sub-folder the sub-folder name is added (as a text seperator in the tab), followed by the titles for each .rmd in the sub-folder. This function is run automatically by `build_vertical()`.
+This function scrapes a folder and all sub-folders for R markdown documents, and then updates the a designated yml component in \verb{_pkgdown.yml} with a new list of items. The list of items in shown in the component's tab on the website, and the title of the tab is set to \code{tab_title}. In the tab, the titles of each .rmd in the main folder are added; then, for each sub-folder the sub-folder name is added (as a text seperator in the tab), followed by the titles for each .rmd in the sub-folder. This function is run automatically by \code{build_vertical()}.
 }

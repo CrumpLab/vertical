@@ -41,7 +41,7 @@
 
 <meta property="og:title" content="Build vertical project — build_vertical" />
 
-<meta property="og:description" content="Build the website associated with a vertical project" />
+<meta property="og:description" content="Build the website associated with a vertical project. This is mostly a wrapper to pkgdown::build_site(), but extended to render content from vertical folders." />
 
 <meta property="og:image" content="https://crumplab.github.io/vertical/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -136,7 +136,7 @@
 
     <div class="ref-description">
     
-    <p>Build the website associated with a vertical project</p>
+    <p>Build the website associated with a vertical project. This is mostly a wrapper to <code><a href='https://pkgdown.r-lib.org/reference/build_site.html'>pkgdown::build_site()</a></code>, but extended to render content from vertical folders.</p>
     
     </div>
 
@@ -147,17 +147,24 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>clean</th>
-      <td><p>logical, when clean=TRUE (the default), the `docs` folder is cleaned (e.g., completely wiped) using `pkgdown::clean_site()`, otherwise when clean=FALSE `clean_site()` will not be run.</p></td>
+      <td><p>logical, when clean=TRUE (the default), the <code>docs</code> folder is cleaned (e.g., completely wiped) using <code><a href='https://pkgdown.r-lib.org/reference/clean_site.html'>pkgdown::clean_site()</a></code>, otherwise when clean=FALSE <code>clean_site()</code> will not be run.</p></td>
     </tr>
     <tr>
       <th>update_yml</th>
-      <td><p>logical, update_yml=TRUE is the default, updates yml components in `_pkgdown.yml` to list all .Rmds in folders and subfolders of vertical components (manuscript, posters, slides, vignettes) in associated navigation bar tabs on the website.</p></td>
+      <td><p>logical, update_yml=TRUE is the default, updates yml components in <code>_pkgdown.yml</code> to list all .Rmds in folders and subfolders of vertical components (manuscript, posters, slides, vignettes) in associated navigation bar tabs on the website.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>params, pass additional parameters to `pkgdown::build_site(...)`</p></td>
+      <td><p>params, pass additional parameters to <code><a href='https://pkgdown.r-lib.org/reference/build_site.html'>pkgdown::build_site(...)</a></code></p></td>
     </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="usage"><a class="anchor" href="#usage"></a>Usage</h2>
+
+    
+<pre>build_vertical()
+</pre>
+
     
 
   </div>
@@ -165,7 +172,9 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#usage">Usage</a></li>
+          </ul>
 
   </div>
 </div>

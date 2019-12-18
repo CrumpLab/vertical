@@ -7,12 +7,17 @@
 build_vertical(clean = TRUE, update_yml = TRUE, ...)
 }
 \arguments{
-\item{clean}{logical, when clean=TRUE (the default), the `docs` folder is cleaned (e.g., completely wiped) using `pkgdown::clean_site()`, otherwise when clean=FALSE `clean_site()` will not be run.}
+\item{clean}{logical, when clean=TRUE (the default), the \code{docs} folder is cleaned (e.g., completely wiped) using \code{pkgdown::clean_site()}, otherwise when clean=FALSE \code{clean_site()} will not be run.}
 
-\item{update_yml}{logical, update_yml=TRUE is the default, updates yml components in `_pkgdown.yml` to list all .Rmds in folders and subfolders of vertical components (manuscript, posters, slides, vignettes) in associated navigation bar tabs on the website.}
+\item{update_yml}{logical, update_yml=TRUE is the default, updates yml components in \verb{_pkgdown.yml} to list all .Rmds in folders and subfolders of vertical components (manuscript, posters, slides, vignettes) in associated navigation bar tabs on the website.}
 
-\item{...}{params, pass additional parameters to `pkgdown::build_site(...)`}
+\item{...}{params, pass additional parameters to \code{pkgdown::build_site(...)}}
 }
 \description{
-Build the website associated with a vertical project
+Build the website associated with a vertical project. This is mostly a wrapper to \code{pkgdown::build_site()}, but extended to render content from vertical folders.
 }
+\section{Usage}{
+\preformatted{build_vertical()
+}
+}
+

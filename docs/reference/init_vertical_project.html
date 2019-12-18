@@ -41,8 +41,14 @@
 
 <meta property="og:title" content="Initialize a vertical project from command line — init_vertical_project" />
 
-<meta property="og:description" content="Initiliazing a vertical project inside an existing project: The name of the existing project (e.g., the project folder name) must be a valid R package name (numbers, letters, and periods, but no periods at the end, and no spaces, dashes, or underscores). It is not necessary to supply project_name or project_path, they default to the current existing project.
-Initializing a vertical project as a new project: provide a name and path, and a new vertical project will be set up in an R studio project." />
+<meta property="og:description" content="Initializing a vertical project inside an existing project: The name of the existing project (e.g., the project folder name) must be a valid R package name (numbers, letters, and periods, but no periods at the end, and no spaces, dashes, or underscores). It is not necessary to supply project_name or project_path, they default to the current existing project.init_vertical_project()
+
+
+Initializing a vertical project as a new project: provide a name and path, and a new vertical project will be set up in an R studio project. For example, the following will create the folder ~Desktop/yourname/, initialize a vertical project template in that folder, and open a new RStudio session with the new project loaded.init_vertical_project(project_name = &quot;yourname&quot;,
+                      project_path = &quot;~/Desktop/&quot;
+             )
+
+" />
 
 <meta property="og:image" content="https://crumplab.github.io/vertical/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -137,8 +143,14 @@ Initializing a vertical project as a new project: provide a name and path, and a
 
     <div class="ref-description">
     
-    <p>Initiliazing a vertical project inside an existing project: The name of the existing project (e.g., the project folder name) must be a valid R package name (numbers, letters, and periods, but no periods at the end, and no spaces, dashes, or underscores). It is not necessary to supply project_name or project_path, they default to the current existing project.</p>
-<p>Initializing a vertical project as a new project: provide a name and path, and a new vertical project will be set up in an R studio project.</p>
+    <p><strong>Initializing a vertical project inside an existing project</strong>: The name of the existing project (e.g., the project folder name) must be a valid R package name (numbers, letters, and periods, but no periods at the end, and no spaces, dashes, or underscores). It is not necessary to supply project_name or project_path, they default to the current existing project.</p><pre>init_vertical_project()
+</pre>
+
+<p><strong>Initializing a vertical project as a new project</strong>: provide a name and path, and a new vertical project will be set up in an R studio project. For example, the following will create the folder <code>~Desktop/yourname/</code>, initialize a vertical project template in that folder, and open a new RStudio session with the new project loaded.</p><pre>init_vertical_project(project_name = "yourname",
+                      project_path = "~/Desktop/"
+             )
+</pre>
+
     
     </div>
 
@@ -195,10 +207,6 @@ Initializing a vertical project as a new project: provide a name and path, and a
     <p>files, a vertical project template inside an existing or new R Studio project</p>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>init_vertical_project</span>()
-}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -206,9 +214,7 @@ Initializing a vertical project as a new project: provide a name and path, and a
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+          </ul>
 
   </div>
 </div>

@@ -1,6 +1,6 @@
 #' Initialize a **vertical** project as RStudio project template
 #'
-#' This function is called when a **vertical** R project is created.
+#' This function is called when a **vertical** R project is created from the RStudio new project template. This function is not intended for use in the console.
 #'
 #' @param path Where to create the project. This must be a valid R package name.
 #' @param ...  Not used.
@@ -41,6 +41,18 @@ vertical_project <- function(path, ...) {
 
 #' Initialize a vertical project from command line
 #'
+#' @description **Initializing a vertical project inside an existing project**: The name of the existing project (e.g., the project folder name) must be a valid R package name (numbers, letters, and periods, but no periods at the end, and no spaces, dashes, or underscores). It is not necessary to supply project_name or project_path, they default to the current existing project.
+#' ```
+#' init_vertical_project()
+#' ```
+#'
+#' **Initializing a vertical project as a new project**: provide a name and path, and a new vertical project will be set up in an R studio project. For example, the following will create the folder `~Desktop/yourname/`, initialize a vertical project template in that folder, and open a new RStudio session with the new project loaded.
+#' ```
+#' init_vertical_project(project_name = "yourname",
+#'                       project_path = "~/Desktop/"
+#'              )
+#' ```
+#'
 #' @param project_name character, name of new vertical project, default is project_name = NULL, for initializing inside an existing empty R studio project
 #' @param project_path character, path where new project should be created, default is project_path = NULL for initializing inside an existing empty R studio project
 #' @param init_git logical, enables git, init_git=TRUE by default
@@ -51,17 +63,8 @@ vertical_project <- function(path, ...) {
 #' @param init_exp logical, enables experiments with jspsych, init_exp=TRUE by default
 #'
 #' @return files, a vertical project template inside an existing or new R Studio project
-#' @description Initiliazing a vertical project inside an existing project: The name of the existing project (e.g., the project folder name) must be a valid R package name (numbers, letters, and periods, but no periods at the end, and no spaces, dashes, or underscores). It is not necessary to supply project_name or project_path, they default to the current existing project.
-#'
-#' Initializing a vertical project as a new project: provide a name and path, and a new vertical project will be set up in an R studio project.
 #'
 #' @export
-#' @examples
-#' \dontrun{
-#' init_vertical_project()
-#' }
-#'
-#'
 init_vertical_project <- function(project_name = NULL,
                                   project_path = NULL,
                                   init_git = TRUE,
@@ -199,7 +202,7 @@ init_jspsych <- function() {
   file.copy(vertical_jspsych, "experiments/experiment-1/index.html")
 }
 
-#' Update _pkgdown.yml for Rmds in Folders
+#' Update _pkgdown.yml for Rmds in vertical folders
 #'
 #' @param vertical_folder character, name of a vertical folder, e.g., "vignettes"
 #' @param docs_folder character, name of folder in docs, e.g., "articles"
@@ -208,7 +211,7 @@ init_jspsych <- function() {
 #'
 #' @return file, an updated _pkgdown.yml file
 #'
-#' @description This function scrapes a folder and all sub-folders for R markdown documents, and then updates the a designated yml component in _pkgdown.yml with a new list of items. The list of items in shown in the component's tab on the website, and the title of the tab is set to `tab_title`. In the tab, the titles of each .rmd in the main folder are added; then, for each sub-folder the sub-folder name is added (as a text seperator in the tab), followed by the titles for each .rmd in the sub-folder. This function is run automatically by `build_vertical()`.
+#' @description This function scrapes a folder and all sub-folders for R markdown documents, and then updates the a designated yml component in `_pkgdown.yml` with a new list of items. The list of items in shown in the component's tab on the website, and the title of the tab is set to `tab_title`. In the tab, the titles of each .rmd in the main folder are added; then, for each sub-folder the sub-folder name is added (as a text seperator in the tab), followed by the titles for each .rmd in the sub-folder. This function is run automatically by `build_vertical()`.
 #'
 #' @export
 #'
@@ -279,11 +282,15 @@ update_yml <- function(vertical_folder,
 
 #' Build vertical project
 #'
-#' Build the website associated with a vertical project
+#' @description Build the website associated with a vertical project. This is mostly a wrapper to `pkgdown::build_site()`, but extended to render content from vertical folders.
 #'
 #' @param clean logical, when clean=TRUE (the default), the `docs` folder is cleaned (e.g., completely wiped) using `pkgdown::clean_site()`, otherwise when clean=FALSE `clean_site()` will not be run.
 #' @param update_yml logical, update_yml=TRUE is the default, updates yml components in `_pkgdown.yml` to list all .Rmds in folders and subfolders of vertical components (manuscript, posters, slides, vignettes) in associated navigation bar tabs on the website.
 #' @param ... params, pass additional parameters to `pkgdown::build_site(...)`
+#' @section Usage:
+#' ```
+#' build_vertical()
+#' ```
 #'
 #' @export
 build_vertical <- function(clean=TRUE,update_yml=TRUE,...) {
@@ -329,22 +336,24 @@ build_vertical <- function(clean=TRUE,update_yml=TRUE,...) {
 
 
 
-#' Add R dataframe and document
-#'
-#' document_data() is a helper function for quickly adding an existing dataframe to an R package. For example, if mydf was an existing data frame, document_data(mydf) would create the data folder (if it doesn't exist), add mydf.rda to the data folder, add mydf.R to the R folder with a roxygen skeleton for documenting the data, and open mydf.R for editing.
+#' Add R dataframe and documentation to R Package
 #'
 #' @param ... the name of a single dataframe in the global environment
 #'
 #' @return files, adds dataframe as .rda to data folder, adds .R to R for documentation
 #'
-#' @description A wrapper to usethis::use_data(), usethis::use_r(), and sinew::makeOxygen()
+#' @description `document_data()` is a helper function for including a dataframe in an R package, and documenting the data set. It is a wrapper to `usethis::use_data()`, `usethis::use_r()`, and `sinew::makeOxygen()`. For example, if `mydf` was an existing data frame, `document_data(mydf)` would:
 #'
-#' @export
+#' 1. create the `data`` folder (if it doesn't exist)
+#' 2. add `mydf.rda` to the data folder
+#' 3. add `mydf.R` to the R folder with a roxygen skeleton for documenting the data
+#' 4. open `mydf.R` for editing.
 #'
-#' @examples
-#' \dontrun{
+#' @section Usage:
+#' ```
 #' document_data(mydf)
-#' }
+#' ```
+#' @export
 document_data <- function(...){
   usethis::use_data(...)
   data_name <- deparse(substitute(...))

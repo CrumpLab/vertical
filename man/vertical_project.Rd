@@ -2,7 +2,7 @@
 % Please edit documentation in R/vertical_project.R
 \name{vertical_project}
 \alias{vertical_project}
-\title{Initialize a **vertical** project as RStudio project template}
+\title{Initialize a \strong{vertical} project as RStudio project template}
 \usage{
 vertical_project(path, ...)
 }
@@ -12,5 +12,5 @@ vertical_project(path, ...)
 \item{...}{Not used.}
 }
 \description{
-This function is called when a **vertical** R project is created.
+This function is called when a \strong{vertical} R project is created from the RStudio new project template. This function is not intended for use in the console.
 }

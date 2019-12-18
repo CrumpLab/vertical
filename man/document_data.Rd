@@ -2,7 +2,7 @@
 % Please edit documentation in R/vertical_project.R
 \name{document_data}
 \alias{document_data}
-\title{Add R dataframe and document}
+\title{Add R dataframe and documentation to R Package}
 \usage{
 document_data(...)
 }
@@ -13,13 +13,16 @@ document_data(...)
 files, adds dataframe as .rda to data folder, adds .R to R for documentation
 }
 \description{
-A wrapper to usethis::use_data(), usethis::use_r(), and sinew::makeOxygen()
-}
-\details{
-document_data() is a helper function for quickly adding an existing dataframe to an R package. For example, if mydf was an existing data frame, document_data(mydf) would create the data folder (if it doesn't exist), add mydf.rda to the data folder, add mydf.R to the R folder with a roxygen skeleton for documenting the data, and open mydf.R for editing.
-}
-\examples{
-\dontrun{
-document_data(mydf)
+\code{document_data()} is a helper function for including a dataframe in an R package, and documenting the data set. It is a wrapper to \code{usethis::use_data()}, \code{usethis::use_r()}, and \code{sinew::makeOxygen()}. For example, if \code{mydf} was an existing data frame, \code{document_data(mydf)} would:
+\enumerate{
+\item create the `data`` folder (if it doesn't exist)
+\item add \code{mydf.rda} to the data folder
+\item add \code{mydf.R} to the R folder with a roxygen skeleton for documenting the data
+\item open \code{mydf.R} for editing.
 }
 }
+\section{Usage}{
+\preformatted{document_data(mydf)
+}
+}
+
