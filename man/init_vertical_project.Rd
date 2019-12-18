@@ -2,9 +2,11 @@
 % Please edit documentation in R/vertical_project.R
 \name{init_vertical_project}
 \alias{init_vertical_project}
-\title{Initialize a vertical project inside an existing R project}
+\title{Initialize a vertical project from command line}
 \usage{
 init_vertical_project(
+  project_name = NULL,
+  project_path = NULL,
   init_git = TRUE,
   init_ms = TRUE,
   init_som = TRUE,
@@ -14,6 +16,10 @@ init_vertical_project(
 )
 }
 \arguments{
+\item{project_name}{character, name of new vertical project, default is project_name = NULL, for initializing inside an existing empty R studio project}
+
+\item{project_path}{character, path where new project should be created, default is project_path = NULL for initializing inside an existing empty R studio project}
+
 \item{init_git}{logical, enables git, init_git=TRUE by default}
 
 \item{init_ms}{logical, enables manuscript with papaja, init_ms=TRUE by default}
@@ -27,8 +33,17 @@ init_vertical_project(
 \item{init_exp}{logical, enables experiments with jspsych, init_exp=TRUE by default}
 }
 \value{
-files, a vertical project template inside an existing R project
+files, a vertical project template inside an existing or new R Studio project
 }
 \description{
-If you are working inside an existing R project, typically an empty one, or perhaps a project in RStudio cloud, use this function to initialize a vertical project inside the existing project. The name of the existing project (e.g., the parent folder name) must be a valid R package name (numbers, letters, and periods, but no periods at the end, and no spaces, dashes, or underscores).
+Initiliazing a vertical project inside an existing project: The name of the existing project (e.g., the project folder name) must be a valid R package name (numbers, letters, and periods, but no periods at the end, and no spaces, dashes, or underscores). It is not necessary to supply project_name or project_path, they default to the current existing project.
+
+Initializing a vertical project as a new project: provide a name and path, and a new vertical project will be set up in an R studio project.
+}
+\examples{
+\dontrun{
+init_vertical_project()
+}
+
+
 }

@@ -18,3 +18,8 @@ A wrapper to usethis::use_data(), usethis::use_r(), and sinew::makeOxygen()
 \details{
 document_data() is a helper function for quickly adding an existing dataframe to an R package. For example, if mydf was an existing data frame, document_data(mydf) would create the data folder (if it doesn't exist), add mydf.rda to the data folder, add mydf.R to the R folder with a roxygen skeleton for documenting the data, and open mydf.R for editing.
 }
+\examples{
+\dontrun{
+document_data(mydf)
+}
+}

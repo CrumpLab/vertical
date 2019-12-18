@@ -4,7 +4,7 @@
 \alias{init_supplemental}
 \title{Initialize supplemental materials}
 \usage{
-init_supplemental()
+init_supplemental(prjct_name = NULL)
 }
 \description{
 Initialize Rmarkdown SOM in the appropriate location of a vertical project

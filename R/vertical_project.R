@@ -39,8 +39,10 @@ vertical_project <- function(path, ...) {
   if (dots$init_exp) init_jspsych()
 }
 
-#' Initialize a vertical project inside an existing R project
+#' Initialize a vertical project from command line
 #'
+#' @param project_name character, name of new vertical project, default is project_name = NULL, for initializing inside an existing empty R studio project
+#' @param project_path character, path where new project should be created, default is project_path = NULL for initializing inside an existing empty R studio project
 #' @param init_git logical, enables git, init_git=TRUE by default
 #' @param init_ms logical, enables manuscript with papaja, init_ms=TRUE by default
 #' @param init_som logical, enables supplementary with vignettes, init_som=TRUE by default
@@ -48,19 +50,36 @@ vertical_project <- function(path, ...) {
 #' @param init_poster logical, enables posters with posterdown, init_poster=TRUE by default
 #' @param init_exp logical, enables experiments with jspsych, init_exp=TRUE by default
 #'
-#' @return files, a vertical project template inside an existing R project
-#' @description If you are working inside an existing R project, typically an empty one, or perhaps a project in RStudio cloud, use this function to initialize a vertical project inside the existing project. The name of the existing project (e.g., the parent folder name) must be a valid R package name (numbers, letters, and periods, but no periods at the end, and no spaces, dashes, or underscores).
-#' @export
+#' @return files, a vertical project template inside an existing or new R Studio project
+#' @description Initiliazing a vertical project inside an existing project: The name of the existing project (e.g., the project folder name) must be a valid R package name (numbers, letters, and periods, but no periods at the end, and no spaces, dashes, or underscores). It is not necessary to supply project_name or project_path, they default to the current existing project.
 #'
-init_vertical_project <- function(init_git = TRUE,
+#' Initializing a vertical project as a new project: provide a name and path, and a new vertical project will be set up in an R studio project.
+#'
+#' @export
+#' @examples
+#' \dontrun{
+#' init_vertical_project()
+#' }
+#'
+#'
+init_vertical_project <- function(project_name = NULL,
+                                  project_path = NULL,
+                                  init_git = TRUE,
                                   init_ms = TRUE,
                                   init_som = TRUE,
                                   init_slides = TRUE,
                                   init_poster = TRUE,
                                   init_exp = TRUE) {
-  path <- getwd()
+
+  if(is.null(project_path)==FALSE) {
+    path <- file.path(project_path,project_name)
+  } else{
+    path <- getwd()
+  }
+
   # This is a package
   usethis::create_package(path, open = FALSE)
+  usethis::proj_set(path)
   # setwd(paste0(getwd(), "/", path)) # [TODO] improve this hack
 
   # Git?
@@ -70,15 +89,19 @@ init_vertical_project <- function(init_git = TRUE,
   }
 
   # pkgdown template
-  vertical_pkgdown <- system.file("vertical/_pkgdown.yml", package = "vertical")
-  file.copy(vertical_pkgdown, "_pkgdown.yml")
+  #vertical_pkgdown <- system.file("vertical/_pkgdown.yml", package = "vertical")
+  #file.copy(vertical_pkgdown, "_pkgdown.yml")
+  usethis::use_template(template = "_pkgdown.yml",
+                        package = "vertical")
 
   usethis::use_data_raw(open = FALSE)
+  if(is.null(project_path)==FALSE) setwd(path)
   if (init_ms) init_papaja()
-  if (init_som) init_supplemental()
+  if (init_som) init_supplemental(prjct_name = project_name)
   if (init_slides) init_slides()
   if (init_poster) init_poster()
   if (init_exp) init_jspsych()
+  if(is.null(project_path)==FALSE) usethis::proj_activate(path)
 }
 
 #' Initialize manuscript
@@ -319,6 +342,9 @@ build_vertical <- function(clean=TRUE,update_yml=TRUE,...) {
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' document_data(mydf)
+#' }
 document_data <- function(...){
   usethis::use_data(...)
   data_name <- deparse(substitute(...))
