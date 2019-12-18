@@ -70,10 +70,8 @@ init_vertical_project <- function(init_git = TRUE,
   }
 
   # pkgdown template
-  #vertical_pkgdown <- system.file("vertical/_pkgdown.yml", package = "vertical")
-  #file.copy(vertical_pkgdown, "_pkgdown.yml")
-  usethis::use_template(template = "_pkgdown.yml",
-                        package = "vertical")
+  vertical_pkgdown <- system.file("vertical/_pkgdown.yml", package = "vertical")
+  file.copy(vertical_pkgdown, "_pkgdown.yml")
 
   usethis::use_data_raw(open = FALSE)
   if (init_ms) init_papaja()
