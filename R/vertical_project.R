@@ -482,6 +482,6 @@ document_data <- function(...){
   data_name <- deparse(substitute(...))
   usethis::use_r(data_name)
   switch(menu(c("Yes, add new Roxygen skeleton", "No, show me the file"), title="Overwrite existing .R file?"),
-         cat(sinew::makeOxygen(...),file="R/mydf.R",sep="\n"),2
+         cat(sinew::makeOxygen(...),file=paste0(file.path("R",data_name),".R"),sep="\n"),2
   )
 }
