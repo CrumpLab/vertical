@@ -30,3 +30,8 @@ navbar:
       text: source code
       icon: fa-lg fa-github
       href: https://github.com/CrumpLab/vertical
+    articles:
+      text: Articles
+      menu:
+      - text: Preprint
+        href: https://mvuorre.github.io/rparp/index.html
