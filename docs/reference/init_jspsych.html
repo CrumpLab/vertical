@@ -41,7 +41,7 @@
 
 <meta property="og:title" content="Initialize jsPsych experiment — init_jspsych" />
 
-<meta property="og:description" content="Initialize a jsPsych experiment in the appropriate location of a vertical project" />
+<meta property="og:description" content="Initialize a jsPsych experiment in the experiments folder of a vertical project" />
 
 <meta property="og:image" content="https://crumplab.github.io/vertical/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -85,7 +85,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vertical</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9100</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9300</span>
       </span>
     </div>
 
@@ -148,18 +148,31 @@
 
     <div class="ref-description">
     
-    <p>Initialize a jsPsych experiment in the appropriate location of a vertical project</p>
+    <p>Initialize a jsPsych experiment in the <code>experiments</code> folder of a vertical project</p>
     
     </div>
 
     <pre class="usage"><span class='fu'>init_jspsych</span>()</pre>
         
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This function does the following:</p><ol>
+<li><p>creates the <code>experiments</code> folder</p></li>
+<li><p>Downloads the most recent `jspsych`` library from <a href='https://github.com/jspsych/jsPsych/releases'>https://github.com/jspsych/jsPsych/releases</a></p></li>
+<li><p>Adds a <code>jspsychr</code> template (Experiment_1), which is an example of using R Studio and R Markdown to author a <code>jspsych</code> experiment</p></li>
+</ol>
+
+<p>See the <a href='https://www.jspsych.org'>jspsych documentation</a> for more information about using jspsych to build behavioral experiments for the web.</p>
+<p>See the <a href='https://crumplab.github.io/jspsychr/'>jspsychr documentation</a> for more information about using R Markdown to write <code>jspsych</code> experiments.</p>
+    
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-                </ul>
+      
+      <li><a href="#details">Details</a></li>
+          </ul>
 
   </div>
 </div>

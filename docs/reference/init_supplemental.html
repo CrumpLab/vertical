@@ -41,7 +41,7 @@
 
 <meta property="og:title" content="Initialize supplemental materials — init_supplemental" />
 
-<meta property="og:description" content="Initialize Rmarkdown SOM in the appropriate location of a vertical project" />
+<meta property="og:description" content="Initialize R Markdown SOM in the vignettes of a vertical project." />
 
 <meta property="og:image" content="https://crumplab.github.io/vertical/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -85,7 +85,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vertical</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9100</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9300</span>
       </span>
     </div>
 
@@ -148,18 +148,28 @@
 
     <div class="ref-description">
     
-    <p>Initialize Rmarkdown SOM in the appropriate location of a vertical project</p>
+    <p>Initialize R Markdown SOM in the <code>vignettes</code> of a vertical project.</p>
     
     </div>
 
     <pre class="usage"><span class='fu'>init_supplemental</span>(<span class='kw'>prjct_name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
         
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>A wrapper to <code>usethis</code> for creating a <code>vignettes</code> folder, and adding an example .Rmd. This function is used during vertical project creation. Once a vertical project is established, we suggest a <code>usethis</code> approach to adding articles to vignettes. The <code>usethis</code> approach creates a new .Rmd in <code>vignettes</code>, you define the name and title, and the new file is opened for editing.</p><pre>usethis::use_article(name, title = name)
+usethis::use_article("Supplementary_2", title = "Blah blah blah")
+</pre>
+
+<p>See <a href='https://usethis.r-lib.org/reference/use_vignette.html'>usethis documentation</a> for more information.</p>
+    
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-                </ul>
+      
+      <li><a href="#details">Details</a></li>
+          </ul>
 
   </div>
 </div>

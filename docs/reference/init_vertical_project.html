@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Initialize a vertical project from command line — init_vertical_project • vertical</title>
+<title>Initialize vertical project from command line — init_vertical_project • vertical</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -39,16 +39,9 @@
 
 
 
-<meta property="og:title" content="Initialize a vertical project from command line — init_vertical_project" />
+<meta property="og:title" content="Initialize vertical project from command line — init_vertical_project" />
 
-<meta property="og:description" content="Initializing a vertical project inside an existing project: The name of the existing project (e.g., the project folder name) must be a valid R package name (numbers, letters, and periods, but no periods at the end, and no spaces, dashes, or underscores). It is not necessary to supply project_name or project_path, they default to the current existing project.init_vertical_project()
-
-
-Initializing a vertical project as a new project: provide a name and path, and a new vertical project will be set up in an R studio project. For example, the following will create the folder ~Desktop/yourname/, initialize a vertical project template in that folder, and open a new RStudio session with the new project loaded.init_vertical_project(project_name = &quot;yourname&quot;,
-                      project_path = &quot;~/Desktop/&quot;
-             )
-
-" />
+<meta property="og:description" content="Initialize vertical project from command line" />
 
 <meta property="og:image" content="https://crumplab.github.io/vertical/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -92,7 +85,7 @@ Initializing a vertical project as a new project: provide a name and path, and a
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vertical</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9100</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9300</span>
       </span>
     </div>
 
@@ -148,21 +141,14 @@ Initializing a vertical project as a new project: provide a name and path, and a
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Initialize a vertical project from command line</h1>
+    <h1>Initialize vertical project from command line</h1>
     <small class="dont-index">Source: <a href='https://github.com/CrumpLab/vertical/blob/master/R/vertical_project.R'><code>R/vertical_project.R</code></a></small>
     <div class="hidden name"><code>init_vertical_project.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p><strong>Initializing a vertical project inside an existing project</strong>: The name of the existing project (e.g., the project folder name) must be a valid R package name (numbers, letters, and periods, but no periods at the end, and no spaces, dashes, or underscores). It is not necessary to supply project_name or project_path, they default to the current existing project.</p><pre>init_vertical_project()
-</pre>
-
-<p><strong>Initializing a vertical project as a new project</strong>: provide a name and path, and a new vertical project will be set up in an R studio project. For example, the following will create the folder <code>~Desktop/yourname/</code>, initialize a vertical project template in that folder, and open a new RStudio session with the new project loaded.</p><pre>init_vertical_project(project_name = "yourname",
-                      project_path = "~/Desktop/"
-             )
-</pre>
-
+    <p>Initialize vertical project from command line</p>
     
     </div>
 
@@ -216,7 +202,19 @@ Initializing a vertical project as a new project: provide a name and path, and a
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>files, a vertical project template inside an existing or new R Studio project</p>
+    <p><strong>files</strong>, a vertical project template inside an existing or new R Studio project</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p><strong>Initializing a vertical project inside an existing project</strong>:</p><pre>init_vertical_project()
+</pre>
+
+<p>The name of the existing project (e.g., the project folder name) must be a valid R package name (numbers, letters, and periods, but no periods at the end, and no spaces, dashes, or underscores). It is not necessary to supply project_name or project_path, they default to the current existing project.</p>
+<p><strong>Initializing a vertical project as a new project</strong>:</p><pre>init_vertical_project(project_name = "yourname",
+                      project_path = "~/Desktop/")
+</pre>
+
+<p>Provide a name and path to set up a new vertical project as an R studio project. For example, the above creates the folder <code>~Desktop/yourname/</code>, creates the vertical project template in that folder, and opens a new RStudio session with the new project loaded. Make sure <code>yourname</code> is valid R package name.</p>
     
 
   </div>
@@ -226,6 +224,8 @@ Initializing a vertical project as a new project: provide a name and path, and a
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
           </ul>
 
   </div>

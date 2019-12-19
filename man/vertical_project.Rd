@@ -2,7 +2,7 @@
 % Please edit documentation in R/vertical_project.R
 \name{vertical_project}
 \alias{vertical_project}
-\title{Initialize a \strong{vertical} project as RStudio project template}
+\title{Initialize \strong{vertical} project from RStudio project template}
 \usage{
 vertical_project(path, ...)
 }
@@ -12,5 +12,8 @@ vertical_project(path, ...)
 \item{...}{Not used.}
 }
 \description{
-This function is called when a \strong{vertical} R project is created from the RStudio new project template. This function is not intended for use in the console.
+\strong{NOT for use in the console}
+}
+\details{
+\code{vertical_project()} is triggered by loading a new vertical project template from RStudio, and is a wrapper function to create a vertical project structure in the new project folder. The inputs  to this function are selections from the new project template window. Checkbox option for the template are defined in \code{inst/rstudio/templates/project/vertical_project.dcf}.
 }

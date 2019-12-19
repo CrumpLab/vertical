@@ -7,5 +7,8 @@
 init_poster()
 }
 \description{
-Initialize Rmarkdown posters in the appropriate location of a vertical project
+Initialize R Markdown \code{posterdown} template in \code{posters} folder of a vertical project
+}
+\details{
+Run on initialization, and can be run from the console to include a posters folder and poster template at a later time. See the \href{https://github.com/brentthorne/posterdown}{posterdown documentation} for more information. Note that \code{vertical} loads one of the three possible \code{posterdown} templates.
 }

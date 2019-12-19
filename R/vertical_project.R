@@ -1,6 +1,9 @@
-#' Initialize a **vertical** project as RStudio project template
+#' Initialize **vertical** project from RStudio project template
 #'
-#' This function is called when a **vertical** R project is created from the RStudio new project template. This function is not intended for use in the console.
+#' **NOT for use in the console**
+#'
+#' `vertical_project()` is triggered by loading a new vertical project template from RStudio, and is a wrapper function to create a vertical project structure in the new project folder. The inputs  to this function are selections from the new project template window. Checkbox option for the template are defined in `inst/rstudio/templates/project/vertical_project.dcf`.
+#'
 #'
 #' @param path Where to create the project. This must be a valid R package name.
 #' @param ...  Not used.
@@ -16,8 +19,8 @@ vertical_project <- function(path, ...) {
   # This is a package
   usethis::create_package(path, open = FALSE)
   usethis::proj_set(path)
-  #setwd(paste0(getwd(), "/", path)) # [TODO] improve this hack
-  setwd(path)
+  setwd(path) # [TODO] improve this hack
+
 
   # Git?
   if (dots$init_git) {
@@ -26,11 +29,10 @@ vertical_project <- function(path, ...) {
   }
 
   # pkgdown template
-  #vertical_pkgdown <- system.file("vertical/_pkgdown.yml", package = "vertical")
-  #file.copy(vertical_pkgdown, "_pkgdown.yml")
   usethis::use_template(template = "_pkgdown.yml",
                         package = "vertical")
 
+  # additional content modules
   usethis::use_data_raw(open = FALSE)
   if (dots$init_ms) init_papaja()
   if (dots$init_som) init_supplemental(prjct_name = p_name)
@@ -39,19 +41,7 @@ vertical_project <- function(path, ...) {
   if (dots$init_exp) init_jspsych()
 }
 
-#' Initialize a vertical project from command line
-#'
-#' @description **Initializing a vertical project inside an existing project**: The name of the existing project (e.g., the project folder name) must be a valid R package name (numbers, letters, and periods, but no periods at the end, and no spaces, dashes, or underscores). It is not necessary to supply project_name or project_path, they default to the current existing project.
-#' ```
-#' init_vertical_project()
-#' ```
-#'
-#' **Initializing a vertical project as a new project**: provide a name and path, and a new vertical project will be set up in an R studio project. For example, the following will create the folder `~Desktop/yourname/`, initialize a vertical project template in that folder, and open a new RStudio session with the new project loaded.
-#' ```
-#' init_vertical_project(project_name = "yourname",
-#'                       project_path = "~/Desktop/"
-#'              )
-#' ```
+#' Initialize vertical project from command line
 #'
 #' @param project_name character, name of new vertical project, default is project_name = NULL, for initializing inside an existing empty R studio project
 #' @param project_path character, path where new project should be created, default is project_path = NULL for initializing inside an existing empty R studio project
@@ -62,7 +52,22 @@ vertical_project <- function(path, ...) {
 #' @param init_poster logical, enables posters with posterdown, init_poster=TRUE by default
 #' @param init_exp logical, enables experiments with jspsych, init_exp=TRUE by default
 #'
-#' @return files, a vertical project template inside an existing or new R Studio project
+#' @return **files**, a vertical project template inside an existing or new R Studio project
+#'
+#' @details
+#' **Initializing a vertical project inside an existing project**:
+#' ```
+#' init_vertical_project()
+#' ```
+#' The name of the existing project (e.g., the project folder name) must be a valid R package name (numbers, letters, and periods, but no periods at the end, and no spaces, dashes, or underscores). It is not necessary to supply project_name or project_path, they default to the current existing project.
+#'
+#'
+#' **Initializing a vertical project as a new project**:
+#' ```
+#' init_vertical_project(project_name = "yourname",
+#'                       project_path = "~/Desktop/")
+#' ```
+#' Provide a name and path to set up a new vertical project as an R studio project. For example, the above creates the folder `~Desktop/yourname/`, creates the vertical project template in that folder, and opens a new RStudio session with the new project loaded. Make sure `yourname` is valid R package name.
 #'
 #' @export
 init_vertical_project <- function(project_name = NULL,
@@ -109,7 +114,11 @@ init_vertical_project <- function(project_name = NULL,
 
 #' Initialize manuscript
 #'
-#' Initialize Rmarkdown APA manuscript in the appropriate location of a vertical project
+#' Initialize `papaja` R Markdown APA manuscript in the `manuscript` folder.
+#'
+#' Run this function to add a `papaja` manuscript component to a vertical project at a later time (assuming it wasn't created by `vertical_project()` or `init_vertical_project()` during initialization.)
+#'
+#' See the [papaja documentation](https://crsh.github.io/papaja_man/) for more information.
 #'
 #' @export
 init_papaja <- function() {
@@ -125,7 +134,14 @@ init_papaja <- function() {
 
 #' Initialize supplemental materials
 #'
-#' Initialize Rmarkdown SOM in the appropriate location of a vertical project
+#' Initialize R Markdown SOM in the `vignettes` of a vertical project.
+#'
+#' A wrapper to `usethis` for creating a `vignettes` folder, and adding an example .Rmd. This function is used during vertical project creation. Once a vertical project is established, we suggest a `usethis` approach to adding articles to vignettes. The `usethis` approach creates a new .Rmd in `vignettes`, you define the name and title, and the new file is opened for editing.
+#' ```
+#' usethis::use_article(name, title = name)
+#' usethis::use_article("Supplementary_2", title = "Blah blah blah")
+#' ```
+#' See [usethis documentation](https://usethis.r-lib.org/reference/use_vignette.html) for more information.
 #'
 #' @export
 init_supplemental <- function(prjct_name=NULL) {
@@ -147,7 +163,9 @@ init_supplemental <- function(prjct_name=NULL) {
 
 #' Initialize slides
 #'
-#' Initialize Rmarkdown slides in the appropriate location of a vertical project
+#' Initialize slidy R Markdown template in slides folder of a vertical project
+#'
+#' Run on initialization, and can be run from the console to include a slides folder and slidy template at a later time. See the [slidy documentation](https://bookdown.org/yihui/rmarkdown/slidy-presentation.html) for additional information. There are other R markdown slide templates not suggested by vertical, but that are very good alternatives (e.g., `xaringan`). Simply add your template of choice to the slides folder.
 #'
 #' @export
 init_slides <- function() {
@@ -163,7 +181,9 @@ init_slides <- function() {
 
 #' Initialize posters
 #'
-#' Initialize Rmarkdown posters in the appropriate location of a vertical project
+#' Initialize R Markdown `posterdown` template in `posters` folder of a vertical project
+#'
+#' Run on initialization, and can be run from the console to include a posters folder and poster template at a later time. See the [posterdown documentation](https://github.com/brentthorne/posterdown) for more information. Note that `vertical` loads one of the three possible `posterdown` templates.
 #'
 #' @export
 init_poster <- function() {
@@ -179,12 +199,20 @@ init_poster <- function() {
 
 #' Initialize jsPsych experiment
 #'
-#' Initialize a jsPsych experiment in the appropriate location of a vertical project
+#' Initialize a jsPsych experiment in the `experiments` folder of a vertical project
+#'
+#' This function does the following:
+#' 1. creates the `experiments` folder
+#' 2. Downloads the most recent `jspsych`` library from <https://github.com/jspsych/jsPsych/releases>
+#' 3. Adds a `jspsychr` template (Experiment_1), which is an example of using R Studio and R Markdown to author a `jspsych` experiment
+#'
+#' See the [jspsych documentation](https://www.jspsych.org) for more information about using jspsych to build behavioral experiments for the web.
+#'
+#' See the [jspsychr documentation](https://crumplab.github.io/jspsychr/) for more information about using R Markdown to write `jspsych` experiments.
 #'
 #' @export
 init_jspsych <- function() {
   usethis::use_directory("experiments", ignore = TRUE)
-  usethis::use_directory("experiments/experiment-1")
   # Get latest jsPsych version download link
   ver <- basename(httr::GET("https://github.com/jspsych/jsPsych/releases/latest")$url)
   loc_from <- paste0(
@@ -198,11 +226,20 @@ init_jspsych <- function() {
   unlink(loc_to)
   # Suggest deleting unnecessary large folder
   message(paste0("Consider removing ", sub(".zip", "", loc_to), "/examples"))
-  vertical_jspsych <- system.file("vertical/experiment.html", package = "vertical")
-  file.copy(vertical_jspsych, "experiments/experiment-1/index.html")
+
+  # add jspsychr template example
+  rmarkdown::draft(
+    file = "experiments/Experiment_1.Rmd",
+    template = "jspsychr",
+    package = "jspsychr",
+    edit = FALSE,
+    create_dir = TRUE
+  )
 }
 
 #' Update _pkgdown.yml for Rmds in vertical folders
+#'
+#' Write yml for the website navigation bar; run automatically by `build_vertical()`.
 #'
 #' @param vertical_folder character, name of a vertical folder, e.g., "vignettes"
 #' @param docs_folder character, name of folder in docs, e.g., "articles"
@@ -211,7 +248,11 @@ init_jspsych <- function() {
 #'
 #' @return file, an updated _pkgdown.yml file
 #'
-#' @description This function scrapes a folder and all sub-folders for R markdown documents, and then updates the a designated yml component in `_pkgdown.yml` with a new list of items. The list of items in shown in the component's tab on the website, and the title of the tab is set to `tab_title`. In the tab, the titles of each .rmd in the main folder are added; then, for each sub-folder the sub-folder name is added (as a text seperator in the tab), followed by the titles for each .rmd in the sub-folder. This function is run automatically by `build_vertical()`.
+#' @details `update_yml()` is a helper function for adding vertical content to the website navigation bar by upating `_pkgdown.yml`.
+#'
+#' Specifically, the titles of .Rmds in  `vertical_folder` and its subfolders are listed under the associated navbar component in `_pkgdown.yml`. If subfolders exist, then the name of the subfolder is used as a section header in the list. The sections and titles are shown in the dropdown navigation tab on the website.
+#'
+#' `_pkgdown.yml` can be further modified by hand to achieve various customizations to the website. See the [pkgdown documentation](https://pkgdown.r-lib.org/reference/build_site.html) for additional information.
 #'
 #' @export
 #'
@@ -282,7 +323,7 @@ update_yml <- function(vertical_folder,
 
 #' Build vertical project
 #'
-#' @description Build the website associated with a vertical project. This is mostly a wrapper to `pkgdown::build_site()`, but extended to render content from vertical folders.
+#' Build the website associated with a vertical project. This is mostly a wrapper to `pkgdown::build_site()`, but extended to render content from vertical folders.
 #'
 #' @param clean logical, when clean=TRUE (the default), the `docs` folder is cleaned (e.g., completely wiped) using `pkgdown::clean_site()`, otherwise when clean=FALSE `clean_site()` will not be run.
 #' @param update_yml logical, update_yml=TRUE is the default, updates yml components in `_pkgdown.yml` to list all .Rmds in folders and subfolders of vertical components (manuscript, posters, slides, vignettes) in associated navigation bar tabs on the website.

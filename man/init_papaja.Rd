@@ -7,5 +7,10 @@
 init_papaja()
 }
 \description{
-Initialize Rmarkdown APA manuscript in the appropriate location of a vertical project
+Initialize \code{papaja} R Markdown APA manuscript in the \code{manuscript} folder.
+}
+\details{
+Run this function to add a \code{papaja} manuscript component to a vertical project at a later time (assuming it wasn't created by \code{vertical_project()} or \code{init_vertical_project()} during initialization.)
+
+See the \href{https://crsh.github.io/papaja_man/}{papaja documentation} for more information.
 }

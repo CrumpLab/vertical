@@ -2,7 +2,7 @@
 % Please edit documentation in R/vertical_project.R
 \name{init_vertical_project}
 \alias{init_vertical_project}
-\title{Initialize a vertical project from command line}
+\title{Initialize vertical project from command line}
 \usage{
 init_vertical_project(
   project_name = NULL,
@@ -33,14 +33,20 @@ init_vertical_project(
 \item{init_exp}{logical, enables experiments with jspsych, init_exp=TRUE by default}
 }
 \value{
-files, a vertical project template inside an existing or new R Studio project
+\strong{files}, a vertical project template inside an existing or new R Studio project
 }
 \description{
-\strong{Initializing a vertical project inside an existing project}: The name of the existing project (e.g., the project folder name) must be a valid R package name (numbers, letters, and periods, but no periods at the end, and no spaces, dashes, or underscores). It is not necessary to supply project_name or project_path, they default to the current existing project.\preformatted{init_vertical_project()
+Initialize vertical project from command line
+}
+\details{
+\strong{Initializing a vertical project inside an existing project}:\preformatted{init_vertical_project()
 }
 
-\strong{Initializing a vertical project as a new project}: provide a name and path, and a new vertical project will be set up in an R studio project. For example, the following will create the folder \verb{~Desktop/yourname/}, initialize a vertical project template in that folder, and open a new RStudio session with the new project loaded.\preformatted{init_vertical_project(project_name = "yourname",
-                      project_path = "~/Desktop/"
-             )
+The name of the existing project (e.g., the project folder name) must be a valid R package name (numbers, letters, and periods, but no periods at the end, and no spaces, dashes, or underscores). It is not necessary to supply project_name or project_path, they default to the current existing project.
+
+\strong{Initializing a vertical project as a new project}:\preformatted{init_vertical_project(project_name = "yourname",
+                      project_path = "~/Desktop/")
 }
+
+Provide a name and path to set up a new vertical project as an R studio project. For example, the above creates the folder \verb{~Desktop/yourname/}, creates the vertical project template in that folder, and opens a new RStudio session with the new project loaded. Make sure \code{yourname} is valid R package name.
 }

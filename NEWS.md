@@ -1,3 +1,10 @@
+# vertical 0.0.0.9300
+
+* improved documentation, added markdown support
+* `init_vertical_project()` can be used to initialize a vertical project from the command line, both within an existing project, or to create new one
+* added link to rparp preprint
+* fixed `init_supplemental()` bug
+
 # vertical 0.0.0.9200
 
 * added init functions to add individual vertical components to a vertical project from the console

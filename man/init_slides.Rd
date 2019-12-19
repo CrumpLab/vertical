@@ -7,5 +7,8 @@
 init_slides()
 }
 \description{
-Initialize Rmarkdown slides in the appropriate location of a vertical project
+Initialize slidy R Markdown template in slides folder of a vertical project
+}
+\details{
+Run on initialization, and can be run from the console to include a slides folder and slidy template at a later time. See the \href{https://bookdown.org/yihui/rmarkdown/slidy-presentation.html}{slidy documentation} for additional information. There are other R markdown slide templates not suggested by vertical, but that are very good alternatives (e.g., \code{xaringan}). Simply add your template of choice to the slides folder.
 }

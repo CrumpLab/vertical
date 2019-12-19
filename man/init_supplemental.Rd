@@ -7,5 +7,12 @@
 init_supplemental(prjct_name = NULL)
 }
 \description{
-Initialize Rmarkdown SOM in the appropriate location of a vertical project
+Initialize R Markdown SOM in the \code{vignettes} of a vertical project.
+}
+\details{
+A wrapper to \code{usethis} for creating a \code{vignettes} folder, and adding an example .Rmd. This function is used during vertical project creation. Once a vertical project is established, we suggest a \code{usethis} approach to adding articles to vignettes. The \code{usethis} approach creates a new .Rmd in \code{vignettes}, you define the name and title, and the new file is opened for editing.\preformatted{usethis::use_article(name, title = name)
+usethis::use_article("Supplementary_2", title = "Blah blah blah")
+}
+
+See \href{https://usethis.r-lib.org/reference/use_vignette.html}{usethis documentation} for more information.
 }

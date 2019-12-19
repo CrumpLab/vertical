@@ -19,5 +19,12 @@ update_yml(vertical_folder, docs_folder, yml_component, tab_title)
 file, an updated _pkgdown.yml file
 }
 \description{
-This function scrapes a folder and all sub-folders for R markdown documents, and then updates the a designated yml component in \verb{_pkgdown.yml} with a new list of items. The list of items in shown in the component's tab on the website, and the title of the tab is set to \code{tab_title}. In the tab, the titles of each .rmd in the main folder are added; then, for each sub-folder the sub-folder name is added (as a text seperator in the tab), followed by the titles for each .rmd in the sub-folder. This function is run automatically by \code{build_vertical()}.
+Write yml for the website navigation bar; run automatically by \code{build_vertical()}.
+}
+\details{
+\code{update_yml()} is a helper function for adding vertical content to the website navigation bar by upating \verb{_pkgdown.yml}.
+
+Specifically, the titles of .Rmds in  \code{vertical_folder} and its subfolders are listed under the associated navbar component in \verb{_pkgdown.yml}. If subfolders exist, then the name of the subfolder is used as a section header in the list. The sections and titles are shown in the dropdown navigation tab on the website.
+
+\verb{_pkgdown.yml} can be further modified by hand to achieve various customizations to the website. See the \href{https://pkgdown.r-lib.org/reference/build_site.html}{pkgdown documentation} for additional information.
 }

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Initialize a <strong>vertical</strong> project as RStudio project template — vertical_project • vertical</title>
+<title>Initialize <strong>vertical</strong> project from RStudio project template — vertical_project • vertical</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -39,9 +39,9 @@
 
 
 
-<meta property="og:title" content="Initialize a <strong>vertical</strong> project as RStudio project template — vertical_project" />
+<meta property="og:title" content="Initialize <strong>vertical</strong> project from RStudio project template — vertical_project" />
 
-<meta property="og:description" content="This function is called when a vertical R project is created from the RStudio new project template. This function is not intended for use in the console." />
+<meta property="og:description" content="NOT for use in the console" />
 
 <meta property="og:image" content="https://crumplab.github.io/vertical/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -85,7 +85,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vertical</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9100</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9300</span>
       </span>
     </div>
 
@@ -141,14 +141,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Initialize a <strong>vertical</strong> project as RStudio project template</h1>
+    <h1>Initialize <strong>vertical</strong> project from RStudio project template</h1>
     <small class="dont-index">Source: <a href='https://github.com/CrumpLab/vertical/blob/master/R/vertical_project.R'><code>R/vertical_project.R</code></a></small>
     <div class="hidden name"><code>vertical_project.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>This function is called when a <strong>vertical</strong> R project is created from the RStudio new project template. This function is not intended for use in the console.</p>
+    <p><strong>NOT for use in the console</strong></p>
     
     </div>
 
@@ -167,13 +167,19 @@
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p><code>vertical_project()</code> is triggered by loading a new vertical project template from RStudio, and is a wrapper function to create a vertical project structure in the new project folder. The inputs  to this function are selections from the new project template window. Checkbox option for the template are defined in <code>inst/rstudio/templates/project/vertical_project.dcf</code>.</p>
+    
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#details">Details</a></li>
+          </ul>
 
   </div>
 </div>
