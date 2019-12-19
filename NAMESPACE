@@ -3,6 +3,7 @@
 export(build_vertical)
 export(document_data)
 export(init_jspsych)
+export(init_jspsychr)
 export(init_papaja)
 export(init_poster)
 export(init_slides)

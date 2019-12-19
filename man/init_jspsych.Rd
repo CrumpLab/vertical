@@ -14,10 +14,8 @@ This function does the following:
 \enumerate{
 \item creates the \code{experiments} folder
 \item Downloads the most recent `jspsych`` library from \url{https://github.com/jspsych/jsPsych/releases}
-\item Adds a \code{jspsychr} template (Experiment_1), which is an example of using R Studio and R Markdown to author a \code{jspsych} experiment
+\item Adds a minimal \verb{jspsych`` example experiment to }experiments/experiment-1/`
 }
 
 See the \href{https://www.jspsych.org}{jspsych documentation} for more information about using jspsych to build behavioral experiments for the web.
-
-See the \href{https://crumplab.github.io/jspsychr/}{jspsychr documentation} for more information about using R Markdown to write \code{jspsych} experiments.
 }

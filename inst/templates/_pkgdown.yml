@@ -40,7 +40,7 @@ navbar:
       text: Experiments
       menu:
       - text: Experiment 1
-        href: experiments/Experiment_1/experiment/index.html
+        href: experiments/Experiment-1/experiment.html
     reference:
       text: Functions
       href: reference/index.html

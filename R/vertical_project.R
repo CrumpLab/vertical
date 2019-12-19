@@ -286,15 +286,14 @@ init_poster <- function() {
 #' This function does the following:
 #' 1. creates the `experiments` folder
 #' 2. Downloads the most recent `jspsych`` library from <https://github.com/jspsych/jsPsych/releases>
-#' 3. Adds a `jspsychr` template (Experiment_1), which is an example of using R Studio and R Markdown to author a `jspsych` experiment
+#' 3. Adds a minimal `jspsych`` example experiment to `experiments/experiment-1/`
 #'
 #' See the [jspsych documentation](https://www.jspsych.org) for more information about using jspsych to build behavioral experiments for the web.
-#'
-#' See the [jspsychr documentation](https://crumplab.github.io/jspsychr/) for more information about using R Markdown to write `jspsych` experiments.
 #'
 #' @export
 init_jspsych <- function() {
   usethis::use_directory("experiments", ignore = TRUE)
+  usethis::use_directory("experiments/experiment-1")
   # Get latest jsPsych version download link
   ver <- basename(httr::GET("https://github.com/jspsych/jsPsych/releases/latest")$url)
   loc_from <- paste0(
@@ -308,7 +307,26 @@ init_jspsych <- function() {
   unlink(loc_to)
   # Suggest deleting unnecessary large folder
   message(paste0("Consider removing ", sub(".zip", "", loc_to), "/examples"))
+  usethis::use_template(template = "experiment.html",
+                        save_as = "experiments/experiment-1/experiment.html",
+                        package = "vertical")
+}
 
+#' Initialize jspsychr experiment
+#'
+#' Initialize a jspsychr template in the `experiments` folder of a vertical project
+#'
+#' This function does the following:
+#' 1. creates the `experiments` folder
+#' 2. Adds a `jspsychr` template (Experiment_1), which is an example of using R Studio and R Markdown to author a `jspsych` experiment
+#'
+#' See the [jspsych documentation](https://www.jspsych.org) for more information about using jspsych to build behavioral experiments for the web.
+#'
+#' See the [jspsychr documentation](https://crumplab.github.io/jspsychr/) for more information about using R Markdown to write `jspsych` experiments.
+#'
+#' @export
+init_jspsychr <- function(){
+  usethis::use_directory("experiments", ignore = TRUE)
   # add jspsychr template example
   rmarkdown::draft(
     file = "experiments/Experiment_1.Rmd",
