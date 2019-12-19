@@ -85,7 +85,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vertical</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9300</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9400</span>
       </span>
     </div>
 
@@ -152,7 +152,7 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>build_vertical</span>(<span class='kw'>clean</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>update_yml</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>build_vertical</span>(<span class='kw'>clean</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>update_yml</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -163,7 +163,7 @@
     </tr>
     <tr>
       <th>update_yml</th>
-      <td><p>logical, update_yml=TRUE is the default, updates yml components in <code>_pkgdown.yml</code> to list all .Rmds in folders and subfolders of vertical components (manuscript, posters, slides, vignettes) in associated navigation bar tabs on the website.</p></td>
+      <td><p>logical, update_yml=FALSE is the default so existing yml <strong>is not overwritten</strong>, updates yml components in <code>_pkgdown.yml</code> to list all .Rmds in folders and subfolders of vertical components (manuscript, posters, slides, vignettes) in associated navigation bar tabs on the website. Set to TRUE to overwrite.</p></td>
     </tr>
     <tr>
       <th>...</th>

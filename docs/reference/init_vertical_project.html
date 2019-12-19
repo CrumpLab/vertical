@@ -41,7 +41,7 @@
 
 <meta property="og:title" content="Initialize vertical project from command line — init_vertical_project" />
 
-<meta property="og:description" content="Initialize vertical project from command line" />
+<meta property="og:description" content="Use vertical::init_vertical_project() to initialize a vertical project from the command line." />
 
 <meta property="og:image" content="https://crumplab.github.io/vertical/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -85,7 +85,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vertical</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9300</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9400</span>
       </span>
     </div>
 
@@ -148,19 +148,19 @@
 
     <div class="ref-description">
     
-    <p>Initialize vertical project from command line</p>
+    <p>Use <code>vertical::init_vertical_project()</code> to initialize a vertical project from the command line.</p>
     
     </div>
 
     <pre class="usage"><span class='fu'>init_vertical_project</span>(
   <span class='kw'>project_name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>project_path</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>init_git</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>init_ms</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>init_som</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>init_slides</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>init_poster</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>init_exp</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+  <span class='kw'>init_git</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>init_ms</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>init_som</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>init_slides</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>init_poster</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>init_exp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
 )</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -206,15 +206,25 @@
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p><strong>Initializing a vertical project inside an existing project</strong>:</p><pre>init_vertical_project()
+    <p><strong>Interactive: Get asked what you want to do</strong></p><pre>vertical::init_vertical_project()
+</pre>
+
+<p>This opens a dialogue in the console. You choose whether to make a brand new RStudio project, or to initialize vertical in an existing project that you are already working. Follow the prompts and choose which vertical modules to load.</p>
+<p><strong>Scripted: Do what you want to do</strong></p>
+<p>If any input parameters are specified, then initialization is done directly without a dialogue.</p>
+<p><strong>Initializing a vertical project inside an existing project</strong>:
+It is not necessary to name the project, because a named project should already be open. At least one of the modules should be specified. Default NULL values are set to FALSE, and those modules are not loaded.</p><pre>init_vertical_project(init_git=TRUE,...)
 </pre>
 
 <p>The name of the existing project (e.g., the project folder name) must be a valid R package name (numbers, letters, and periods, but no periods at the end, and no spaces, dashes, or underscores). It is not necessary to supply project_name or project_path, they default to the current existing project.</p>
-<p><strong>Initializing a vertical project as a new project</strong>:</p><pre>init_vertical_project(project_name = "yourname",
-                      project_path = "~/Desktop/")
+<p><strong>Initializing a vertical project as a new project</strong>:
+Provide a name and path to set up a new vertical project as an R studio project, and specify which modules should be loaded by setting their parameters to TRUE.</p><pre>init_vertical_project(project_name = "yourname",
+                      project_path = "~/Desktop/",
+                      init_git = TRUE,
+                      ...)
 </pre>
 
-<p>Provide a name and path to set up a new vertical project as an R studio project. For example, the above creates the folder <code>~Desktop/yourname/</code>, creates the vertical project template in that folder, and opens a new RStudio session with the new project loaded. Make sure <code>yourname</code> is valid R package name.</p>
+<p>For example, the above creates the folder <code>~Desktop/yourname/</code>, creates the vertical project template in that folder, and opens a new RStudio session with the new project loaded. Make sure <code>yourname</code> is valid R package name.</p>
     
 
   </div>

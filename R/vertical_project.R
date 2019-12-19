@@ -43,6 +43,8 @@ vertical_project <- function(path, ...) {
 
 #' Initialize vertical project from command line
 #'
+#' Use `vertical::init_vertical_project()` to initialize a vertical project from the command line.
+#'
 #' @param project_name character, name of new vertical project, default is project_name = NULL, for initializing inside an existing empty R studio project
 #' @param project_path character, path where new project should be created, default is project_path = NULL for initializing inside an existing empty R studio project
 #' @param init_git logical, enables git, init_git=TRUE by default
@@ -55,61 +57,141 @@ vertical_project <- function(path, ...) {
 #' @return **files**, a vertical project template inside an existing or new R Studio project
 #'
 #' @details
-#' **Initializing a vertical project inside an existing project**:
+#'
+#' **Interactive: Get asked what you want to do**
 #' ```
-#' init_vertical_project()
+#' vertical::init_vertical_project()
+#' ```
+#' This opens a dialogue in the console. You choose whether to make a brand new RStudio project, or to initialize vertical in an existing project that you are already working. Follow the prompts and choose which vertical modules to load.
+#'
+#' **Scripted: Do what you want to do**
+#'
+#' If any input parameters are specified, then initialization is done directly without a dialogue.
+#'
+#' **Initializing a vertical project inside an existing project**:
+#' It is not necessary to name the project, because a named project should already be open. At least one of the modules should be specified. Default NULL values are set to FALSE, and those modules are not loaded.
+#' ```
+#' init_vertical_project(init_git=TRUE,...)
 #' ```
 #' The name of the existing project (e.g., the project folder name) must be a valid R package name (numbers, letters, and periods, but no periods at the end, and no spaces, dashes, or underscores). It is not necessary to supply project_name or project_path, they default to the current existing project.
 #'
 #'
 #' **Initializing a vertical project as a new project**:
+#' Provide a name and path to set up a new vertical project as an R studio project, and specify which modules should be loaded by setting their parameters to TRUE.
 #' ```
 #' init_vertical_project(project_name = "yourname",
-#'                       project_path = "~/Desktop/")
+#'                       project_path = "~/Desktop/",
+#'                       init_git = TRUE,
+#'                       ...)
 #' ```
-#' Provide a name and path to set up a new vertical project as an R studio project. For example, the above creates the folder `~Desktop/yourname/`, creates the vertical project template in that folder, and opens a new RStudio session with the new project loaded. Make sure `yourname` is valid R package name.
+#' For example, the above creates the folder `~Desktop/yourname/`, creates the vertical project template in that folder, and opens a new RStudio session with the new project loaded. Make sure `yourname` is valid R package name.
 #'
 #' @export
 init_vertical_project <- function(project_name = NULL,
                                   project_path = NULL,
-                                  init_git = TRUE,
-                                  init_ms = TRUE,
-                                  init_som = TRUE,
-                                  init_slides = TRUE,
-                                  init_poster = TRUE,
-                                  init_exp = TRUE) {
+                                  init_git = NULL,
+                                  init_ms = NULL,
+                                  init_som = NULL,
+                                  init_slides = NULL,
+                                  init_poster = NULL,
+                                  init_exp = NULL){
 
-  if(is.null(project_path)==FALSE) {
-    path <- file.path(project_path,project_name)
-  } else{
-    path <- getwd()
+  use_prompt <- is.null(project_name) & is.null(project_path) & is.null(init_git) &
+    is.null(init_ms) & is.null(init_som) & is.null(init_slides) & is.null(init_poster) &
+    is.null(init_exp) & interactive()
+
+  # for interactive ui, ask user what they want
+
+  if(use_prompt){
+
+    # Ask user for init type
+
+    cat("Vertical initialization options:\n\n")
+    cat("  [1] Initialize in new project in new directory\n")
+    cat("  [2] Initialize in the existing open project\n")
+    ans <- readline("Selection: ")
+    ans <- suppressWarnings(as.numeric(ans))
+    cat("\n")
+
+    # make new project
+    if(ans == 1) {
+      if(usethis::ui_yeah("Your current R session will close, with an option to save it. Continue?")){
+        usethis::ui_info("Opening R New Project viewer. Select New directory > Vertical Research Project... ")
+        rstudioapi::executeCommand('newProject', quiet = FALSE)
+      } else{
+        usethis::ui_oops("No problem, maybe another time")
+      }
+    }
+
+    # make in existing
+    if(ans == 2) {
+      if(usethis::ui_yeah("Initialize all modules? Easiest option...you can delete ones you don't need later")){
+        init_git <- TRUE
+        init_ms  <- TRUE
+        init_som <- TRUE
+        init_slides <- TRUE
+        init_poster <- TRUE
+        init_exp <- TRUE
+      } else {
+        init_git <- usethis::ui_yeah("use git? recommended")
+        init_ms  <- usethis::ui_yeah("use papaja manuscript?")
+        init_som <- usethis::ui_yeah("use supplemental materials?")
+        init_slides <- usethis::ui_yeah("use slides?")
+        init_poster <- usethis::ui_yeah("use poster?")
+        init_exp <- usethis::ui_yeah("use jspsych and jspsychr for experiments?")
+      }
+    }
   }
 
-  # This is a package
-  usethis::create_package(path, open = FALSE)
-  usethis::proj_set(path)
-  # setwd(paste0(getwd(), "/", path)) # [TODO] improve this hack
+  # for scripting option, do what user says
 
-  # Git?
-  if (init_git) {
-    git2r::init(usethis::proj_get())
-    usethis::use_git_ignore(c(".Rhistory", ".RData", ".Rproj.user"))
+  use_script <- is.null(project_name) & is.null(project_path) & is.null(init_git) &
+    is.null(init_ms) & is.null(init_som) & is.null(init_slides) & is.null(init_poster) &
+    is.null(init_exp) & interactive()
+
+  if(!use_script){
+
+    # set NULLs to FALSE
+    if(is.null(init_git)) init_git <- FALSE
+    if(is.null(init_ms)) init_ms <- FALSE
+    if(is.null(init_som)) init_som <- FALSE
+    if(is.null(init_slides)) init_slides <- FALSE
+    if(is.null(init_poster)) init_poster <- FALSE
+    if(is.null(init_exp)) init_exp <- FALSE
+
+    if(is.null(project_path)==FALSE) {
+      path <- file.path(project_path,project_name)
+    } else{
+      path <- getwd()
+    }
+
+    # This is a package
+    usethis::create_package(path, open = FALSE)
+    usethis::proj_set(path)
+    # setwd(paste0(getwd(), "/", path)) # [TODO] improve this hack
+
+    # Git?
+    if (init_git) {
+      git2r::init(usethis::proj_get())
+      usethis::use_git_ignore(c(".Rhistory", ".RData", ".Rproj.user"))
+    }
+
+    # pkgdown template
+    #vertical_pkgdown <- system.file("vertical/_pkgdown.yml", package = "vertical")
+    #file.copy(vertical_pkgdown, "_pkgdown.yml")
+    usethis::use_template(template = "_pkgdown.yml",
+                          package = "vertical")
+
+    usethis::use_data_raw(open = FALSE)
+    if(is.null(project_path)==FALSE) setwd(path)
+    if (init_ms) init_papaja()
+    if (init_som) init_supplemental(prjct_name = project_name)
+    if (init_slides) init_slides()
+    if (init_poster) init_poster()
+    if (init_exp) init_jspsych()
+    if(is.null(project_path)==FALSE) usethis::proj_activate(path)
   }
 
-  # pkgdown template
-  #vertical_pkgdown <- system.file("vertical/_pkgdown.yml", package = "vertical")
-  #file.copy(vertical_pkgdown, "_pkgdown.yml")
-  usethis::use_template(template = "_pkgdown.yml",
-                        package = "vertical")
-
-  usethis::use_data_raw(open = FALSE)
-  if(is.null(project_path)==FALSE) setwd(path)
-  if (init_ms) init_papaja()
-  if (init_som) init_supplemental(prjct_name = project_name)
-  if (init_slides) init_slides()
-  if (init_poster) init_poster()
-  if (init_exp) init_jspsych()
-  if(is.null(project_path)==FALSE) usethis::proj_activate(path)
 }
 
 #' Initialize manuscript
@@ -326,7 +408,7 @@ update_yml <- function(vertical_folder,
 #' Build the website associated with a vertical project. This is mostly a wrapper to `pkgdown::build_site()`, but extended to render content from vertical folders.
 #'
 #' @param clean logical, when clean=TRUE (the default), the `docs` folder is cleaned (e.g., completely wiped) using `pkgdown::clean_site()`, otherwise when clean=FALSE `clean_site()` will not be run.
-#' @param update_yml logical, update_yml=TRUE is the default, updates yml components in `_pkgdown.yml` to list all .Rmds in folders and subfolders of vertical components (manuscript, posters, slides, vignettes) in associated navigation bar tabs on the website.
+#' @param update_yml logical, update_yml=FALSE is the default so existing yml **is not overwritten**, updates yml components in `_pkgdown.yml` to list all .Rmds in folders and subfolders of vertical components (manuscript, posters, slides, vignettes) in associated navigation bar tabs on the website. Set to TRUE to overwrite.
 #' @param ... params, pass additional parameters to `pkgdown::build_site(...)`
 #' @section Usage:
 #' ```
@@ -334,7 +416,7 @@ update_yml <- function(vertical_folder,
 #' ```
 #'
 #' @export
-build_vertical <- function(clean=TRUE,update_yml=TRUE,...) {
+build_vertical <- function(clean=TRUE,update_yml=FALSE,...) {
   if(update_yml == TRUE) {
     update_yml("vignettes","articles","articles","Supplementary")
     update_yml("manuscript","manuscript","manuscript","PDF")

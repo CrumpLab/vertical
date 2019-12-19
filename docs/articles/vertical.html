@@ -44,7 +44,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vertical</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9300</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9400</span>
       </span>
     </div>
 
@@ -177,6 +177,8 @@
 <a href="#creating-a-vertical-project" class="anchor"></a>Creating a vertical project</h2>
 <p><a href="#install-vertical">Install vertical</a>, restart RStudio, then follow these steps to initialize a new <code>vertical</code> project. <strong>IMPORTANT</strong>: when you choose a name it must be <a href="http://r-pkgs.had.co.nz/package.html#naming">a valid R package name</a>. For example, the name must contain letters, numbers, or periods (e.g., my.name), but no periods at the end. This means no spaces, dashes or underscores.</p>
 <p><img src="imgs/vertical-new.png" width="50%"></p>
+<p>You can also create a vertical project from the console, see the documentation for <code><a href="../reference/init_vertical_project.html">init_vertical_project()</a></code> for more options.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>vertical<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/vertical/man/init_vertical_project.html">init_vertical_project</a></span>()</span></code></pre></div>
 </div>
 <div id="default-vertical-template" class="section level2">
 <h2 class="hasAnchor">
@@ -188,7 +190,7 @@
 <h2 class="hasAnchor">
 <a href="#building-the-vertical-website" class="anchor"></a>Building the vertical website</h2>
 <p>A new <code>vertical</code> project is populated with template examples for every kind of content supported by vertical (e.g., R functions, manuscript, poster, slides, supplementary materials, and even writing a browser-based behavioral experiment with jspsych). As a result, an example vertical website (showing templated content) can be rendered immediately by running the following in the console:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>vertical<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/vertical/man/build_vertical.html">build_vertical</a></span>()</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>vertical<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/vertical/man/build_vertical.html">build_vertical</a></span>()</span></code></pre></div>
 <p>The above line should create and output the HTML files for the website into the <code>docs</code> folder in the <code>vertical</code> template. Additionally, the resulting website should appear in a browser window for inspection. For expanded discussion on customizing the website see the <a href="#website-customization">Website customization</a> section.</p>
 <p>One caveat is the rendering of APA manuscripts with the <code>papaja</code> package, which requires a latex installation. More generally, when <code>vertical</code> is installed, it installs dependencies such as <code>papaja</code> and other required packages, but does not install latex (see, [APA papers with papaja]).</p>
 </div>
@@ -225,14 +227,14 @@ Suggests:
 <a href="#adding-r-functions" class="anchor"></a>Adding R functions</h2>
 <p>The following is an example of adding a new function to the R package in a vertical project. Some reminders of these steps are suggested in <code>Vertical Helper.R</code>.</p>
 <p>New functions are added as .R files to the <code>R</code> folder. This can be automated by the following, which creates a new .R file inside the <code>R</code> folder, in this case with the name <code>myfunction.R</code>.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># replace myfunction with your function name</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a>usethis<span class="op">::</span><span class="kw"><a href="https://usethis.r-lib.org/reference/use_r.html">use_r</a></span>(<span class="st">"myfunction"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># replace myfunction with your function name</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>usethis<span class="op">::</span><span class="kw"><a href="https://usethis.r-lib.org/reference/use_r.html">use_r</a></span>(<span class="st">"myfunction"</span>)</span></code></pre></div>
 <p>In this example, we will write a function that sums the integers between a first and second value. To begin, we decide to name the function <code>sum_range</code>, and create the .R file by running:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>usethis<span class="op">::</span><span class="kw"><a href="https://usethis.r-lib.org/reference/use_r.html">use_r</a></span>(<span class="st">"sum_range"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>usethis<span class="op">::</span><span class="kw"><a href="https://usethis.r-lib.org/reference/use_r.html">use_r</a></span>(<span class="st">"sum_range"</span>)</span></code></pre></div>
 <p>Next, the function is written in the newly created file <code>sum_range.R</code>. For example, the following is added, starting on line 1:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>sum_range &lt;-<span class="st"> </span><span class="cf">function</span>(min,max){</span>
-<span id="cb8-2"><a href="#cb8-2"></a>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(min<span class="op">:</span>max))</span>
-<span id="cb8-3"><a href="#cb8-3"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>sum_range &lt;-<span class="st"> </span><span class="cf">function</span>(min,max){</span>
+<span id="cb9-2"><a href="#cb9-2"></a>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(min<span class="op">:</span>max))</span>
+<span id="cb9-3"><a href="#cb9-3"></a>}</span></code></pre></div>
 <p>We will use <code>roxygen2</code> style commenting to provide documentation for the function. The documentation will be shown in the help menu when the package is installed, allow help for the function to be accessed from the console by <code><a href="https://rdrr.io/pkg/verticaltemplate/man/sum_range.html">?sum_range</a></code>, and produce a webpage with the documentation when rendered by <code>pkgdown</code>. The alternative to <code>roxygen2</code> is to manually write an .Rd file in the <code>man</code> folder for the new function; <code>roxygen2</code> automates this process and allows the documentation to be added as comments in the .R file defining the function.</p>
 <p>Make sure <code>roxygen2</code> is installed (using RStudio, or <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages('roxygen2')</a></code> from the console.). RStudio may need to restart to recognize <code>roxygen2</code>. Before proceeding activate <code>roxygen2</code> documentation in RStudio, under Tools &gt; Project options…, and select the check-box for roxygen documentation:</p>
 <p><img src="imgs/roxygen.png" width="50%"></p>
@@ -269,7 +271,7 @@ sum_range &lt;- function(min,max){
 <a href="#adding-data" class="anchor"></a>Adding Data</h2>
 <p>Arbitrary data can be included in an R Package by placing R data files into a <code>data</code> folder. Importantly, data can be documented just like a function, which allows for clear and descriptive meta-data for the data object. <code>vertical</code> does not create a <code>data</code> folder as a part of its template. This is to encourage useful strategies for data inclusion that automate the creation of the data folder when it is required.</p>
 <p><code>vertical</code> includes <a href="https://crumplab.github.io/vertical/reference/document_data.html">document_data()</a> quickly to add an existing dataframe to an R package. For example, if <code>mydf</code> was an existing dataframe, then the following:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw"><a href="../reference/document_data.html">document_data</a></span>(mydf)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw"><a href="../reference/document_data.html">document_data</a></span>(mydf)</span></code></pre></div>
 <p>would accomplish:</p>
 <ol style="list-style-type: decimal">
 <li>create a <code>data</code> folder (if it didn’t already exist)</li>
@@ -280,17 +282,17 @@ sum_range &lt;- function(min,max){
 </ol>
 <p>The next example shows individual steps for including data from the R environment. We then discuss strategies for including data as a part of a reproducible research project.</p>
 <p>R objects in the environment can be included as data in an R package. For example, the following generates a simple data frame in the R environment:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>mydf &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="dt">a =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,</span>
-<span id="cb11-2"><a href="#cb11-2"></a>                   <span class="dt">b =</span> <span class="dv">6</span><span class="op">:</span><span class="dv">10</span>,</span>
-<span id="cb11-3"><a href="#cb11-3"></a>                   <span class="dt">c =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>,<span class="st">"D"</span>,<span class="st">"E"</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>mydf &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="dt">a =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,</span>
+<span id="cb12-2"><a href="#cb12-2"></a>                   <span class="dt">b =</span> <span class="dv">6</span><span class="op">:</span><span class="dv">10</span>,</span>
+<span id="cb12-3"><a href="#cb12-3"></a>                   <span class="dt">c =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>,<span class="st">"D"</span>,<span class="st">"E"</span>))</span></code></pre></div>
 <p>The <code>mydf</code> data frame can be exported to an .Rda file and written to the <code>data</code> folder through <code>usethis</code>:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>usethis<span class="op">::</span><span class="kw"><a href="https://usethis.r-lib.org/reference/use_data.html">use_data</a></span>(mydf)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>usethis<span class="op">::</span><span class="kw"><a href="https://usethis.r-lib.org/reference/use_data.html">use_data</a></span>(mydf)</span></code></pre></div>
 <p>The above also creates the <code>data</code> folder if it does not already exist.</p>
 <p>Next, documentation for the data is added by including a <code>data.R</code> file in the <code>R</code> folder.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>usethis<span class="op">::</span><span class="kw"><a href="https://usethis.r-lib.org/reference/use_r.html">use_r</a></span>(<span class="st">'data'</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>usethis<span class="op">::</span><span class="kw"><a href="https://usethis.r-lib.org/reference/use_r.html">use_r</a></span>(<span class="st">'data'</span>)</span></code></pre></div>
 <p>Finally, <code>roxygen2</code> comments are added to <code>data.R</code> to describe the data file. We recommend installing the <code>sinew</code> package which can generate a useful template for documenting R data objects.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(sinew)</span>
-<span id="cb14-2"><a href="#cb14-2"></a><span class="kw"><a href="https://rdrr.io/pkg/sinew/man/makeOxygen.html">makeOxygen</a></span>(mydf)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(sinew)</span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="kw"><a href="https://rdrr.io/pkg/sinew/man/makeOxygen.html">makeOxygen</a></span>(mydf)</span></code></pre></div>
 <p>For example, the above generates the following template that can be copied copied to <code>data.R</code>.</p>
 <pre><code>#' @title DATASET_TITLE
 #' @description DATASET_DESCRIPTION
@@ -315,8 +317,8 @@ sum_range &lt;- function(min,max){
 "mydf"</code></pre>
 <p>Finally, the .Rd file is generated by <code><a href="https://rdrr.io/pkg/devtools/man/document.html">devtools::document()</a></code>, or by the RStudio macro <code>Ctrl/Cmd + Shift + D</code>. When the package is built it will now contain the included data and documentation for the data. The documentation will be added to the website when the site is rebuilt.</p>
 <p>Importantly, whenever the package is loaded (e.g., <code><a href="https://rdrr.io/r/base/library.html">library(verticaltemplate)</a></code>), the included data becomes available just like the included functions. For example, the following would load the package, then load the included dataset to the environment.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(verticaltemplate)</span>
-<span id="cb17-2"><a href="#cb17-2"></a>mydf <span class="co">#loaded into environment from package</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(verticaltemplate)</span>
+<span id="cb18-2"><a href="#cb18-2"></a>mydf <span class="co">#loaded into environment from package</span></span></code></pre></div>
 <p>Finally, documentation for multiple data objects can be added to a <code>data.R</code> file. Insert a new line after the documentation for the first data object, then insert the roxygen comments for the next one. Or, individual data sets could be documented with individually named <code>.R</code> files.</p>
 <p>We have discussed the operations for adding data to an R package. In the context of including data from a research project we have a few additional suggestions. <code>vertical</code> does create a <code>data-raw</code> folder as part of the template. This is a location to place raw data in any given format that can be imported to R, such as a .csv file, excel file, JSON file, SPSS file, or other file type.</p>
 <p>It is very often the case that raw data must be pre-processed or wrangled from its raw form to another form required by functions for data-analysis. Pre-processing steps may also involve excluding aspects of the raw data, or imputing structure to the raw data. In the spirit of sharing reproducible research it is important to record and make transparent all pre-processing steps. In principle, the transformations of data along an analysis path can be preserved in a variety of locations, such as in R Markdown documents that contain the scripts for the transformation. <code>vertical</code> suggests that the <code>data-raw</code> folder is used a location to, 1) declare and conduct pre-processing steps, and 2) save the transformed raw data to the <code>data</code> folder if the intention is to include it in the R package.</p>

@@ -44,7 +44,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">vertical</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9300</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9400</span>
       </span>
     </div>
 
@@ -116,18 +116,12 @@
 <div id="quick-start" class="section level2">
 <h2 class="hasAnchor">
 <a href="#quick-start" class="anchor"></a>Quick start</h2>
-<ol>
-<li>Install vertical (above), then restart RStudio</li>
-<li>Create a new project
-<ul>
-<li>from the menu File &gt; New Project…</li>
-<li>or click the R cube in top-right hand corner, and select New Project…</li>
-</ul>
-</li>
-<li>Select the Vertical Project Template, give your vertical project a name (no spaces, only letters and numbers)</li>
-<li>Create the project, then build the website by:</li>
-</ol>
-<pre><code><a href="reference/build_vertical.html">vertical::build_vertical()</a></code></pre>
+<pre><code><a href="reference/init_vertical_project.html"># initialize new project from console
+vertical::init_vertical_project()
+
+# build the website
+vertical::build_vertical()</a></code></pre>
+<p>NOTE: after restarting RStudio, you can make a vertical project by choosing File &gt; New Project… in RStudio, and choosing the Vertical Research Project template.</p>
 <p>Read the <a href="https://crumplab.github.io/vertical/articles/vertical.html">getting started</a> tutorial to learn more about using <code>vertical</code>.</p>
 </div>
 <div id="what-is-vertical" class="section level2">

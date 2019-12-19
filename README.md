@@ -18,16 +18,15 @@ devtools::install_github("CrumpLab/vertical")
 
 ## Quick start
 
-1. Install vertical (above), then restart RStudio
-2. Create a new project
-   - from the menu File > New Project...
-   - or click the R cube in top-right hand corner, and select New Project...
-3. Select the Vertical Project Template, give your vertical project a name (no spaces, only letters and numbers)
-4. Create the project, then build the website by:
-
 ```
+# initialize new project from console
+vertical::init_vertical_project()
+
+# build the website
 vertical::build_vertical()
 ```
+
+NOTE: after restarting RStudio, you can make a vertical project by choosing File > New Project... in RStudio, and choosing the Vertical Research Project template.
 
 Read the [getting started](https://crumplab.github.io/vertical/articles/vertical.html) tutorial to learn more about using `vertical`.
 
