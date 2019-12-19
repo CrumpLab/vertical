@@ -20,6 +20,25 @@ files, adds dataframe as .rda to data folder, adds .R to R for documentation
 \item add \code{mydf.R} to the R folder with a roxygen skeleton for documenting the data
 \item open \code{mydf.R} for editing.
 }
+
+This function is intended for convenience because it wraps a few common tasks together when adding data to an R package. We recommend that users familiarize themselves with the underlying functions, which are not features of vertical. See the details section for some pointers.
+}
+\details{
+We highly recommend understanding the basics of adding functions and data to R packages by reading Hadley Wickham's excellent R package guide \url{http://r-pkgs.had.co.nz}. Below we briefly elaborate on the individual action of functions inside \code{document_data()}, which can be used individually to automate aspects of documenting data sets.
+
+\strong{export dataframe to data folder as .rda}
+\code{usethis::use_data(mydf)} accepts an existing dataframe (e.g., mydf). It writes the \code{data} folder if it does not already exist and exports the dataframe as an .rda file to the \code{data} folder (eg., \code{data/mydf.rda})
+
+\strong{create documentation .R file}
+\code{usethis::use_r("mydf")} creates a new .R file in the \verb{R/} folder (e.g., \code{R/mydf.R}). This is a blank file where \code{roxygen2} comments can be added to document the data set.
+
+\strong{roxygen comments for documentation}
+\code{sinew::makeOxygen(mydf)} generates a skeleton roxygen comment block that can be edited to document the data. This function prints the skeleton to the console. The user then copies it to \code{mydf.R}, and edits as necessary.
+
+\strong{\code{document_data()}} is a wrapper to the above three main functions. After the roxygen comments have been added to the \code{.R} file, they should be compiled...
+
+\strong{compiling roxygen comments}
+\code{devtools::document()} can be run to compile any .R functions in \verb{R/} with roxygen comments.
 }
 \section{Usage}{
 \preformatted{document_data(mydf)

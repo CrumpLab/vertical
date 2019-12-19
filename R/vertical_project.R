@@ -490,10 +490,30 @@ build_vertical <- function(clean=TRUE,update_yml=FALSE,...) {
 #' 3. add `mydf.R` to the R folder with a roxygen skeleton for documenting the data
 #' 4. open `mydf.R` for editing.
 #'
+#' This function is intended for convenience because it wraps a few common tasks together when adding data to an R package. We recommend that users familiarize themselves with the underlying functions, which are not features of vertical. See the details section for some pointers.
+#'
 #' @section Usage:
 #' ```
 #' document_data(mydf)
 #' ```
+#' @details
+#'
+#' We highly recommend understanding the basics of adding functions and data to R packages by reading Hadley Wickham's excellent R package guide <http://r-pkgs.had.co.nz>. Below we briefly elaborate on the individual action of functions inside `document_data()`, which can be used individually to automate aspects of documenting data sets.
+#'
+#'  **export dataframe to data folder as .rda**
+#'  `usethis::use_data(mydf)` accepts an existing dataframe (e.g., mydf). It writes the `data` folder if it does not already exist and exports the dataframe as an .rda file to the `data` folder (eg., `data/mydf.rda`)
+#'
+#'  **create documentation .R file**
+#'  `usethis::use_r("mydf")` creates a new .R file in the `R/` folder (e.g., `R/mydf.R`). This is a blank file where `roxygen2` comments can be added to document the data set.
+#'
+#'  **roxygen comments for documentation**
+#'  `sinew::makeOxygen(mydf)` generates a skeleton roxygen comment block that can be edited to document the data. This function prints the skeleton to the console. The user then copies it to `mydf.R`, and edits as necessary.
+#'
+#'  **`document_data()`** is a wrapper to the above three main functions. After the roxygen comments have been added to the `.R` file, they should be compiled...
+#'
+#'  **compiling roxygen comments**
+#'  `devtools::document()` can be run to compile any .R functions in `R/` with roxygen comments.
+#'
 #' @export
 document_data <- function(...){
   usethis::use_data(...)

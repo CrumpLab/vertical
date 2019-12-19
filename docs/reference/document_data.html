@@ -47,7 +47,8 @@ add mydf.rda to the data folder
 add mydf.R to the R folder with a roxygen skeleton for documenting the data
 open mydf.R for editing.
 
-" />
+
+This function is intended for convenience because it wraps a few common tasks together when adding data to an R package. We recommend that users familiarize themselves with the underlying functions, which are not features of vertical. See the details section for some pointers." />
 
 <meta property="og:image" content="https://crumplab.github.io/vertical/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -161,6 +162,7 @@ open mydf.R for editing.
 <li><p>open <code>mydf.R</code> for editing.</p></li>
 </ol>
 
+<p>This function is intended for convenience because it wraps a few common tasks together when adding data to an R package. We recommend that users familiarize themselves with the underlying functions, which are not features of vertical. See the details section for some pointers.</p>
     
     </div>
 
@@ -179,6 +181,19 @@ open mydf.R for editing.
 
     <p>files, adds dataframe as .rda to data folder, adds .R to R for documentation</p>
     
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>We highly recommend understanding the basics of adding functions and data to R packages by reading Hadley Wickham's excellent R package guide <a href='http://r-pkgs.had.co.nz'>http://r-pkgs.had.co.nz</a>. Below we briefly elaborate on the individual action of functions inside <code>document_data()</code>, which can be used individually to automate aspects of documenting data sets.</p>
+<p><strong>export dataframe to data folder as .rda</strong>
+<code><a href='https://usethis.r-lib.org/reference/use_data.html'>usethis::use_data(mydf)</a></code> accepts an existing dataframe (e.g., mydf). It writes the <code>data</code> folder if it does not already exist and exports the dataframe as an .rda file to the <code>data</code> folder (eg., <code>data/mydf.rda</code>)</p>
+<p><strong>create documentation .R file</strong>
+<code><a href='https://usethis.r-lib.org/reference/use_r.html'>usethis::use_r("mydf")</a></code> creates a new .R file in the <code>R/</code> folder (e.g., <code>R/mydf.R</code>). This is a blank file where <code>roxygen2</code> comments can be added to document the data set.</p>
+<p><strong>roxygen comments for documentation</strong>
+<code><a href='https://rdrr.io/pkg/sinew/man/makeOxygen.html'>sinew::makeOxygen(mydf)</a></code> generates a skeleton roxygen comment block that can be edited to document the data. This function prints the skeleton to the console. The user then copies it to <code>mydf.R</code>, and edits as necessary.</p>
+<p><strong><code>document_data()</code></strong> is a wrapper to the above three main functions. After the roxygen comments have been added to the <code>.R</code> file, they should be compiled...</p>
+<p><strong>compiling roxygen comments</strong>
+<code><a href='https://rdrr.io/pkg/devtools/man/document.html'>devtools::document()</a></code> can be run to compile any .R functions in <code>R/</code> with roxygen comments.</p>
+    
     <h2 class="hasAnchor" id="usage"><a class="anchor" href="#usage"></a>Usage</h2>
 
     
@@ -194,6 +209,8 @@ open mydf.R for editing.
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
 
       <li><a href="#usage">Usage</a></li>
           </ul>
