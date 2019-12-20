@@ -5,21 +5,21 @@ Caption: Create a vertical research project
 Icon: logo.png
 OpenFiles: README.md
 
+Parameter: init_git
+Widget: CheckboxInput
+Label: Create a git repository
+Default: On
+Position: left
+
+Parameter: init_data
+Widget: CheckboxInput
+Label: Initialize directory for raw data
+Default: On
+Position: left
+
 Parameter: init_ms
 Widget: CheckboxInput
 Label: Initialize manuscript (papaja)
-Default: On
-Position: left
-
-Parameter: init_slides
-Widget: CheckboxInput
-Label: Initialize slides (slidy)
-Default: On
-Position: left
-
-Parameter: init_poster
-Widget: CheckboxInput
-Label: Initialize poster (posterdown)
 Default: On
 Position: left
 
@@ -29,14 +29,20 @@ Label: Initialize supplemental materials
 Default: On
 Position: left
 
+Parameter: init_slides
+Widget: CheckboxInput
+Label: Initialize slides (slidy)
+Default: On
+Position: right
+
+Parameter: init_poster
+Widget: CheckboxInput
+Label: Initialize poster (posterdown)
+Default: On
+Position: right
+
 Parameter: init_exp
 Widget: CheckboxInput
 Label: Initialize experiments (jspsych)
 Default: Off
-Position: left
-
-Parameter: init_git
-Widget: CheckboxInput
-Label: Create a git repository
-Default: On
-Position: left
+Position: right
