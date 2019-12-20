@@ -17,6 +17,7 @@ build_vertical <- function(clean=TRUE,update_yml=FALSE,...) {
     update_yml("manuscript","manuscript","manuscript","PDF")
     update_yml("posters","posters","posters","Poster")
     update_yml("slides","slides","slides","Slides")
+    update_yml("experiments","experiments","experiments","Experiments")
   }
   if(clean == TRUE) pkgdown::clean_site()
   pkgdown::build_site(...)
