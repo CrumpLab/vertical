@@ -9,34 +9,37 @@
 #' @param ...  Not used.
 vertical_project <- function(path, ...) {
 
-  dots <- list(...)
-  #dir.create(path, recursive = TRUE, showWarnings = FALSE)
-  p_name <- path
-  path <- file.path(getwd(), path)
-
-  # This is a package
-  usethis::create_package(path, open = FALSE)
-  usethis::proj_set(path)
-  setwd(path) # [TODO] improve this hack
-
-
-  # Git?
-  if (dots$init_git) {
-    git2r::init(usethis::proj_get())
-    usethis::use_git_ignore(c(".Rhistory", ".RData", ".Rproj.user"))
-  }
-
-  # pkgdown template
-  usethis::use_template(template = "_pkgdown.yml",
-                        package = "vertical")
-
-  # additional content modules
-  usethis::use_data_raw(open = FALSE)
-  if (dots$init_ms) init_papaja()
-  if (dots$init_som) init_supplemental(prjct_name = p_name)
-  if (dots$init_slides) init_slides()
-  if (dots$init_poster) init_poster()
-  if (dots$init_exp) init_jspsych()
+  init_vertical_project(project_name = path,
+                        project_path = getwd(),
+                        ...)
+  # dots <- list(...)
+  # #dir.create(path, recursive = TRUE, showWarnings = FALSE)
+  # p_name <- path
+  # path <- file.path(getwd(), path)
+  #
+  # # This is a package
+  # usethis::create_package(path, open = FALSE)
+  # usethis::proj_set(path)
+  # setwd(path) # [TODO] improve this hack
+  #
+  #
+  # # Git?
+  # if (dots$init_git) {
+  #   git2r::init(usethis::proj_get())
+  #   usethis::use_git_ignore(c(".Rhistory", ".RData", ".Rproj.user"))
+  # }
+  #
+  # # pkgdown template
+  # usethis::use_template(template = "_pkgdown.yml",
+  #                       package = "vertical")
+  #
+  # # additional content modules
+  # usethis::use_data_raw(open = FALSE)
+  # if (dots$init_ms) init_papaja()
+  # if (dots$init_som) init_supplemental(prjct_name = p_name)
+  # if (dots$init_slides) init_slides()
+  # if (dots$init_poster) init_poster()
+  # if (dots$init_exp) init_jspsych()
 }
 
 #' Initialize vertical project from command line
