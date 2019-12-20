@@ -1,3 +1,12 @@
+#' Initialize **vertical** project from RStudio project template
+#'
+#' **NOT for use in the console**
+#'
+#' `vertical_project()` is triggered by loading a new vertical project template from RStudio, and is a wrapper function to create a vertical project structure in the new project folder. The inputs  to this function are selections from the new project template window. Checkbox option for the template are defined in `inst/rstudio/templates/project/vertical_project.dcf`.
+#'
+#'
+#' @param path Where to create the project. This must be a valid R package name.
+#' @param ...  Not used.
 vertical_project <- function(path, ...) {
 
   dots <- list(...)
