@@ -1,3 +1,5 @@
+# see https://pkgdown.r-lib.org/articles/pkgdown.html for yml help
+
 navbar:
   structure:
     left:
