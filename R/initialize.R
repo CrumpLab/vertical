@@ -38,7 +38,7 @@ vertical_project <- function(path,
   }
   if (dots$init_data) usethis::use_data_raw(open = FALSE)
   if (dots$init_ms) init_papaja()
-  if (dots$init_som) init_supplemental(prjct_name = path)
+  if (dots$init_som) init_supplemental(prjct_name = basename(path))
   if (dots$init_slides) init_slides()
   if (dots$init_poster) init_poster()
   if (dots$init_exp) init_jspsych()
