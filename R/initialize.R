@@ -18,7 +18,6 @@ vertical_project <- function(path=NULL,
   if(is.null(path)) {
     rstudioapi::executeCommand('newProject', quiet = FALSE)
     return(usethis::ui_info("Opening RStudio Project Template, select New Directory, then Vertical Research Project"))
-
   }
 
   dots <- list(...)
