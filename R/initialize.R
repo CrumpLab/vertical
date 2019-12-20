@@ -6,7 +6,7 @@
 #' @param ...  Not used.
 #'
 #' @export
-vertical_project <- function(path,
+vertical_project <- function(path=NULL,
                              init_git = TRUE,
                              init_data = TRUE,
                              init_ms = TRUE,
@@ -15,6 +15,10 @@ vertical_project <- function(path,
                              init_poster = TRUE,
                              init_exp = FALSE,
                              ...) {
+  if(is.null(path)) {
+    rstudioapi::executeCommand('newProject', quiet = FALSE)
+    return(usethis::ui_info("Opening RStudio Project Template, select New Directory, then Vertical Research Project"))
+  }
 
   dots <- list(...)
   if (length(dots) == 0) {

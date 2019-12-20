@@ -100,10 +100,10 @@ The following tutorial on `vertical` describes the creation of a vertical projec
 knitr::include_graphics("imgs/vertical-new.png")
 ```
 
-You can also create a vertical project from the console, see the documentation for `init_vertical_project()` for more options.
+You can also create a vertical project from the console, see the documentation for `vertical_project()` for more options. This loads the R Project Template window from the console.
 
 ```{r, eval=FALSE}
-vertical::init_vertical_project()
+vertical::vertical_project()
 ```
 
 

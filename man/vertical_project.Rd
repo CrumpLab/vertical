@@ -5,7 +5,7 @@
 \title{Initialize a \strong{vertical} project}
 \usage{
 vertical_project(
-  path,
+  path = NULL,
   init_git = TRUE,
   init_data = TRUE,
   init_ms = TRUE,

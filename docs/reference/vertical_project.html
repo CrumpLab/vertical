@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Initialize <strong>vertical</strong> project from RStudio project template — vertical_project • vertical</title>
+<title>Initialize a <strong>vertical</strong> project — vertical_project • vertical</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -39,9 +39,9 @@
 
 
 
-<meta property="og:title" content="Initialize <strong>vertical</strong> project from RStudio project template — vertical_project" />
+<meta property="og:title" content="Initialize a <strong>vertical</strong> project — vertical_project" />
 
-<meta property="og:description" content="NOT for use in the console" />
+<meta property="og:description" content="This function is called when a vertical R project is created." />
 
 <meta property="og:image" content="https://crumplab.github.io/vertical/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -141,25 +141,35 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Initialize <strong>vertical</strong> project from RStudio project template</h1>
+    <h1>Initialize a <strong>vertical</strong> project</h1>
     <small class="dont-index">Source: <a href='https://github.com/CrumpLab/vertical/blob/master/R/initialize.R'><code>R/initialize.R</code></a></small>
     <div class="hidden name"><code>vertical_project.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p><strong>NOT for use in the console</strong></p>
+    <p>This function is called when a <strong>vertical</strong> R project is created.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>vertical_project</span>(<span class='no'>path</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>vertical_project</span>(
+  <span class='kw'>path</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>init_git</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>init_data</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>init_ms</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>init_som</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>init_slides</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>init_poster</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>init_exp</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='no'>...</span>
+)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>path</th>
-      <td><p>Where to create the project. This must be a valid R package name.</p></td>
+      <td><p>Name (and location) of package. Must be a valid R package name.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -167,19 +177,13 @@
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p><code>vertical_project()</code> is triggered by loading a new vertical project template from RStudio, and is a wrapper function to create a vertical project structure in the new project folder. The inputs  to this function are selections from the new project template window. Checkbox option for the template are defined in <code>inst/rstudio/templates/project/vertical_project.dcf</code>.</p>
-    
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#details">Details</a></li>
-          </ul>
+                </ul>
 
   </div>
 </div>

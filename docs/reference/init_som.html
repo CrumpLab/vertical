@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Initialize manuscript — init_papaja • vertical</title>
+<title>Initialize supplemental materials — init_som • vertical</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -39,9 +39,9 @@
 
 
 
-<meta property="og:title" content="Initialize manuscript — init_papaja" />
+<meta property="og:title" content="Initialize supplemental materials — init_som" />
 
-<meta property="og:description" content="Initialize papaja R Markdown APA manuscript in the manuscript folder." />
+<meta property="og:description" content="Initialize R Markdown SOM in the vignettes of a vertical project." />
 
 <meta property="og:image" content="https://crumplab.github.io/vertical/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -141,23 +141,26 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Initialize manuscript</h1>
+    <h1>Initialize supplemental materials</h1>
     <small class="dont-index">Source: <a href='https://github.com/CrumpLab/vertical/blob/master/R/initialize.R'><code>R/initialize.R</code></a></small>
-    <div class="hidden name"><code>init_papaja.Rd</code></div>
+    <div class="hidden name"><code>init_som.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Initialize <code>papaja</code> R Markdown APA manuscript in the <code>manuscript</code> folder.</p>
+    <p>Initialize R Markdown SOM in the <code>vignettes</code> of a vertical project.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>init_papaja</span>()</pre>
+    <pre class="usage"><span class='fu'>init_som</span>()</pre>
         
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Run this function to add a <code>papaja</code> manuscript component to a vertical project at a later time (assuming it wasn't created by <code><a href='vertical_project.html'>vertical_project()</a></code> or <code>init_vertical_project()</code> during initialization.)</p>
-<p>See the <a href='https://crsh.github.io/papaja_man/'>papaja documentation</a> for more information.</p>
+    <p>A wrapper to <code>usethis</code> for creating a <code>vignettes</code> folder, and adding an example .Rmd. This function is used during vertical project creation. Once a vertical project is established, we suggest a <code>usethis</code> approach to adding articles to vignettes. The <code>usethis</code> approach creates a new .Rmd in <code>vignettes</code>, you define the name and title, and the new file is opened for editing.</p><pre>usethis::use_article(name, title = name)
+usethis::use_article("Supplementary_2", title = "Blah blah blah")
+</pre>
+
+<p>See <a href='https://usethis.r-lib.org/reference/use_vignette.html'>usethis documentation</a> for more information.</p>
     
 
   </div>

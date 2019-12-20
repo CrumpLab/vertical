@@ -20,7 +20,7 @@ devtools::install_github("CrumpLab/vertical")
 
 ```
 # initialize new project from console
-vertical::init_vertical_project()
+vertical::vertical_project()
 
 # build the website
 vertical::build_vertical()
