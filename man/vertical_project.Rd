@@ -2,18 +2,25 @@
 % Please edit documentation in R/initialize.R
 \name{vertical_project}
 \alias{vertical_project}
-\title{Initialize \strong{vertical} project from RStudio project template}
+\title{Initialize a \strong{vertical} project}
 \usage{
-vertical_project(path, ...)
+vertical_project(
+  path,
+  init_git = TRUE,
+  init_data = TRUE,
+  init_ms = TRUE,
+  init_som = TRUE,
+  init_slides = TRUE,
+  init_poster = TRUE,
+  init_exp = FALSE,
+  ...
+)
 }
 \arguments{
-\item{path}{Where to create the project. This must be a valid R package name.}
+\item{path}{Name (and location) of package. Must be a valid R package name.}
 
 \item{...}{Not used.}
 }
 \description{
-\strong{NOT for use in the console}
-}
-\details{
-\code{vertical_project()} is triggered by loading a new vertical project template from RStudio, and is a wrapper function to create a vertical project structure in the new project folder. The inputs  to this function are selections from the new project template window. Checkbox option for the template are defined in \code{inst/rstudio/templates/project/vertical_project.dcf}.
+This function is called when a \strong{vertical} R project is created.
 }
