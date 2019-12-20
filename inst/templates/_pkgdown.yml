@@ -1,6 +1,3 @@
-pkgdown:
-  as_is: true
-
 navbar:
   structure:
     left:
@@ -36,27 +33,19 @@ navbar:
       menu:
       - text: Conference 2019
         href: posters/poster.html
-    experiments:
-      text: Experiments
-      menu:
-      - text: Experiment 1
-        href: experiments/Experiment-1/experiment.html
     reference:
       text: Functions
       href: reference/index.html
     github:
       text: source code
       icon: fa-lg fa-github
-      href: https://github.com/CrumpLab/vertical_template
+      href: https://github.com/user/repo
 
 home:
   strip_header: true
   links:
     - text: A link to X
       href: some link
-    - text: A link to Y
-      href: another link
   Authors:
     - text: Author 1
-    - text: Author 2
 
