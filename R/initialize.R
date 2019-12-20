@@ -38,10 +38,10 @@ vertical_project <- function(path,
   }
   if (dots$init_data) usethis::use_data_raw(open = FALSE)
   if (dots$init_ms) init_papaja()
-  if (dots$init_som) init_supplemental(prjct_name = basename(path))
   if (dots$init_slides) init_slides()
   if (dots$init_poster) init_poster()
   if (dots$init_exp) init_jspsych()
+  if (dots$init_som) init_som()
 
 }
 
@@ -77,21 +77,15 @@ init_papaja <- function() {
 #' See [usethis documentation](https://usethis.r-lib.org/reference/use_vignette.html) for more information.
 #'
 #' @export
-init_supplemental <- function(prjct_name=NULL) {
-
-  if(is.null(prjct_name) == FALSE){
-    usethis::use_directory("vignettes")
-    usethis::use_template(template = "article.Rmd",
-                          save_as = "vignettes/Supplementary_1.Rmd",
-                          data = list(vignette_title="Supplementary analyses",
-                                      Package = prjct_name),
-                          package = "usethis")
-  } else{
-    usethis::use_article(
-      "Supplemental_1",
-      title = "Supplementary analyses"
-    )
-  }
+init_som <- function() {
+  usethis::use_directory("vignettes")
+  usethis::use_template(
+    template = "article.Rmd",
+    save_as = "vignettes/som.Rmd",
+    data = list(vignette_title="Supplementary analyses",
+                Package = basename(getwd())),
+    package = "usethis"
+  )
 }
 
 #' Initialize slides

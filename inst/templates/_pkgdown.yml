@@ -23,8 +23,8 @@ navbar:
     articles:
       text: Supplementary
       menu:
-      - text: Getting Started
-        href: articles/Supplementary_1.html
+      - text: Supplementary
+        href: articles/som.html
     slides:
       text: Slides
       menu:
