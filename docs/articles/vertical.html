@@ -270,29 +270,44 @@ sum_range &lt;- function(min,max){
 <h2 class="hasAnchor">
 <a href="#adding-data" class="anchor"></a>Adding Data</h2>
 <p>Arbitrary data can be included in an R Package by placing R data files into a <code>data</code> folder. Importantly, data can be documented just like a function, which allows for clear and descriptive meta-data for the data object. <code>vertical</code> does not create a <code>data</code> folder as a part of its template. This is to encourage useful strategies for data inclusion that automate the creation of the data folder when it is required.</p>
-<p><code>vertical</code> includes <a href="https://crumplab.github.io/vertical/reference/document_data.html">document_data()</a> quickly to add an existing dataframe to an R package. For example, if <code>mydf</code> was an existing dataframe, then the following:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw"><a href="../reference/document_data.html">document_data</a></span>(mydf)</span></code></pre></div>
-<p>would accomplish:</p>
+<!--
+`vertical` includes  [document_data()](https://crumplab.github.io/vertical/reference/document_data.html) quickly to add an existing dataframe to an R package. For example, if `mydf` was an existing dataframe, then the following:  
+
+
+```r
+document_data(mydf)
+```
+
+would accomplish:
+
+1. create a `data` folder (if it didn't already exist)
+2. save mydf as an .rda file to the `data` folder
+3. create a mydf.R file for documentation, save it to the R file
+4. add a roxygen skeleton for documentation to mydf.R
+5. open mydf.R for editing
+-->
+<p>The next example shows individual steps for including data from the R environment. We then discuss strategies for including data as a part of a reproducible research project. Briefly the steps are:</p>
 <ol style="list-style-type: decimal">
-<li>create a <code>data</code> folder (if it didn’t already exist)</li>
-<li>save mydf as an .rda file to the <code>data</code> folder</li>
-<li>create a mydf.R file for documentation, save it to the R file</li>
-<li>add a roxygen skeleton for documentation to mydf.R</li>
-<li>open mydf.R for editing</li>
+<li>create a dataframe</li>
+<li>
+<code><a href="https://usethis.r-lib.org/reference/use_data.html">usethis::use_data()</a></code> adds .rda to <code>data</code> folder</li>
+<li>
+<code><a href="https://usethis.r-lib.org/reference/use_r.html">usethis::use_r()</a></code> adds .R to <code>R/</code> for documentation</li>
+<li>
+<code><a href="https://rdrr.io/pkg/sinew/man/makeOxygen.html">sinew::makeOxygen</a></code> generate roxygen documentation skeleton</li>
 </ol>
-<p>The next example shows individual steps for including data from the R environment. We then discuss strategies for including data as a part of a reproducible research project.</p>
 <p>R objects in the environment can be included as data in an R package. For example, the following generates a simple data frame in the R environment:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>mydf &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="dt">a =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,</span>
-<span id="cb12-2"><a href="#cb12-2"></a>                   <span class="dt">b =</span> <span class="dv">6</span><span class="op">:</span><span class="dv">10</span>,</span>
-<span id="cb12-3"><a href="#cb12-3"></a>                   <span class="dt">c =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>,<span class="st">"D"</span>,<span class="st">"E"</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>mydf &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="dt">a =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>,</span>
+<span id="cb11-2"><a href="#cb11-2"></a>                   <span class="dt">b =</span> <span class="dv">6</span><span class="op">:</span><span class="dv">10</span>,</span>
+<span id="cb11-3"><a href="#cb11-3"></a>                   <span class="dt">c =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>,<span class="st">"D"</span>,<span class="st">"E"</span>))</span></code></pre></div>
 <p>The <code>mydf</code> data frame can be exported to an .Rda file and written to the <code>data</code> folder through <code>usethis</code>:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>usethis<span class="op">::</span><span class="kw"><a href="https://usethis.r-lib.org/reference/use_data.html">use_data</a></span>(mydf)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>usethis<span class="op">::</span><span class="kw"><a href="https://usethis.r-lib.org/reference/use_data.html">use_data</a></span>(mydf)</span></code></pre></div>
 <p>The above also creates the <code>data</code> folder if it does not already exist.</p>
 <p>Next, documentation for the data is added by including a <code>data.R</code> file in the <code>R</code> folder.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>usethis<span class="op">::</span><span class="kw"><a href="https://usethis.r-lib.org/reference/use_r.html">use_r</a></span>(<span class="st">'data'</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>usethis<span class="op">::</span><span class="kw"><a href="https://usethis.r-lib.org/reference/use_r.html">use_r</a></span>(<span class="st">'data'</span>)</span></code></pre></div>
 <p>Finally, <code>roxygen2</code> comments are added to <code>data.R</code> to describe the data file. We recommend installing the <code>sinew</code> package which can generate a useful template for documenting R data objects.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(sinew)</span>
-<span id="cb15-2"><a href="#cb15-2"></a><span class="kw"><a href="https://rdrr.io/pkg/sinew/man/makeOxygen.html">makeOxygen</a></span>(mydf)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(sinew)</span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="kw"><a href="https://rdrr.io/pkg/sinew/man/makeOxygen.html">makeOxygen</a></span>(mydf)</span></code></pre></div>
 <p>For example, the above generates the following template that can be copied copied to <code>data.R</code>.</p>
 <pre><code>#' @title DATASET_TITLE
 #' @description DATASET_DESCRIPTION
@@ -317,9 +332,9 @@ sum_range &lt;- function(min,max){
 "mydf"</code></pre>
 <p>Finally, the .Rd file is generated by <code><a href="https://rdrr.io/pkg/devtools/man/document.html">devtools::document()</a></code>, or by the RStudio macro <code>Ctrl/Cmd + Shift + D</code>. When the package is built it will now contain the included data and documentation for the data. The documentation will be added to the website when the site is rebuilt.</p>
 <p>Importantly, whenever the package is loaded (e.g., <code><a href="https://rdrr.io/r/base/library.html">library(verticaltemplate)</a></code>), the included data becomes available just like the included functions. For example, the following would load the package, then load the included dataset to the environment.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(verticaltemplate)</span>
-<span id="cb18-2"><a href="#cb18-2"></a>mydf <span class="co">#loaded into environment from package</span></span></code></pre></div>
-<p>Finally, documentation for multiple data objects can be added to a <code>data.R</code> file. Insert a new line after the documentation for the first data object, then insert the roxygen comments for the next one. Or, individual data sets could be documented with individually named <code>.R</code> files.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(verticaltemplate)</span>
+<span id="cb17-2"><a href="#cb17-2"></a>mydf <span class="co">#loaded into environment from package</span></span></code></pre></div>
+<p>Finally, documentation for multiple data objects can be added to a <code>data.R</code> file. Insert a new line after the documentation for the first data object, then insert the roxygen comments for the next one. Or, individual data sets could be documented with individually named <code>.R</code> files. We suggest readers familiarize themselves with <a href="https://metrumresearchgroup.github.io/sinew/">sinew</a>, which provides very convenient functions for automating roxygen templates for documenting functions and data sets.</p>
 <p>We have discussed the operations for adding data to an R package. In the context of including data from a research project we have a few additional suggestions. <code>vertical</code> does create a <code>data-raw</code> folder as part of the template. This is a location to place raw data in any given format that can be imported to R, such as a .csv file, excel file, JSON file, SPSS file, or other file type.</p>
 <p>It is very often the case that raw data must be pre-processed or wrangled from its raw form to another form required by functions for data-analysis. Pre-processing steps may also involve excluding aspects of the raw data, or imputing structure to the raw data. In the spirit of sharing reproducible research it is important to record and make transparent all pre-processing steps. In principle, the transformations of data along an analysis path can be preserved in a variety of locations, such as in R Markdown documents that contain the scripts for the transformation. <code>vertical</code> suggests that the <code>data-raw</code> folder is used a location to, 1) declare and conduct pre-processing steps, and 2) save the transformed raw data to the <code>data</code> folder if the intention is to include it in the R package.</p>
 <p>For example, the <code>data-raw</code> folder contains <code>DATASET.R</code>, a mostly blank .R script. This script can be populated with the code necessary to import the raw data and transform it as needed to a desired form for further analysis. In other words, <code>DATASET.R</code> is a script that declares pre-processing steps. The script can also include usethis commands and sinew commands to output desired R objects to the data folder, and to write documentation for these objects. One benefit to this strategy is that transformed data (ready-for-analysis), can later be accessed by loading the package as a library. For example, R Markdown assets for writing a manuscript, poster, or slide deck that include data-analysis, can quickly load the data by calling the library.</p>
