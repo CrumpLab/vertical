@@ -42,7 +42,9 @@ vertical_project <- function(path = NULL,
   usethis::create_package(path)
   setwd(path)
   usethis::use_template(template = "_pkgdown.yml",
+                        ignore = TRUE,
                         package = "vertical")
+  usethis::use_mit_license()
   if (dots$init_git) {
     git2r::init()
     usethis::use_git_ignore(c(".Rhistory", ".RData", ".Rproj.user"))
@@ -108,6 +110,7 @@ init_som <- function() {
   usethis::use_template(
     template = "article.Rmd",
     save_as = "vignettes/som.Rmd",
+    ignore = TRUE,
     data = list(vignette_title="Supplementary analyses",
                 Package = basename(getwd())),
     package = "usethis"
