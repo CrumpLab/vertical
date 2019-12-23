@@ -23,9 +23,13 @@ build_vertical <- function(clean=TRUE,update_yml=FALSE,...) {
   pkgdown::build_site(...)
 
   for (i in list.files(pattern = "\\.Rmd", recursive = TRUE)) {
-    rmarkdown::render(i, output_dir = paste0("docs/", i))
-    if (!any(grepl(tools::file_path_sans_ext(i), readLines("_pkgdown.yml")))) {
-      warning(i, " is not linked to in navbar. Please edit _pkgdown.yml")
+    if(dirname(i) != "vignettes"){
+      out.file <- rmarkdown::render(i, output_dir = paste0("docs/", dirname(i)), quiet=TRUE)
+      if (!any(grepl(tools::file_path_sans_ext(i), readLines("_pkgdown.yml")))) {
+        #warning(i, " is not linked to in navbar. Please edit _pkgdown.yml")
+        usethis::ui_info(paste(file.path(dirname(i),basename(out.file)),
+                               " is not linked to in navbar. Please edit _pkgdown.yml"))
+      }
     }
   }
 
