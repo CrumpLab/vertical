@@ -16,7 +16,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Get started using vertical">
+<script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
+<meta property="og:title" content="Get started using vertical">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://crumplab.github.io/vertical/logo.png">
 <meta name="twitter:card" content="summary">
@@ -109,9 +110,12 @@
 
     
     
-<div id="motivation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#motivation" class="anchor"></a>Motivation</h2>
+<div id="overview" class="section level1">
+<h1 class="hasAnchor">
+<a href="#overview" class="anchor"></a>Overview</h1>
+<div id="motivation" class="section level3">
+<h3 class="hasAnchor">
+<a href="#motivation" class="anchor"></a>Motivation</h3>
 <p><code>vertical</code> is an R-based structured workflow for creating and sharing research assets in the form of an extended R package. There are several reasons why the R package format is useful for sharing a variety of research assets (from experiment scripts, to papers, slides and posters).</p>
 <ol style="list-style-type: decimal">
 <li>R packages have a standardized and well-organized file-structure that is useful for organizational purposes.</li>
@@ -120,43 +124,32 @@
 <li>R packages include various documents through the vignettes folder, which in principle could include various formats for communicating research, such as a manuscript or slide deck written in R Markdown.</li>
 <li>R packages can be automatically rendered into websites through <code>pkgdown</code>, providing a compelling format for sharing research assets.</li>
 </ol>
-</div>
-<div id="install-vertical" class="section level2">
-<h2 class="hasAnchor">
-<a href="#install-vertical" class="anchor"></a>Install vertical</h2>
-<p><code>vertical</code> requires an installation of <code>devtools</code></p>
-<pre><code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages("devtools")</a></code></pre>
-<p>Then, run the following to install <code>vertical</code>.</p>
-<pre><code><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">devtools::install_github("CrumpLab/vertical")</a></code></pre>
-</div>
-<div id="overview" class="section level1">
-<h1 class="hasAnchor">
-<a href="#overview" class="anchor"></a>Overview</h1>
 <p>Vertical combines the benefits of two R ecosystems for creating and sharing research project assets, these include the ecosystems of R Markdown and R packages. So vertical is:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>vertical &lt;-<span class="st"> </span>RMarkdown <span class="op">+</span><span class="st"> </span>RPackages</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>vertical &lt;-<span class="st"> </span>RMarkdown <span class="op">+</span><span class="st"> </span>RPackages</span></code></pre></div>
 <p>R Markdown is a plain text document format that, 1) allows regular text to be combined with chunks of code, and 2) can be compiled to multiple output formats, such as .pdf and webpages (HTML). R Markdown offers a strategy for transparent and reproducible research because analysis scripts along with their output (e.g., results and figures), can be embedded directly in a document. R Markdown has become a large ecosystem and is capable of several forms of document creation, from journal articles, to posters and slide-decks, and much more. In general, if R Markdown is used to create a research asset, it can be included in a <code>vertical</code> project with ease. A comprehensive manual for all things R Markdown <span class="citation">(Xie, Allaire, and Grolemund 2018)</span> is available here <a href="https://bookdown.org/yihui/rmarkdown/" class="uri">https://bookdown.org/yihui/rmarkdown/</a>.</p>
 <p>R Packages are a standard for creating and sharing libraries of R functions. By default, R packages can also include data and R Markdown documents, so the format is already suitable for packaging common research assets such as functions, data, and manuscripts. R Packages are an ecosystem in that several R Packages exist to facilitate the process of creating and sharing R packages, such as <a href="https://usethis.r-lib.org">usethis</a> <span class="citation">(Wickham and Bryan 2019)</span>, <a href="https://pkgdown.r-lib.org">pkgdown</a> <span class="citation">(Wickham and Hesselberth 2019)</span>, and <a href="https://devtools.r-lib.org">devtools</a> <span class="citation">(Wickham, Hester, and Chang 2019)</span>. Furthermore, <code>pkgdown</code> provides a method to automatically render an R package into a website that displays function documentation as well as R Markdown documents (typically tutorials for using the package). We refer readers to Wickham <span class="citation">(2015)</span> for an authoritative and in-depth guide on creating R packages <a href="http://r-pkgs.had.co.nz">http://r-pkgs.had.co.nz</a>.</p>
 <p><code>vertical</code> is a template for extending R Packages and pkgdown websites to include additional assets common to psychological research projects. To appreciate the extension consider the basic skeleton for building an R package that is generated by RStudio.</p>
 <p><img src="imgs/r-package-skeleton.png" width="100%"></p>
 <p>In the minimal example, RStudio is used to create a new project by choosing the R package template. The new project is populated with DESCRIPTION and NAMESPACE files, an R folder to write .R functions, and a man folder to write .Rd files for function documentation. RStudio automatically recognizes the project as an R package, and provides a build tab in the IDE to install the package. A pkgdown website can be built by one command <code><a href="https://pkgdown.r-lib.org/reference/build_site.html">pkgdown::build_site()</a></code>.</p>
-<div id="vertical-workflow" class="section level2">
-<h2 class="hasAnchor">
-<a href="#vertical-workflow" class="anchor"></a>vertical workflow</h2>
+</div>
+<div id="vertical-workflow" class="section level3">
+<h3 class="hasAnchor">
+<a href="#vertical-workflow" class="anchor"></a>vertical workflow</h3>
 <p>Installing the <code>vertical</code> package adds a new project template to RStudio (RStudio should be restarted after <code>vertical</code> is installed so that it recognizes the template). Users can initiate a new vertical project from RStudio by choosing the vertical project option when creating a new project. By default a vertical project is structured in the following manner:</p>
 <p><img src="imgs/vertical-project.png" width="100%"></p>
 <p>The new project contains a more complete skeleton of an R package (e.g., folders for data-raw, data, and vignettes), <code>_pkgdown.yml</code> for controlling website parameters when rendered with <code>pkgdown</code>, and additional folders for research project assets such as <code>experiments</code>, <code>manuscript</code>, <code>model</code>, <code>posters</code>, and <code>slides</code>. These additional folder can simply be locations to store final products (e.g., a .zip file for experiment scripts, a .pdf for the manuscript, PowerPoint for the slides, etc.); however, each of these assets can also be created as R Markdown documents. So, by default <code>vertical</code> includes R Markdown templates from other packages within each folder for building each type of content. As a result, <code>vertical</code> suggests using R as a single-platform solution stack for research asset creation.</p>
 </div>
-<div id="vertical-website" class="section level2">
-<h2 class="hasAnchor">
-<a href="#vertical-website" class="anchor"></a>vertical website</h2>
+<div id="vertical-website" class="section level3">
+<h3 class="hasAnchor">
+<a href="#vertical-website" class="anchor"></a>vertical website</h3>
 <p>A major impetus behind <code>vertical</code> is to facilitate sharing of research assets. For example, the benefit of using a <code>vertical</code> workflow is that a website presenting all of the research assets can be automatically rendered through <code>pkgdown</code>. For example, the figure below shows a <code>vertical</code> project website, with example page content shown in the boxes.</p>
 <p><img src="imgs/vertical-website.png" width="100%"></p>
 <p>Once content has been created in each of the folders, or a subset of them, the website can be rendered in one call using <code><a href="../reference/build_vertical.html">vertical::build_vertical()</a></code>.</p>
 <p>Depending on the nature of the research project, a vertical website is capable of sharing several assets. At a minimum, the landing page can be used to overview the research project. The navigation bar can be used to download a .pdf of the manuscript, as well as posters and slides. Supplementary materials can be written in R markdown and displayed directly on the website. Similarly, model code and supplementary data analyses can be included directly on the website. If the project includes as a browser-based behavioral experiment, in addition to sharing the source code for the experiment, a demonstration of the experiment can be run directly from the website. Finally, because a vertical website is powered by pkgdown, the website provides pages for R functions and data documentation.</p>
 </div>
-<div id="sharing-vertical-on-github-and-osf" class="section level2">
-<h2 class="hasAnchor">
-<a href="#sharing-vertical-on-github-and-osf" class="anchor"></a>Sharing vertical on Github and OSF</h2>
+<div id="sharing-vertical-on-github-and-osf" class="section level3">
+<h3 class="hasAnchor">
+<a href="#sharing-vertical-on-github-and-osf" class="anchor"></a>Sharing vertical on Github and OSF</h3>
 <p>There are several methods for sharing research assets as online repositories, for example using Github or a project on the <a href="https://osf.io">open science framework</a> (OSF). <code>vertical</code> is built with Github and OSF integration in mind, however a <code>vertical</code> project could in principle be shared in any repository.</p>
 <p>Github is very convenient for sharing <code>vertical</code> projects for several reasons:</p>
 <ol style="list-style-type: decimal">
@@ -171,7 +164,15 @@
 <div id="tutorial" class="section level1">
 <h1 class="hasAnchor">
 <a href="#tutorial" class="anchor"></a>Tutorial</h1>
+<div id="install-vertical" class="section level2">
+<h2 class="hasAnchor">
+<a href="#install-vertical" class="anchor"></a>Install vertical</h2>
+<p><code>vertical</code> requires an installation of <code>devtools</code></p>
+<pre><code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages("devtools")</a></code></pre>
+<p>Then, run the following to install <code>vertical</code>.</p>
+<pre><code><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">devtools::install_github("CrumpLab/vertical")</a></code></pre>
 <p>The following tutorial on <code>vertical</code> describes the creation of a vertical project, discussion of the vertical workflow for various types of content creation, rendering a vertical project website, and sharing vertical projects on Github and OSF. We attempt simple examples in each case, and refer readers to other guides for more in depth treatment when necessary.</p>
+</div>
 <div id="creating-a-vertical-project" class="section level2">
 <h2 class="hasAnchor">
 <a href="#creating-a-vertical-project" class="anchor"></a>Creating a vertical project</h2>
@@ -192,7 +193,7 @@
 <p>A new <code>vertical</code> project is populated with template examples for every kind of content supported by vertical (e.g., R functions, manuscript, poster, slides, supplementary materials, and even writing a browser-based behavioral experiment with jspsych). As a result, an example vertical website (showing templated content) can be rendered immediately by running the following in the console:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>vertical<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/vertical/man/build_vertical.html">build_vertical</a></span>()</span></code></pre></div>
 <p>The above line should create and output the HTML files for the website into the <code>docs</code> folder in the <code>vertical</code> template. Additionally, the resulting website should appear in a browser window for inspection. For expanded discussion on customizing the website see the <a href="#website-customization">Website customization</a> section.</p>
-<p>One caveat is the rendering of APA manuscripts with the <code>papaja</code> package, which requires a latex installation. More generally, when <code>vertical</code> is installed, it installs dependencies such as <code>papaja</code> and other required packages, but does not install latex (see, [APA papers with papaja]).</p>
+<p>One caveat is the rendering of APA manuscripts with the <code>papaja</code> package, which requires a latex installation. More generally, when <code>vertical</code> is installed, it installs dependencies such as <code>papaja</code> and other required packages, but does not install latex (see, <a href="#apa-papers-with-papaja">APA papers with papaja</a>).</p>
 </div>
 <div id="r-packages" class="section level2">
 <h2 class="hasAnchor">
@@ -200,10 +201,9 @@
 <p><code>vertical</code> projects can include an R package containing custom functions and data sets. This tutorial presents minimal examples for R package creation, and users interested in this functionality should consult Wickham’s guide for creating R packages <a href="http://r-pkgs.had.co.nz" class="uri">http://r-pkgs.had.co.nz</a>.</p>
 <p>We suggest avoiding a manual style for R package creation, which involves creating and modifying critical R package files by hand. Specifically, manual creation of files requires intimate familiarity with R standards for package development, which new users may not posses. Instead, we suggest users avail themselves of helper packages such as <a href="https://usethis.r-lib.org">usethis</a>, <a href="https://pkgdown.r-lib.org">pkgdown</a>, <a href="https://devtools.r-lib.org">devtools</a>, and <a href="https://roxygen2.r-lib.org">roxygen2</a> for documenting functions and data. Wickham’s guide provides in depth tutorials about R package creation using these tools.</p>
 <p>To encourage the above method for R package creation, the vertical template also provides <code>Vertical Helper.R</code>, which contains example commands from the above packages for automating aspects of package creation.</p>
-</div>
-<div id="r-package-meta-data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#r-package-meta-data" class="anchor"></a>R package meta data</h2>
+<div id="r-package-meta-data" class="section level3">
+<h3 class="hasAnchor">
+<a href="#r-package-meta-data" class="anchor"></a>R package meta data</h3>
 <p><code>vertical</code> creates a template for R package creation, including a DESCRIPTION file that is used to provide metadata about the R package. The default DESCRIPTION file looks something like this, and should be modified by the user to change the name, title, description and so on.</p>
 <pre><code>Package: verticaltemplate
 Title: What the Package Does (One Line, Title Case)
@@ -222,9 +222,9 @@ Suggests:
     rmarkdown</code></pre>
 <p>The Wickham guide discusses the role of the DESCRIPTION file in depth here: <a href="http://r-pkgs.had.co.nz/description.html" class="uri">http://r-pkgs.had.co.nz/description.html</a>. It is possible, through <code>usethis</code>, to set up defaults that auto-populate the DESCRIPTION with user information (for example, see <a href="https://usethis.r-lib.org/articles/articles/usethis-setup.html">usethis setup</a>).</p>
 </div>
-<div id="adding-r-functions" class="section level2">
-<h2 class="hasAnchor">
-<a href="#adding-r-functions" class="anchor"></a>Adding R functions</h2>
+<div id="adding-r-functions" class="section level3">
+<h3 class="hasAnchor">
+<a href="#adding-r-functions" class="anchor"></a>Adding R functions</h3>
 <p>The following is an example of adding a new function to the R package in a vertical project. Some reminders of these steps are suggested in <code>Vertical Helper.R</code>.</p>
 <p>New functions are added as .R files to the <code>R</code> folder. This can be automated by the following, which creates a new .R file inside the <code>R</code> folder, in this case with the name <code>myfunction.R</code>.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># replace myfunction with your function name</span></span>
@@ -258,13 +258,14 @@ sum_range &lt;- function(min,max){
 <p>The last step is generate the .Rd file in the <code>man</code> folder, which is used to create the documentation. The .Rd file is generated automatically by <code><a href="https://rdrr.io/pkg/devtools/man/document.html">devtools::document()</a></code>, or by the RStudio macro <code>Ctrl/Cmd + Shift + D</code>. For example, a new <code>sum_range.Rd</code> file like the following is saved to the <code>man</code> folder. This should not be edited by hand.</p>
 <p><img src="imgs/new-rd.png" width="50%"></p>
 </div>
-<div id="r-package-compilation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#r-package-compilation" class="anchor"></a>R package compilation</h2>
+<div id="r-package-compilation" class="section level3">
+<h3 class="hasAnchor">
+<a href="#r-package-compilation" class="anchor"></a>R package compilation</h3>
 <p>At this stage we have added a new R function to the R package skeleton, but have not yet compiled and installed the R package. The R package can be built and installed in one step by pressing “Install and Restart” from the Build tab in RStudio. After this step, the package is installed on the local system, it will be shown in the list of packages along with constituent function documentation. The functions in the package can be loaded using the <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> command.</p>
 <p><img src="imgs/package-build.png" width="100%"></p>
 <p>Relatedly, pkgdown can be used at this point to render the function documentation to the website by <code><a href="https://pkgdown.r-lib.org/reference/build_site.html">pkgdown::build_site()</a></code>.</p>
 <p><img src="imgs/pkgdown-build.png" width="75%"></p>
+</div>
 </div>
 <div id="adding-data" class="section level2">
 <h2 class="hasAnchor">
@@ -339,21 +340,21 @@ would accomplish:
 <p>It is very often the case that raw data must be pre-processed or wrangled from its raw form to another form required by functions for data-analysis. Pre-processing steps may also involve excluding aspects of the raw data, or imputing structure to the raw data. In the spirit of sharing reproducible research it is important to record and make transparent all pre-processing steps. In principle, the transformations of data along an analysis path can be preserved in a variety of locations, such as in R Markdown documents that contain the scripts for the transformation. <code>vertical</code> suggests that the <code>data-raw</code> folder is used a location to, 1) declare and conduct pre-processing steps, and 2) save the transformed raw data to the <code>data</code> folder if the intention is to include it in the R package.</p>
 <p>For example, the <code>data-raw</code> folder contains <code>DATASET.R</code>, a mostly blank .R script. This script can be populated with the code necessary to import the raw data and transform it as needed to a desired form for further analysis. In other words, <code>DATASET.R</code> is a script that declares pre-processing steps. The script can also include usethis commands and sinew commands to output desired R objects to the data folder, and to write documentation for these objects. One benefit to this strategy is that transformed data (ready-for-analysis), can later be accessed by loading the package as a library. For example, R Markdown assets for writing a manuscript, poster, or slide deck that include data-analysis, can quickly load the data by calling the library.</p>
 </div>
-<div id="manuscript-apa-papers-with-papaja" class="section level2">
+<div id="apa-papers-with-papaja" class="section level2">
 <h2 class="hasAnchor">
-<a href="#manuscript-apa-papers-with-papaja" class="anchor"></a><code>manuscript</code>: APA papers with papaja</h2>
+<a href="#apa-papers-with-papaja" class="anchor"></a>APA papers with papaja</h2>
 <p>The <code>manuscript</code> folder is for writing manuscripts. APA-style manuscripts can be written in R Markdown using the fantastic <a href="https://crsh.github.io/papaja_man/">papaja</a> package <span class="citation">(Aust and Barth 2018)</span>. The linked to documentation explains how to use <code>papaja</code>, and rather than repeat that information here, we briefly extol some virtues of <code>papaja</code>.</p>
 <p><code>vertical</code> includes a <code>papaja</code> template in the <code>manuscript</code> folder. Knitting <code>manuscript.Rmd</code> in RStudio produces an APA-style manuscript as a .pdf. NOTE, a latex installation is required in order to knit to pdf, and see the <code>papaja</code> documentation for suggestions on installing latex (see also the <code>tinytex</code> R package which may be of some use for navigating latex installation issues). <code>vertical</code> also includes the resulting .pdf in its website as a downloadable file.</p>
 <p>There are several benefits to using <code>papaja</code>. First, it is possible to create an entirely reproducible research manuscript. For example, all of the text and R code for data-analysis, modeling, and figure generation, can be included in the .Rmd file. Second, <code>papaja</code> includes many helpful functions (such as <code>apa_print()</code>) for automating the writing of results from an R object (e.g., the results of an ANOVA, t-test, or regression) to the manuscript. Third, <code>papaja</code> uses latex style citations which automatically create bibliographies. Finally, it is possible to export to latex and word documents (which may need some formatting by hand at the end). Finally, papaja also has convenient templates for responding to action letters during the review process.</p>
 </div>
-<div id="posters-and-slides-posterdown-and-slidy" class="section level2">
+<div id="posterdown-and-slidy" class="section level2">
 <h2 class="hasAnchor">
-<a href="#posters-and-slides-posterdown-and-slidy" class="anchor"></a><code>posters and slides</code>: posterdown and slidy</h2>
+<a href="#posterdown-and-slidy" class="anchor"></a>posterdown and slidy</h2>
 <p>The <code>posters</code> folder and <code>slides</code> folder are for writing posters and slide decks in R Markdown, which can be included as part of the <code>vertical</code> project website. Furthermore, <code>vertical</code> suggests templates for creating these assets in R Markdown. For example, the <code>posters</code> folder includes a <a href="https://github.com/brentthorne/posterdown">posterdown</a> template <span class="citation">(Thorne 2019)</span>, and the <code>slides</code> folder includes a <a href="https://bookdown.org/yihui/rmarkdown/slidy-presentation.html">slidy</a> template. Both produce browser-displayable content that can be included in the <code>vertical</code> website. The respective links point to documentation for making posters with posterdown and making slide decks with slidy. Additionally, the posters and slides folders can be populated with other templates (by the user) if other packages are preferred for making posters and slides in R markdown.</p>
 </div>
 <div id="vignettes-supplementary-materials-model-code-and-arbitrary-r-markdown" class="section level2">
 <h2 class="hasAnchor">
-<a href="#vignettes-supplementary-materials-model-code-and-arbitrary-r-markdown" class="anchor"></a><code>vignettes</code>: Supplementary materials, model code, and arbitrary R Markdown</h2>
+<a href="#vignettes-supplementary-materials-model-code-and-arbitrary-r-markdown" class="anchor"></a>vignettes: Supplementary materials, model code, and arbitrary R Markdown</h2>
 <p>Research assets can take many forms beyond a manuscript, poster, or slide deck, and may include stimulus materials, supplementary data analyses, and model simulations. <code>vertical</code> does not suggest folders each of these additional assets, however it does such a strategy for organizing and creating these kinds of assets it the <code>vignettes</code> folder. The strategy is to add R Markdown documents to the <code>vignettes</code> folder and/or add sub-folders for different classes of documents to the <code>vignettes</code> folder, and populate those with R Markdown documents as needed.</p>
 <p>The <code>vignettes</code> folder is part of the R package structure, and typically used to include tutorial documentation inside an R package. For example, clicking an R package in the RStudio packages tab will show a link to vignettes if they exist in the package, and they can be read directly in the help window from R studio.</p>
 <p><img src="imgs/vignettes.png" width="100%"></p>
@@ -362,7 +363,7 @@ would accomplish:
 </div>
 <div id="experiments-jspsych-and-jspsychr" class="section level2">
 <h2 class="hasAnchor">
-<a href="#experiments-jspsych-and-jspsychr" class="anchor"></a><code>experiments</code>: jspsych and jspsychr</h2>
+<a href="#experiments-jspsych-and-jspsychr" class="anchor"></a>experiments: jspsych and jspsychr</h2>
 <p>Depending on the needs of the research project, it is also possible to create browser-ready behavioral experiments in RStudio. For example, <code>vertical</code> creates an <code>experiments</code> folder that contains a template for building experiments using the <a href="https://www.jspsych.org">jspsych</a> JavaScript library <span class="citation">(De Leeuw 2015)</span>. Currently, <code>vertical</code> makes two suggestions. First, when a <code>vertical</code> project is created, it downloads the newest version of the jspsych library to the experiments folder. <code>vertical</code> also suggests a <a href="https://crumplab.github.io/jspsychr/">jspsychr</a> template. <code>jspsychr</code> is an R package that provides templates and examples for writing <code>jspsych</code> experiments in RStudio, using a combination of R Markdown and JavaScript. The <code>vertical</code> template example includes a basic Stroop task. For example, knitting the <code>index.Rmd</code> file produces the <code>index.html</code> file which can be run in a browser. In this case, because the experiment file is also an HTML file, it is possible to include a demonstration of running the experiment in the <code>vertical</code> website.</p>
 </div>
 <div id="website-customization-overview" class="section level2">
@@ -386,10 +387,9 @@ would accomplish:
 </ol>
 <p>One final point about <code>pkgdown</code> is how it handles <code>vignettes</code>. Vignettes are simple R Markdown documents in the <code>vignettes</code> folder. A vignette can be knitted in R Studio, and the result is an .html file rendered to the <code>vignettes</code> folder. This .html file is not served to the web because it is not in the <code>docs</code> folder. Moreover, this .html file displays the vignette as a basic, standalone webpage, that is not embedded into the pkgdown website. For example, the navigation bar for the website is not included. This process is different from using <code><a href="https://pkgdown.r-lib.org/reference/build_site.html">pkgdown::build_site()</a></code>, which renders the .Rmd files in <code>vignettes</code> to the <code>docs</code> folder, and in the process adds the overarching website html to each vignette so that they include website features such as the navigation bar.</p>
 <p>We mention the above issues to expose the process of including additional content to the website. <code>vertical</code> takes care of some of the additions automatically through <code><a href="../reference/build_vertical.html">vertical::build_vertical()</a></code>. For example, <code><a href="../reference/build_vertical.html">vertical::build_vertical()</a></code> compiles .Rmd files in the manuscript, posters, and slides folders, exports the assets to the <code>docs</code> folder, and adds links to the content in the navbar. Presently, there is limited functionality in <code>vertical</code> for automating the inclusion of arbitrary content in arbitrary folders. For example, if a user created a <code>blog</code> folder containing an R markdown that rendered to HTML in a particular style, it would not be included by default. Importantly, such arbitrary content can be included manually, with the caveat that aspects of the vertical website may not be included. For example, the blog page could be linked to from the navigation bar, but clicking the link would display the single page as is, and without the vertical website structure (e.g., the navigation bar would be missing).</p>
-</div>
-<div id="website-customization" class="section level2">
-<h2 class="hasAnchor">
-<a href="#website-customization" class="anchor"></a>Website customization</h2>
+<div id="website-customization" class="section level3">
+<h3 class="hasAnchor">
+<a href="#website-customization" class="anchor"></a>Website customization</h3>
 <p>The <code>_pkgdown.yml</code> file is used to customize many aspects of the website. The <code>vertical</code> template creates <code>_pkgdown.yml</code> which defines the appearance and order of navigation tabs and how they link to vertical assets. By default, <code><a href="../reference/build_vertical.html">vertical::build_vertical()</a></code> automatically updates <code>_pkgdown.yml</code> to include tabs and menu items in each tab for the following vertical assets: manuscript, posters, slides, and vignettes. Specifically, the titles of .Rmd documents in those folders are added as menu items to their respective tabs. If the <code>vignettes</code> folder contains sub folders, then the name of the sub-folder is used as section header in the “Supplementary” tab, and the title of .Rmds in each sub-folder are listed as menu items under their respective sections.</p>
 <p>Below is example yml for controlling the navigation tabs. The <code>structure</code> section defines the ordering and placement of tabs in the navbar. For example, home, manuscript, articles, slides, posters, experiments, and reference tabs are all left-aligned, and the source code link to Github is right aligned. Switching the order of the component listed under structure will change the order of the tab in the navbar.</p>
 <p>Next is the list of components, which form individual tabs. The name of the component does not need to be the same as the text displayed in the tab. For example the manuscript component specifies its text attribute as “APA6 PDF”, which is the text shown in the manuscript tab.</p>
@@ -467,6 +467,7 @@ would accomplish:
     - text: Author 1
     - text: Author 2</code></pre>
 </div>
+</div>
 <div id="sharing-a-vertical-project" class="section level2">
 <h2 class="hasAnchor">
 <a href="#sharing-a-vertical-project" class="anchor"></a>Sharing a vertical project</h2>
@@ -537,31 +538,20 @@ devtools::install_github("githubuser/reponame")</a></code></pre>
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-<li><a href="#motivation">Motivation</a></li>
-      <li><a href="#install-vertical">Install vertical</a></li>
-      <li>
-<a href="#overview">Overview</a><ul class="nav nav-pills nav-stacked">
-<li><a href="#vertical-workflow">vertical workflow</a></li>
-      <li><a href="#vertical-website">vertical website</a></li>
-      <li><a href="#sharing-vertical-on-github-and-osf">Sharing vertical on Github and OSF</a></li>
-      </ul>
-</li>
+<li><a href="#overview">Overview</a></li>
       <li>
 <a href="#tutorial">Tutorial</a><ul class="nav nav-pills nav-stacked">
-<li><a href="#creating-a-vertical-project">Creating a vertical project</a></li>
+<li><a href="#install-vertical">Install vertical</a></li>
+      <li><a href="#creating-a-vertical-project">Creating a vertical project</a></li>
       <li><a href="#default-vertical-template">Default vertical template</a></li>
       <li><a href="#building-the-vertical-website">Building the vertical website</a></li>
       <li><a href="#r-packages">R Packages</a></li>
-      <li><a href="#r-package-meta-data">R package meta data</a></li>
-      <li><a href="#adding-r-functions">Adding R functions</a></li>
-      <li><a href="#r-package-compilation">R package compilation</a></li>
       <li><a href="#adding-data">Adding Data</a></li>
-      <li><a href="#manuscript-apa-papers-with-papaja"><code>manuscript</code>: APA papers with papaja</a></li>
-      <li><a href="#posters-and-slides-posterdown-and-slidy"><code>posters and slides</code>: posterdown and slidy</a></li>
-      <li><a href="#vignettes-supplementary-materials-model-code-and-arbitrary-r-markdown"><code>vignettes</code>: Supplementary materials, model code, and arbitrary R Markdown</a></li>
-      <li><a href="#experiments-jspsych-and-jspsychr"><code>experiments</code>: jspsych and jspsychr</a></li>
+      <li><a href="#apa-papers-with-papaja">APA papers with papaja</a></li>
+      <li><a href="#posterdown-and-slidy">posterdown and slidy</a></li>
+      <li><a href="#vignettes-supplementary-materials-model-code-and-arbitrary-r-markdown">vignettes: Supplementary materials, model code, and arbitrary R Markdown</a></li>
+      <li><a href="#experiments-jspsych-and-jspsychr">experiments: jspsych and jspsychr</a></li>
       <li><a href="#website-customization-overview">Website customization overview</a></li>
-      <li><a href="#website-customization">Website customization</a></li>
       <li><a href="#sharing-a-vertical-project">Sharing a vertical project</a></li>
       </ul>
 </li>

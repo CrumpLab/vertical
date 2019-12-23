@@ -10,7 +10,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-## Motivation
+# Overview
+
+### Motivation
 
 `vertical` is an R-based structured workflow for creating and sharing research assets in the form of an extended R package. There are several reasons why the R package format is useful for sharing a variety of research assets (from experiment scripts, to papers, slides and posters).
 
@@ -19,22 +21,6 @@ knitr::opts_chunk$set(
 3. R packages can include data from a research project, and a natural way to document the data using the same schemes for documenting R functions.
 4. R packages include various documents through the vignettes folder, which in principle could include various formats for communicating research, such as a manuscript or slide deck written in R Markdown.
 5. R packages can be automatically rendered into websites through `pkgdown`, providing a compelling format for sharing research assets. 
-
-## Install vertical
-
-`vertical` requires an installation of `devtools`
-
-```
-install.packages("devtools")
-```
-
-Then, run the following to install `vertical`.
-
-```
-devtools::install_github("CrumpLab/vertical")
-```
-
-# Overview
 
 Vertical combines the benefits of two R ecosystems for creating and sharing research project assets, these include the ecosystems of R Markdown and R packages. So vertical is:
 
@@ -54,7 +40,7 @@ knitr::include_graphics("imgs/r-package-skeleton.png")
 
 In the minimal example, RStudio is used to create a new project by choosing the R package template. The new project is populated with DESCRIPTION and NAMESPACE files, an R folder to write .R functions, and a man folder to write .Rd files for function documentation. RStudio automatically recognizes the project as an R package, and provides a build tab in the IDE to install the package. A pkgdown website can be built by one command `pkgdown::build_site()`.
 
-## vertical workflow
+### vertical workflow
 
 Installing the `vertical` package adds a new project template to RStudio (RStudio should be restarted after `vertical` is installed so that it recognizes the template). Users can initiate a new vertical project from RStudio by choosing the vertical project option when creating a new project. By default a vertical project is structured in the following manner:
 
@@ -64,7 +50,7 @@ knitr::include_graphics("imgs/vertical-project.png")
 
 The new project contains a more complete skeleton of an R package (e.g., folders for data-raw, data, and vignettes), `_pkgdown.yml` for controlling website parameters when rendered with `pkgdown`, and additional folders for research project assets such as `experiments`, `manuscript`, `model`, `posters`, and `slides`. These additional folder can simply be locations to store final products (e.g., a .zip file for experiment scripts, a .pdf for the manuscript, PowerPoint for the slides, etc.); however, each of these assets can also be created as R Markdown documents. So, by default `vertical` includes R Markdown templates from other packages within each folder for building each type of content. As a result, `vertical` suggests using R as a single-platform solution stack for research asset creation.
 
-## vertical website
+### vertical website
 
 A major impetus behind `vertical` is to facilitate sharing of research assets. For example, the benefit of using a `vertical` workflow is that a website presenting all of the research assets can be automatically rendered through `pkgdown`. For example, the figure below shows a `vertical` project website, with example page content shown in the boxes.
 
@@ -76,7 +62,7 @@ Once content has been created in each of the folders, or a subset of them, the w
 
 Depending on the nature of the research project, a vertical website is capable of sharing several assets. At a minimum, the landing page can be used to overview the research project. The navigation bar can be used to download a .pdf of the manuscript, as well as posters and slides. Supplementary materials can be written in R markdown and displayed directly on the website. Similarly, model code and supplementary data analyses can be included directly on the website. If the project includes as a browser-based behavioral experiment, in addition to sharing the source code for the experiment, a demonstration of the experiment can be run directly from the website. Finally, because a vertical website is powered by pkgdown, the website provides pages for R functions and data documentation.
 
-## Sharing vertical on Github and OSF
+### Sharing vertical on Github and OSF
 
 There are several methods for sharing research assets as online repositories, for example using Github or a project on the [open science framework](https://osf.io) (OSF). `vertical` is built with Github and OSF integration in mind, however a `vertical` project could in principle be shared in any repository. 
 
@@ -89,6 +75,20 @@ Github is very convenient for sharing `vertical` projects for several reasons:
 4. Research assets in psychological science are commonly shared on OSF, which among other things provides a digital object identifier for a project, and a persistent means of storing the assets. OSF provides Github integration, allowing the content of an OSF project to be automatically populated by the content of a linked Github repository.
 
 # Tutorial
+
+## Install vertical
+
+`vertical` requires an installation of `devtools`
+
+```
+install.packages("devtools")
+```
+
+Then, run the following to install `vertical`.
+
+```
+devtools::install_github("CrumpLab/vertical")
+```
 
 The following tutorial on `vertical` describes the creation of a vertical project, discussion of the vertical workflow for various types of content creation, rendering a vertical project website, and sharing vertical projects on Github and OSF. We attempt simple examples in each case, and refer readers to other guides for more in depth treatment when necessary.
 
@@ -135,7 +135,7 @@ We suggest avoiding a manual style for R package creation, which involves creati
 
 To encourage the above method for R package creation, the vertical template also provides `Vertical Helper.R`, which contains example commands from the above packages for automating aspects of package creation.
 
-## R package meta data
+### R package meta data
 
 `vertical` creates a template for R package creation, including a DESCRIPTION file that is used to provide metadata about the R package. The default DESCRIPTION file looks something like this, and should be modified by the user to change the name, title, description and so on.
 
@@ -159,7 +159,7 @@ Suggests:
 
 The Wickham guide discusses the role of the DESCRIPTION file in depth here: <http://r-pkgs.had.co.nz/description.html>. It is possible, through `usethis`, to set up defaults that auto-populate the DESCRIPTION with user information (for example, see [usethis setup](https://usethis.r-lib.org/articles/articles/usethis-setup.html)).
 
-## Adding R functions
+### Adding R functions
 
 The following is an example of adding a new function to the R package in a vertical project. Some reminders of these steps are suggested in `Vertical Helper.R`.
 
@@ -223,7 +223,7 @@ The last step is generate the .Rd file in the `man` folder, which is used to cre
 knitr::include_graphics("imgs/new-rd.png")
 ```
 
-## R package compilation
+### R package compilation
 
 At this stage we have added a new R function to the R package skeleton, but have not yet compiled and installed the R package. The R package can be built and installed in one step by pressing "Install and Restart" from the Build tab in RStudio. After this step, the package is installed on the local system, it will be shown in the list of packages along with constituent function documentation. The functions in the package can be loaded using the `library()` command.
 
@@ -340,7 +340,7 @@ It is very often the case that raw data must be pre-processed or wrangled from i
 
 For example, the `data-raw` folder contains `DATASET.R`, a mostly blank .R script. This script can be populated with the code necessary to import the raw data and transform it as needed to a desired form for further analysis. In other words, `DATASET.R` is a script that declares pre-processing steps. The script can also include usethis commands and sinew commands to output desired R objects to the data folder, and to write documentation for these objects. One benefit to this strategy is that transformed data (ready-for-analysis), can later be accessed by loading the package as a library. For example, R Markdown assets for writing a manuscript, poster, or slide deck that include data-analysis, can quickly load the data by calling the library.
 
-## `manuscript`: APA papers with papaja
+## APA papers with papaja
 
 The `manuscript` folder is for writing manuscripts. APA-style manuscripts can be written in R Markdown using the fantastic [papaja](https://crsh.github.io/papaja_man/) package [@papaja]. The linked to documentation explains how to use `papaja`, and rather than repeat that information here, we briefly extol some virtues of `papaja`.
 
@@ -348,11 +348,11 @@ The `manuscript` folder is for writing manuscripts. APA-style manuscripts can be
 
 There are several benefits to using `papaja`. First, it is possible to create an entirely reproducible research manuscript. For example, all of the text and R code for data-analysis, modeling, and figure generation, can be included in the .Rmd file. Second, `papaja` includes many helpful functions (such as `apa_print()`) for automating the writing of results from an R object (e.g., the results of an ANOVA, t-test, or regression) to the manuscript. Third, `papaja` uses latex style citations which automatically create bibliographies. Finally, it is possible to export to latex and word documents (which may need some formatting by hand at the end). Finally, papaja also has convenient templates for responding to action letters during the review process.
 
-## `posters and slides`: posterdown and slidy
+## posterdown and slidy
 
 The `posters` folder and `slides` folder are for writing posters and slide decks in R Markdown, which can be included as part of the `vertical` project website. Furthermore, `vertical` suggests templates for creating these assets in  R Markdown. For example, the `posters` folder includes a [posterdown](https://github.com/brentthorne/posterdown) template [@posterdown], and the `slides` folder includes a [slidy](https://bookdown.org/yihui/rmarkdown/slidy-presentation.html) template. Both produce browser-displayable content that can be included in the `vertical` website. The respective links point to documentation for making posters with posterdown and making slide decks with slidy. Additionally, the posters and slides folders can be populated with other templates (by the user) if other packages are preferred for making posters and slides in R markdown.
 
-## `vignettes`: Supplementary materials, model code, and arbitrary R Markdown
+## vignettes: Supplementary materials, model code, and arbitrary R Markdown
 
 Research assets can take many forms beyond a manuscript, poster, or slide deck, and may include stimulus materials, supplementary data analyses, and model simulations. `vertical` does not suggest folders each of these additional assets, however it does such a strategy for organizing and creating these kinds of assets it the `vignettes` folder. The strategy is to add R Markdown documents to the `vignettes` folder and/or add sub-folders for different classes of documents to the `vignettes` folder, and populate those with R Markdown documents as needed.
 
@@ -366,7 +366,7 @@ Vignettes are written as R Markdown documents so they can include text and R cod
 
 One caveat to using vignettes through pkgdown is that they are all compiled with a consistent look-and-feel imposed by pkgdown, which sets an aim to standardize documentation for R packages (the primary use case for pkgdown). Standard vignette style should be suitable for most users, and we note that it is certainly possible to use custom styles; however, a tutorial on full customization is beyond our scope (but see, further options for customization in the [Website customization] section.)
 
-## `experiments`: jspsych and jspsychr
+## experiments: jspsych and jspsychr
 
 Depending on the needs of the research project, it is also possible to create browser-ready behavioral experiments in RStudio. For example, `vertical` creates an `experiments` folder that contains a template for building experiments using the [jspsych](https://www.jspsych.org) JavaScript library [@de2015jspsych]. Currently, `vertical` makes two suggestions. First, when a `vertical` project is created, it downloads the newest version of the jspsych library to the experiments folder. `vertical` also suggests a [jspsychr](https://crumplab.github.io/jspsychr/) template. `jspsychr` is an R package that provides templates and examples for writing `jspsych` experiments in RStudio, using a combination of R Markdown and JavaScript. The `vertical` template example includes a basic Stroop task. For example, knitting the `index.Rmd` file produces the `index.html` file which can be run in a browser. In this case, because the experiment file is also an HTML file, it is possible to include a demonstration of running the experiment in the `vertical` website.
 
@@ -398,7 +398,7 @@ One final point about `pkgdown` is how it handles `vignettes`. Vignettes are sim
 
 We mention the above issues to expose the process of including additional content to the website. `vertical` takes care of some of the additions automatically through `vertical::build_vertical()`. For example, `vertical::build_vertical()` compiles .Rmd files in the manuscript, posters, and slides folders, exports the assets to the `docs` folder, and adds links to the content in the navbar. Presently, there is limited functionality in `vertical` for automating the inclusion of arbitrary content in arbitrary folders. For example, if a user created a `blog` folder containing an R markdown that rendered to HTML in a particular style, it would not be included by default. Importantly, such arbitrary content can be included manually, with the caveat that aspects of the vertical website may not be included. For example, the blog page could be linked to from the navigation bar, but clicking the link would display the single page as is, and without the vertical website structure (e.g., the navigation bar would be missing).
 
-## Website customization
+### Website customization
 
 The `_pkgdown.yml` file is used to customize many aspects of the website. The `vertical` template creates `_pkgdown.yml` which defines the appearance and order of navigation tabs and how they link to vertical assets. By default, `vertical::build_vertical()` automatically updates `_pkgdown.yml` to include tabs and menu items in each tab for the following vertical assets: manuscript, posters, slides, and vignettes. Specifically, the titles of .Rmd documents in those folders are added as menu items to their respective tabs. If the `vignettes` folder contains sub folders, then the name of the sub-folder is used as section header in the "Supplementary" tab, and the title of .Rmds in each sub-folder are listed as menu items under their respective sections.
 

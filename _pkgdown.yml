@@ -9,6 +9,9 @@ template:
 development:
   mode: auto
 
+toc:
+  depth: 2
+
 pkgdown:
   as_is: true
 
