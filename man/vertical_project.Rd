@@ -5,7 +5,7 @@
 \title{Initialize a \strong{vertical} project}
 \usage{
 vertical_project(
-  path,
+  path = NULL,
   init_git = TRUE,
   init_data = TRUE,
   init_ms = TRUE,
@@ -18,6 +18,20 @@ vertical_project(
 }
 \arguments{
 \item{path}{Name (and location) of package. Must be a valid R package name.}
+
+\item{init_git}{Initialize a git repository? (TRUE)}
+
+\item{init_data}{Initialize data? (TRUE)}
+
+\item{init_ms}{Initialize APA6 manuscript R Markdown template? (TRUE)}
+
+\item{init_som}{Initialize supplementary materials R Markdown template? (TRUE)}
+
+\item{init_slides}{Initialize an R Markdown slide template? (TRUE)}
+
+\item{init_poster}{Initialize an R Markdown poster template? (TRUE)}
+
+\item{init_exp}{Initialize a jsPsych experiment template? (FALSE)}
 
 \item{...}{Not used.}
 }

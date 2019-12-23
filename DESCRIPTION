@@ -31,7 +31,8 @@ Imports:
     posterdown,
     rmarkdown,
     sinew,
-    git2r
+    git2r,
+    rstudioapi
 Remotes: github::crsh/papaja
 Suggests:
     knitr
