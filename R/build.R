@@ -22,31 +22,13 @@ build_vertical <- function(clean=TRUE,update_yml=FALSE,...) {
   if(clean == TRUE) pkgdown::clean_site()
   pkgdown::build_site(...)
 
-  if (dir.exists("posters")) {
-    file_names <- list.files("posters", pattern = "\\.Rmd$")
-    for(i in file_names){
-      rmarkdown::render(paste("posters",i,sep="/"),
-                        output_dir = "docs/posters/")
+  for (i in list.files(pattern = "\\.Rmd", recursive = TRUE)) {
+    rmarkdown::render(i, output_dir = paste0("docs/", i))
+    if (!any(grepl(tools::file_path_sans_ext(i), readLines("_pkgdown.yml")))) {
+      warning(i, " is not linked to in navbar. Please edit _pkgdown.yml")
     }
   }
 
-  if (dir.exists("slides")) {
-    file_names <- list.files("slides", pattern = "\\.Rmd$")
-    for(i in file_names){
-      rmarkdown::render(paste("slides",i,sep="/"),
-                        output_dir = "docs/slides/")
-    }
-  }
-
-  if (dir.exists("manuscript")) {
-    # Works, but throws error if file not created first
-    file.create("manuscript/r-references.bib")
-    file_names <- list.files("manuscript", pattern = "\\.Rmd$")
-    for(i in file_names){
-      rmarkdown::render(paste("manuscript",i,sep="/"),
-                        output_dir = "docs/manuscript/")
-    }
-  }
   if (dir.exists("experiments")) {
     dir.create("docs/experiments")
     file.copy("experiments", "docs", recursive = TRUE)
