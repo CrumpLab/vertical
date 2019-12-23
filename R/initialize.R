@@ -3,10 +3,17 @@
 #' This function is called when a **vertical** R project is created.
 #'
 #' @param path Name (and location) of package. Must be a valid R package name.
+#' @param init_git Initialize a git repository? (TRUE)
+#' @param init_data Initialize data? (TRUE)
+#' @param init_ms Initialize APA6 manuscript R Markdown template? (TRUE)
+#' @param init_som Initialize supplementary materials R Markdown template? (TRUE)
+#' @param init_slides Initialize an R Markdown slide template? (TRUE)
+#' @param init_poster Initialize an R Markdown poster template? (TRUE)
+#' @param init_exp Initialize a jsPsych experiment template? (FALSE)
 #' @param ...  Not used.
 #'
 #' @export
-vertical_project <- function(path=NULL,
+vertical_project <- function(path = NULL,
                              init_git = TRUE,
                              init_data = TRUE,
                              init_ms = TRUE,
