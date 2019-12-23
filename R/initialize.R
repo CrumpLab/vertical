@@ -40,13 +40,28 @@ vertical_project <- function(path=NULL,
     git2r::init()
     usethis::use_git_ignore(c(".Rhistory", ".RData", ".Rproj.user"))
   }
-  if (dots$init_data) usethis::use_data_raw(open = FALSE)
+  if (dots$init_data) init_data()
   if (dots$init_ms) init_papaja()
   if (dots$init_slides) init_slides()
   if (dots$init_poster) init_poster()
   if (dots$init_exp) init_jspsych()
   if (dots$init_som) init_som()
 
+}
+
+init_data <- function() {
+  usethis::use_directory("data-raw", ignore = TRUE)
+  usethis::use_template(
+    template = "preprocess.R",
+    save_as = "data-raw/preprocess.R",
+    package = "vertical"
+  )
+  usethis::use_template(
+    template = "data.R",
+    save_as = "R/data.R",
+    data = list(dataname = "mydata"),
+    package = "vertical"
+  )
 }
 
 #' Initialize manuscript
