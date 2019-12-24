@@ -46,5 +46,6 @@ suggest_yml <- function(){
   }
 
   usethis::ui_info("Copy to _pkgdown.yml then modify as needed")
+  usethis::ui_info("tip: change .html to .pdf in hrefs for papaja manuscripts, or other .pdf assets")
   ymlthis::as_yml(temp_yml)
 }
