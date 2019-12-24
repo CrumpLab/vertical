@@ -4,17 +4,15 @@
 \alias{build_vertical}
 \title{Build vertical project}
 \usage{
-build_vertical(clean = TRUE, update_yml = FALSE, ...)
+build_vertical(clean = TRUE, ...)
 }
 \arguments{
 \item{clean}{logical, when clean=TRUE (the default), the \code{docs} folder is cleaned (e.g., completely wiped) using \code{pkgdown::clean_site()}, otherwise when clean=FALSE \code{clean_site()} will not be run.}
 
-\item{update_yml}{logical, update_yml=FALSE is the default so existing yml \strong{is not overwritten}, updates yml components in \verb{_pkgdown.yml} to list all .Rmds in folders and subfolders of vertical components (manuscript, posters, slides, vignettes) in associated navigation bar tabs on the website. Set to TRUE to overwrite.}
-
 \item{...}{params, pass additional parameters to \code{pkgdown::build_site(...)}}
 }
 \description{
-Build the website associated with a vertical project. This is mostly a wrapper to \code{pkgdown::build_site()}, but extended to render content from vertical folders.
+Build the website associated with a vertical project. This is mostly a wrapper to \code{pkgdown::build_site()}, but extended to render .Rmd content from other folders.
 }
 \section{Usage}{
 \preformatted{build_vertical()

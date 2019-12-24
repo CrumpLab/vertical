@@ -43,7 +43,7 @@
   
 <meta property="og:title" content="Build vertical project — build_vertical" />
 
-<meta property="og:description" content="Build the website associated with a vertical project. This is mostly a wrapper to pkgdown::build_site(), but extended to render content from vertical folders." />
+<meta property="og:description" content="Build the website associated with a vertical project. This is mostly a wrapper to pkgdown::build_site(), but extended to render .Rmd content from other folders." />
 
 <meta property="og:image" content="https://crumplab.github.io/vertical/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -150,11 +150,11 @@
 
     <div class="ref-description">
     
-    <p>Build the website associated with a vertical project. This is mostly a wrapper to <code><a href='https://pkgdown.r-lib.org/reference/build_site.html'>pkgdown::build_site()</a></code>, but extended to render content from vertical folders.</p>
+    <p>Build the website associated with a vertical project. This is mostly a wrapper to <code><a href='https://pkgdown.r-lib.org/reference/build_site.html'>pkgdown::build_site()</a></code>, but extended to render .Rmd content from other folders.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>build_vertical</span>(<span class='kw'>clean</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>update_yml</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>build_vertical</span>(<span class='kw'>clean</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -162,10 +162,6 @@
     <tr>
       <th>clean</th>
       <td><p>logical, when clean=TRUE (the default), the <code>docs</code> folder is cleaned (e.g., completely wiped) using <code><a href='https://pkgdown.r-lib.org/reference/clean_site.html'>pkgdown::clean_site()</a></code>, otherwise when clean=FALSE <code>clean_site()</code> will not be run.</p></td>
-    </tr>
-    <tr>
-      <th>update_yml</th>
-      <td><p>logical, update_yml=FALSE is the default so existing yml <strong>is not overwritten</strong>, updates yml components in <code>_pkgdown.yml</code> to list all .Rmds in folders and subfolders of vertical components (manuscript, posters, slides, vignettes) in associated navigation bar tabs on the website. Set to TRUE to overwrite.</p></td>
     </tr>
     <tr>
       <th>...</th>

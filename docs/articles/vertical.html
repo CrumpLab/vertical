@@ -54,13 +54,13 @@
 <li>
   <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
-
+     
   </a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     Articles
-
+     
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
@@ -83,7 +83,7 @@
 <li>
   <a href="https://github.com/CrumpLab/vertical">
     <span class="fa fa-lg fa-github"></span>
-
+     
     source code
   </a>
 </li>
@@ -95,21 +95,21 @@
 </div>
 <!--/.navbar -->
 
-
+      
 
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Get started using vertical</h1>
-
-
+            
+      
       <small class="dont-index">Source: <a href="https://github.com/CrumpLab/vertical/blob/master/vignettes/vertical.Rmd"><code>vignettes/vertical.Rmd</code></a></small>
       <div class="hidden name"><code>vertical.Rmd</code></div>
 
     </div>
 
-
-
+    
+    
 <div id="overview" class="section level1">
 <h1 class="hasAnchor">
 <a href="#overview" class="anchor"></a>Overview</h1>
@@ -178,8 +178,8 @@
 <a href="#creating-a-vertical-project" class="anchor"></a>Creating a vertical project</h2>
 <p><a href="#install-vertical">Install vertical</a>, restart RStudio, then follow these steps to initialize a new <code>vertical</code> project. <strong>IMPORTANT</strong>: when you choose a name it must be <a href="http://r-pkgs.had.co.nz/package.html#naming">a valid R package name</a>. For example, the name must contain letters, numbers, or periods (e.g., my.name), but no periods at the end. This means no spaces, dashes or underscores.</p>
 <p><img src="imgs/vertical-new.png" width="50%"></p>
-<p>You can also create a vertical project from the console, see the documentation for <code>init_vertical_project()</code> for more options.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>vertical<span class="op">::</span><span class="kw">init_vertical_project</span>()</span></code></pre></div>
+<p>You can also create a vertical project from the console, see the documentation for <code><a href="../reference/vertical_project.html">vertical_project()</a></code> for more options. This loads the R Project Template window from the console.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>vertical<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/vertical/man/vertical_project.html">vertical_project</a></span>()</span></code></pre></div>
 </div>
 <div id="default-vertical-template" class="section level2">
 <h2 class="hasAnchor">
@@ -208,7 +208,7 @@
 <pre><code>Package: verticaltemplate
 Title: What the Package Does (One Line, Title Case)
 Version: 0.0.0.9000
-Authors@R:
+Authors@R: 
     person(given = "Matt",
            family = "Crump",
            role = c("aut", "cre"),
@@ -218,7 +218,7 @@ Description: What the package does (one paragraph).
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Suggests:
+Suggests: 
     rmarkdown</code></pre>
 <p>The Wickham guide discusses the role of the DESCRIPTION file in depth here: <a href="http://r-pkgs.had.co.nz/description.html" class="uri">http://r-pkgs.had.co.nz/description.html</a>. It is possible, through <code>usethis</code>, to set up defaults that auto-populate the DESCRIPTION with user information (for example, see <a href="https://usethis.r-lib.org/articles/articles/usethis-setup.html">usethis setup</a>).</p>
 </div>
@@ -272,7 +272,7 @@ sum_range &lt;- function(min,max){
 <a href="#adding-data" class="anchor"></a>Adding Data</h2>
 <p>Arbitrary data can be included in an R Package by placing R data files into a <code>data</code> folder. Importantly, data can be documented just like a function, which allows for clear and descriptive meta-data for the data object. <code>vertical</code> does not create a <code>data</code> folder as a part of its template. This is to encourage useful strategies for data inclusion that automate the creation of the data folder when it is required.</p>
 <!--
-`vertical` includes  [document_data()](https://crumplab.github.io/vertical/reference/document_data.html) quickly to add an existing dataframe to an R package. For example, if `mydf` was an existing dataframe, then the following:
+`vertical` includes  [document_data()](https://crumplab.github.io/vertical/reference/document_data.html) quickly to add an existing dataframe to an R package. For example, if `mydf` was an existing dataframe, then the following:  
 
 
 ```r
@@ -316,7 +316,7 @@ would accomplish:
 #' \describe{
 #'   \item{\code{a}}{integer COLUMN_DESCRIPTION}
 #'   \item{\code{b}}{integer COLUMN_DESCRIPTION}
-#'   \item{\code{c}}{integer COLUMN_DESCRIPTION}
+#'   \item{\code{c}}{integer COLUMN_DESCRIPTION} 
 #'}
 #' @details DETAILS
 "mydf"</code></pre>
@@ -327,7 +327,7 @@ would accomplish:
 #' \describe{
 #'   \item{\code{a}}{integer some numbers}
 #'   \item{\code{b}}{integer some more numbers}
-#'   \item{\code{c}}{character some letters}
+#'   \item{\code{c}}{character some letters} 
 #'}
 #' @details This dataset is an example.
 "mydf"</code></pre>
@@ -575,7 +575,7 @@ devtools::install_github("githubuser/reponame")</a></code></pre>
       </footer>
 </div>
 
-
+  
 
 
   </body>

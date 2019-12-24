@@ -1,81 +1,50 @@
-#' Update _pkgdown.yml for Rmds in vertical folders
+#' Suggest yml for _pkgdown.yml
 #'
-#' Write yml for the website navigation bar; run automatically by `build_vertical()`.
+#' Run `vertical::suggest_yml` to generate a suggestions for populating `_pkgdown.yml`. The suggested yml is written to the console. Copy this to `_pkgdown.yml` and modify as necessary.
 #'
-#' @param vertical_folder character, name of a vertical folder, e.g., "vignettes"
-#' @param docs_folder character, name of folder in docs, e.g., "articles"
-#' @param yml_component character, name of the corresponding yml component, e.g., "articles"
-#' @param tab_title character, the title of the component tab written to the website, e.g., "Supplementary"
+#' @return yml copied to console
 #'
-#' @return file, an updated _pkgdown.yml file
-#'
-#' @details `update_yml()` is a helper function for adding vertical content to the website navigation bar by upating `_pkgdown.yml`.
-#'
-#' Specifically, the titles of .Rmds in  `vertical_folder` and its subfolders are listed under the associated navbar component in `_pkgdown.yml`. If subfolders exist, then the name of the subfolder is used as a section header in the list. The sections and titles are shown in the dropdown navigation tab on the website.
-#'
-#' `_pkgdown.yml` can be further modified by hand to achieve various customizations to the website. See the [pkgdown documentation](https://pkgdown.r-lib.org/reference/build_site.html) for additional information.
+#' @details `_pkgdown.yml` can be further modified by hand to achieve various customizations to the website. See the [pkgdown documentation](https://pkgdown.r-lib.org/reference/build_site.html) for additional information.
 #'
 #' @export
-update_yml <- function(vertical_folder,
-                       docs_folder,
-                       yml_component,
-                       tab_title){
+#'
+suggest_yml <- function(){
+  temp_yml <- yaml::read_yaml("_pkgdown.yml")
+  temp_yml$navbar$components$articles <- NULL
 
-  if (dir.exists(vertical_folder)){
-    # get rmds in folder
-    top_rmds <- list.files(vertical_folder, pattern = "\\.Rmd$", full.names = TRUE)
-    top_rmds_yml <- lapply(top_rmds,rmarkdown::yaml_front_matter)
-    top_rmds_title <- unlist(sapply(top_rmds_yml,"[","title"))
-    top_rmds_html <- list.files(vertical_folder, pattern = "\\.Rmd$")
-    top_rmds_html <- gsub(".Rmd",".html",top_rmds_html)
+  for (i in list.files(pattern = "\\.Rmd", recursive = TRUE)) {
+    #j <- gsub("vignettes","articles",i)
+    assets <- gtools::split_path(i,FALSE)
+    j <- assets
+    if(assets[1] %in% c("experiments","data","data-raw","docs","R","man","inst") == FALSE ){
 
-    if (vertical_folder == "manuscript"){
-      top_rmds_html <- list.files(vertical_folder, pattern = "\\.Rmd$")
-      top_rmds_html <- gsub(".Rmd",".pdf",top_rmds_html)
-    }
-
-    # create temporary articles list
-    new_articles <- list()
-    new_articles <- list(text = tab_title,
-                         menu  = list())
-
-    # add main folder vignettes to list
-    if(length(top_rmds) > 0) {
-      for(i in 1:length(top_rmds_title)){
-        new_articles$menu[[i]] <- list(text = top_rmds_title[i],
-                                       href = paste(docs_folder,top_rmds_html[i],sep="/"))
+      # handle vignettes exception
+      if (assets[1] == "vignettes") {
+        assets[1] <- "articles"
+        j[1] <- "articles"
       }
-    }
 
-    # add subfolder vignettes
-    sub_folders <- list.dirs(vertical_folder, full.names=FALSE, recursive=FALSE)
-    for(i in sub_folders){
-      # get rmds in sub folder
-      sub_rmds <- list.files(paste(vertical_folder,i,sep="/"),
-                             pattern = "\\.Rmd$", full.names = TRUE)
-      if(length(sub_rmds) > 0){
-        # add folder name as text separator
-        new_articles$menu[[length(new_articles$menu)+1]] <- list(text = i)
-
-        sub_rmds_yml <- lapply(sub_rmds,rmarkdown::yaml_front_matter)
-        sub_rmds_title <- unlist(sapply(sub_rmds_yml,"[","title"))
-        sub_rmds_html <- list.files(paste(vertical_folder,i,sep="/"), pattern = "\\.Rmd$")
-        sub_rmds_html <- gsub(".Rmd",".html",sub_rmds_html)
-
-        # add sub folder vignettes to list
-        if(length(sub_rmds) > 0) {
-          for(j in 1:length(sub_rmds_title)){
-            new_articles$menu[[length(new_articles$menu)+1]] <- list(text = sub_rmds_title[j],
-                                                                     href = paste(docs_folder,i,sub_rmds_html[j],sep="/"))
-          }
-        }
+      # write structure to left
+      if(assets[1] %in% temp_yml$navbar$structure$left == FALSE) {
+        temp_yml$navbar$structure$left <- c(temp_yml$navbar$structure$left,assets[1])
       }
-    } #end loop
 
-    if( file.exists("_pkgdown.yml") ){
-      temp_yml <- yaml::read_yaml("_pkgdown.yml")
-      temp_yml$navbar$components[[yml_component]] <- new_articles
-      yaml::write_yaml(temp_yml,"_pkgdown.yml")
+      # write top level component tab text and menu
+      if( "menu" %in% names(temp_yml$navbar$components[[assets[1]]]) == FALSE) {
+        temp_yml$navbar$components[[assets[1]]] <- list(text = assets[1],
+                                                        menu = list())
+      }
+
+      # write titles and hrefs
+      temp_yml$navbar$components[[assets[1]]]$menu <- rlist::list.append(
+        temp_yml$navbar$components[[assets[1]]]$menu,
+        list(text = rmarkdown::yaml_front_matter(i)$title,
+             href=gsub(".Rmd",".html",paste(j,collapse="/")))
+      )
+      # [todo] handle file types? only html so far
     }
   }
+
+  usethis::ui_info("Copy to _pkgdown.yml then modify as needed")
+  ymlthis::as_yml(temp_yml)
 }
