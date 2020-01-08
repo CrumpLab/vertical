@@ -30,9 +30,13 @@ Imports:
     yaml,
     posterdown,
     rmarkdown,
-    sinew,
     git2r,
-    rstudioapi
-Remotes: github::crsh/papaja
+    rstudioapi,
+    gtools,
+    rlist,
+    ymlthis
+Remotes: 
+    github::crsh/papaja,
+    github::CrumpLab/jspsychr
 Suggests:
     knitr
