@@ -31,10 +31,7 @@ Imports:
     posterdown,
     rmarkdown,
     git2r,
-    rstudioapi,
-    gtools,
-    rlist,
-    ymlthis
+    rstudioapi
 Remotes: 
     github::crsh/papaja,
     github::CrumpLab/jspsychr

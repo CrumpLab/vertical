@@ -10,42 +10,40 @@
 #'
 suggest_yml <- function(){
   temp_yml <- yaml::read_yaml("_pkgdown.yml")
-  temp_yml$navbar$components$articles <- NULL
+  exclude_folders <- c("experiments","data","data-raw","docs","R","man","inst")
 
+  # write structure and components
   for (i in list.files(pattern = "\\.Rmd", recursive = TRUE)) {
-    #j <- gsub("vignettes","articles",i)
-    assets <- gtools::split_path(i,FALSE)
+    assets <- unlist(strsplit(i,split=.Platform$file.sep))
+    if(assets[1] %in% exclude_folders == FALSE ){
+      if (assets[1] == "vignettes") assets[1] <- "articles"
+      if(assets[1] %in% temp_yml$navbar$structure$left == FALSE) temp_yml$navbar$structure$left <- c(temp_yml$navbar$structure$left,assets[1])
+      temp_yml$navbar$components[[assets[1]]] <- list(text = assets[1],menu = list())
+    }
+  }
+
+  # write titles and hrefs
+  for (i in list.files(pattern = "\\.Rmd", recursive = TRUE)) {
+    assets <- unlist(strsplit(i,split=.Platform$file.sep))
     j <- assets
-    if(assets[1] %in% c("experiments","data","data-raw","docs","R","man","inst") == FALSE ){
-
-      # handle vignettes exception
-      if (assets[1] == "vignettes") {
-        assets[1] <- "articles"
-        j[1] <- "articles"
-      }
-
-      # write structure to left
-      if(assets[1] %in% temp_yml$navbar$structure$left == FALSE) {
-        temp_yml$navbar$structure$left <- c(temp_yml$navbar$structure$left,assets[1])
-      }
-
-      # write top level component tab text and menu
-      if( "menu" %in% names(temp_yml$navbar$components[[assets[1]]]) == FALSE) {
-        temp_yml$navbar$components[[assets[1]]] <- list(text = assets[1],
-                                                        menu = list())
-      }
-
-      # write titles and hrefs
-      temp_yml$navbar$components[[assets[1]]]$menu <- rlist::list.append(
+    if(assets[1] %in% exclude_folders == FALSE ){
+      if (assets[1] == "vignettes") assets[1] <- "articles"; j[1] <- "articles"
+      temp_yml$navbar$components[[assets[1]]]$menu <- c(
         temp_yml$navbar$components[[assets[1]]]$menu,
-        list(text = rmarkdown::yaml_front_matter(i)$title,
-             href=gsub(".Rmd",".html",paste(j,collapse="/")))
+        list(list(text = rmarkdown::yaml_front_matter(i)$title,
+                  href=gsub(".Rmd",".html",paste(j,collapse="/"))))
       )
       # [todo] handle file types? only html so far
     }
   }
 
+  # print suggested yml to console
   usethis::ui_info("Copy to _pkgdown.yml then modify as needed")
   usethis::ui_info("tip: change .html to .pdf in hrefs for papaja manuscripts, or other .pdf assets")
-  ymlthis::as_yml(temp_yml)
+  filename <- tempfile()
+  con <- file(filename, "w")
+  yaml::write_yaml(temp_yml, con)
+  close(con)
+  writeLines(readLines(filename))
+  unlink(filename)
 }

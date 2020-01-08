@@ -16,7 +16,7 @@ build_vertical <- function(clean=TRUE,...) {
   pkgdown::build_site(...)
 
   for (i in list.files(pattern = "\\.Rmd", recursive = TRUE)) {
-    if(gtools::split_path(i,FALSE)[1] %in% c("experiments","vignettes") == FALSE){
+    if(unlist(strsplit(i,split=.Platform$file.sep))[1] %in% c("experiments","vignettes") == FALSE){
       out.file <- rmarkdown::render(i, output_dir = paste0("docs/", dirname(i)), quiet=TRUE)
       if (!any(grepl(tools::file_path_sans_ext(i), readLines("_pkgdown.yml")))) {
         usethis::ui_info(paste(file.path(dirname(i),basename(out.file)),
