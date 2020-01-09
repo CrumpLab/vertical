@@ -44,7 +44,6 @@ vertical_project <- function(path = NULL,
   usethis::use_template(template = "_pkgdown.yml",
                         ignore = TRUE,
                         package = "vertical")
-  if (!is.null(getOption("usethis.full_name"))) usethis::use_mit_license()
   if (dots$init_git) {
     git2r::init()
     usethis::use_git_ignore(c(".Rhistory", ".RData", ".Rproj.user"))
