@@ -1,0 +1,5 @@
+.nav-stacked>li>a {
+position: relative;
+display: block;
+padding: 2px 15px;
+}

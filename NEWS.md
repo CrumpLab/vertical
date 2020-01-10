@@ -1,3 +1,7 @@
+# vertical 0.0.1.0000
+
+* clean up branch to include only master and dev
+
 # vertical 0.0.0.9900
 
 * `vertical_project()` is now a single function for initialization

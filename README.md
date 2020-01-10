@@ -5,8 +5,6 @@
 
 <!-- badges: end -->
 
-**Currently under development**
-
 ## Installation
 
 The devtools library is required for installation:
