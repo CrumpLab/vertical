@@ -1,6 +1,6 @@
 Package: vertical
 Title: Reproducible worfklow for psychological science research asset creation and communication
-Version: 0.0.0.9400
+Version: 0.0.0.9900
 URL: https://github.com/CrumpLab/vertical
 BugReports: https://github.com/CrumpLab/vertical/issues
 Authors@R: c(

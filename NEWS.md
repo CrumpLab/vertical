@@ -1,4 +1,12 @@
+# vertical 0.0.0.9900
+
+* `vertical_project()` is now a single function for initialization
+* `build_vertical()` removes yml updates
+* yml suggestion is done by `suggest_yml()`
+* minor edits to tutorial
+
 # vertical 0.0.0.9400
+
 * update_yml default is FALSE in build_vertical. Need explicitly overwrite
 * enhanced `init_vertical_project()` to allow interactive dialogue for creation, or direct creation by script.
 
