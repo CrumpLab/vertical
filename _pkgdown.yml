@@ -37,4 +37,4 @@ navbar:
       text: Articles
       menu:
       - text: Preprint
-        href: https://mvuorre.github.io/rparp/index.html
+        href: manuscript/manuscript.pdf
