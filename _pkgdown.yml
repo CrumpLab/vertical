@@ -7,7 +7,7 @@ template:
     ganalytics: UA-79429674-9
 
 development:
-  mode: auto
+  mode: unreleased
 
 toc:
   depth: 2
