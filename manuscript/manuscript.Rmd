@@ -222,6 +222,10 @@ To maximize the reuse potential of open data and support "discovery through good
 
 Borrowing standards and best practices from software development, such as the R package standard discussed here, may serve to dramatically improve reproducibility. By organizing research assets in a standard format, their reuse will be less time consuming and error-prone. Standard formats also facilitate large-scale meta-scientific investigations [@gorgolewski_brain_2016], and inclusion of data sets for meta-analyses. More generally, in addition to the convenience of a single-platform *vertical* workflow, adopting R standards during asset creation demands some amount of attention on how research products are curated, stored, documented, and shared. Drawing attention to these details may also serve to increase the reproducibility of our work.
 
+# Author Contributions
+
+MV and MC jointly generated the idea for the manuscript; MV wrote the first draft, which both authors then critically edited. *vertical* was programmed by MC and MV. Both authors approved the final submitted version of the manuscript.
+
 # References
 
 ```{r create_r-references}
