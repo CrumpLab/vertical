@@ -1,0 +1,78 @@
+---
+title: "Suggested R Packages"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+**vertical** currently suggests a limited number of R packages and templates useful for psychological research projects. This suggestion list keeps track of the current suggestions and lists useful alternatives.
+
+## R Packages
+
+**vertical** suggestions
+
+- [pkgdown](https://pkgdown.r-lib.org) | compile R package as website
+- [devtools](https://devtools.r-lib.org) | automate aspects of R Package creation while being consistent with R Package standards
+- [usethis](https://usethis.r-lib.org) | automate aspects of R Package creation while being consistent with R Package standards
+- [roxygen2](https://roxygen2.r-lib.org) | convenient documentation syntax
+
+Consider also:
+
+- [sinew](https://github.com/metrumresearchgroup/sinew) | automate roxygen comments for function and data documentation
+
+---
+
+## Writing Papers
+
+**vertical** suggests
+
+- [papaja](https://crsh.github.io/papaja_man/) | write APA papers in R Markdown
+
+Consider also:
+
+- [rticles](https://github.com/rstudio/rticles) | numerous R markdown templates for many journal types
+
+---
+
+## Posters
+
+**vertical** suggests
+
+- [posterdown](https://github.com/brentthorne/posterdown) | write posters in R Markdown
+
+Consider also:
+
+- [pagedown](https://github.com/rstudio/pagedown)
+
+---
+
+## Slides
+
+**vertical** suggests
+
+- [slidy](https://bookdown.org/yihui/rmarkdown/slidy-presentation.html) | write slide presentations in R Markdown
+
+Consider also:
+
+- [xaringan](https://github.com/yihui/xaringan)
+- [ioslides](https://bookdown.org/yihui/rmarkdown/ioslides-presentation.html)
+- [beamer](https://bookdown.org/yihui/rmarkdown/beamer-presentation.html)
+
+---
+
+## Experiments
+
+**vertical** suggests
+
+- [jspysch](https://www.jspsych.org) | javascript library for behavioral experiments
+- [jspsychr](https://crumplab.github.io/jspsychr/) | use RStudio and R markdown/Javascipt to write jspcyh experiments
+
+Consider also:
+
+- [psychtestr](https://github.com/pmcharrison/psychTestR)
+- [xprmntr](https://github.com/djnavarro/xprmntr)
+- [jaysire](https://github.com/djnavarro/jaysire)

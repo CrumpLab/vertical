@@ -21,7 +21,10 @@ navbar:
     - home
     - articles
     - reference
-    right: github
+    - suggestions
+    right:
+    - news
+    - github
   components:
     home:
       icon: fa-home fa-lg
@@ -38,3 +41,6 @@ navbar:
       menu:
       - text: Preprint
         href: manuscript/manuscript.pdf
+    suggestions:
+      text: Suggested R Packages
+      href: articles/recs.html

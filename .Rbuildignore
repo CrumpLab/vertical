@@ -8,3 +8,4 @@
 ^pkgdown$
 ^vignettes$
 ^vignettes\manuscript$
+^vignettes/recs\.Rmd$
