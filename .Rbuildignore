@@ -7,5 +7,4 @@
 ^_pkgdown\.yml$
 ^pkgdown$
 ^vignettes$
-^vignettes\manuscript$
-^vignettes/recs\.Rmd$
+^manuscript$
