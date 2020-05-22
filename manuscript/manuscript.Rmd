@@ -248,6 +248,10 @@ Borrowing standards and best practices from software development, such as the R 
 
 MV and MC jointly generated the idea for the manuscript; MV wrote the first draft, which both authors then critically edited. *vertical* was programmed by MC and MV. Both authors approved the final submitted version of the manuscript.
 
+# Open Practices Statement
+
+The source materials of this manuscript are available at https://github.com/CrumpLab/vertical.
+
 # References
 
 ```{r create_r-references}
