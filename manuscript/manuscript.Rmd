@@ -15,7 +15,7 @@ affiliation:
   - id: "2"
     institution: Department of Psychology, Brooklyn College of CUNY, New York USA
 authornote: |
-  The authors declare equal authorship.
+  The authors declare equal authorship. MV is funded by the Adolescent Well-Being in the Digital Age project funded by the Huo Family Foundation.
 abstract: |
   A consensus on the importance of open data and reproducible code is emerging. How should data and code be shared to maximize the key desiderata of reproducibility, permanence, and accessibility? Research assets should be stored persistently in formats that are not software restrictive, and documented so that others can reproduce and extend the required computations. The sharing method should be easy to adopt by already busy researchers. We suggest the R package standard as a solution for creating, curating, and communicating research assets. The R package standard, with extensions discussed herein, provides a format for assets and metadata that satisfies the above desiderata, facilitates reproducibility, open access, and sharing of materials through online platforms like GitHub and Open Science Framework. We discuss a stack of R resources that help users create reproducible collections of research assets, from experiments to manuscripts, in the RStudio interface. We created an R package, *vertical*, to help researchers incorporate these tools into their workflows, and discuss its functionality at length in an online supplement. Together, these tools may increase the reproducibility and openness of psychological science.
 keywords: "reproducibility; research methods; R; open data; open science"
