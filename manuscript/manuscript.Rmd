@@ -5,13 +5,13 @@ author:
   - name: Matti Vuorre
     affiliation: "1"
     corresponding: yes
-    address: 406 Schermerhorn Hall, 1190 Amsterdam Avenue MC 5501, New York, NY 10027
-    email: mv2521@columbia.edu
+    address: 1 St Giles, Oxford OX1 3JS, United Kingdom
+    email: matti.vuorre@oii.ox.ac.uk
   - name: Matthew J. C. Crump
     affiliation: "2"
 affiliation:
   - id: "1"
-    institution: Department of Psychology, Columbia University, New York, USA
+    institution: Oxford Internet Institute, University of Oxford, United Kingdom
   - id: "2"
     institution: Department of Psychology, Brooklyn College of CUNY, New York USA
 authornote: |
