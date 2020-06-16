@@ -328,7 +328,7 @@ library(verticaltemplate)
 mydf #loaded into environment from package
 ```
 
-Finally, documentation for multiple data objects can be added to a `data.R` file. Insert a new line after the documentation for the first data object, then insert the roxygen comments for the next one. Or, individual data sets could be documented with individually named `.R` files. We suggest readers familiarize themselves with [sinew](https://metrumresearchgroup.github.io/sinew/), which provides very convenient functions for automating roxygen templates for documenting functions and data sets.
+Finally, documentation for multiple data objects can be added to a `data.R` file. Insert a new line after the documentation for the first data object, then insert the roxygen comments for the next one. Or, individual data sets could be documented with individually named `.R` files. We suggest readers familiarize themselves with [sinew](https://yonicd.github.io/sinew/), which provides very convenient functions for automating roxygen templates for documenting functions and data sets.
 
 ### Considerations for sharing data
 
