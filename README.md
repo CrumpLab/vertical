@@ -26,7 +26,7 @@ vertical::build_vertical()
 
 NOTE: after restarting RStudio, you can make a vertical project by choosing File > New Project... in RStudio, and choosing the Vertical Research Project template.
 
-Read the [getting started](https://crumplab.github.io/vertical/articles/vertical.html) tutorial to learn more about using `vertical`.
+Read the [getting started](https://crumplab.github.io/vertical/articles/vertical.html) tutorial to learn more about using `vertical`. And, watch [vertical tutorials on youtube](https://www.youtube.com/playlist?list=PLDtczbtj66Q4jn-08HaBbz6fAVdlQ3EQm), still in progress adding more as we find time.
 
 ## What is vertical?
 
