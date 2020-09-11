@@ -39,8 +39,10 @@ navbar:
     articles:
       text: Articles
       menu:
+      - text: Sharing and organizing research products as R Packages
+        href: https://link.springer.com/article/10.3758/s13428-020-01436-x
       - text: Preprint
-        href: manuscript/manuscript.pdf
+        href: https://psyarxiv.com/jks2u/
     suggestions:
       text: Suggested R Packages
       href: articles/recs.html

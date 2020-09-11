@@ -1,9 +1,10 @@
 pandoc: 2.9.1.1
-pkgdown: 1.4.1
+pkgdown: 1.5.1
 pkgdown_sha: ~
 articles:
   recs: recs.html
   vertical: vertical.html
+last_built: 2020-09-11T12:32Z
 urls:
   reference: https://crumplab.github.io/vertical/reference
   article: https://crumplab.github.io/vertical/articles
