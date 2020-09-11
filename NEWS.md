@@ -1,3 +1,7 @@
+# vertical 0.1.0.0000
+
+* Manuscript published online at Behavioral Research Methods
+
 # vertical 0.0.1.0000
 
 * clean up branch to include only master and dev

@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   recs: recs.html
   vertical: vertical.html
-last_built: 2020-09-11T12:32Z
+last_built: 2020-09-11T12:40Z
 urls:
   reference: https://crumplab.github.io/vertical/reference
   article: https://crumplab.github.io/vertical/articles
